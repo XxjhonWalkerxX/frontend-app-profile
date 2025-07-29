@@ -13,7 +13,7 @@ const AgeMessage = ({ accountSettingsUrl }) => (
     <Alert.Heading id="profile.age.headline">
       <FormattedMessage
         id="profile.age.cannotShare"
-        defaultMessage="Your profile cannot be shared."
+        defaultMessage="Este es una prueba sonso."
         description="Error message indicating that the user's profile cannot be shared"
       />
     </Alert.Heading>
