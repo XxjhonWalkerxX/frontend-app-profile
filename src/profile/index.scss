@@ -17,12 +17,9 @@
 }
 
 .profile-page-bg-banner {
-  height: 12rem;
-  background-image: url('./assets/banner_classroom.png');
-  background-repeat: repeat-x;
-  background-size: cover;
-  filter: blur(3px);
+  height: 26rem;
   position: relative;
+  overflow: hidden;
   
   &::before {
     content: '';
@@ -31,8 +28,22 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background-image: url('./assets/banner_classroom.png');
+    background-repeat: repeat-x;
+    background-size: cover;
+    filter: blur(3px);
     z-index: 1;
+  }
+  
+  .banner-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 2;
   }
   
   &::after {
@@ -47,7 +58,6 @@
     background-repeat: no-repeat;
     background-position: center;
     z-index: 3;
-    filter: none;
   }
 }
 
