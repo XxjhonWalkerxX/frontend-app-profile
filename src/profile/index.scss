@@ -19,9 +19,6 @@
 // NOTA: Los estilos del banner EMI están al final de este archivo
 // El avatar del usuario se superpone sobre el banner
 
-/* ESTILOS PARA EL NOMBRE DEL USUARIO SOBRE EL BANNER - ALTA ESPECIFICIDAD */
-.profile-page h1.username-description,
-h1.username-description,
 .username-description {
   width: auto !important;
   position: absolute !important;
@@ -34,8 +31,6 @@ h1.username-description,
   font-weight: 700 !important;
   margin-left: 0 !important;
   margin-bottom: 0 !important;
-  margin-top: 0 !important;
-  margin-right: 0 !important;
   z-index: 11 !important; /* Más alto que el avatar para que esté encima */
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8) !important;
   background: rgba(0, 0, 0, 0.3) !important;
@@ -43,7 +38,6 @@ h1.username-description,
   border-radius: 0.5rem !important;
   backdrop-filter: blur(5px) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  display: block !important;
   
   @include media-breakpoint-up(md) {
     left: 3rem !important;
@@ -312,13 +306,12 @@ h1.username-description,
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
 
-/* ESTILOS PARA SUPERPONER EL AVATAR AL BANNER - ALTA ESPECIFICIDAD */
+/* ESTILOS PARA SUPERPONER EL AVATAR AL BANNER */
 .profile-page {
-  position: relative !important;
+  position: relative;
 }
 
-.profile-page .profile-avatar-wrap.banner-overlay-avatar,
-.banner-overlay-avatar {
+.profile-page .profile-avatar-wrap.banner-overlay-avatar {
   position: absolute !important;
   top: 50% !important; /* Centrado verticalmente en el banner */
   left: 2rem !important;
@@ -332,7 +325,6 @@ h1.username-description,
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
     border: 4px solid rgba(255, 255, 255, 0.9) !important;
     background: #ffffff !important;
-    position: relative !important;
     
     /* Hacer el avatar más grande cuando está sobre el banner */
     width: 10rem !important;
@@ -347,14 +339,12 @@ h1.username-description,
   /* Ajustar el menú del avatar para que sea visible sobre el banner */
   .profile-avatar-menu-container {
     background: rgba(0, 0, 0, 0.8) !important;
-    backdrop-filter: blur(4px) !important;
-    position: absolute !important;
-    z-index: 12 !important;
+    backdrop-filter: blur(4px);
     
     .btn, .dropdown .btn {
       color: $white !important;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
-      font-weight: 600 !important;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      font-weight: 600;
     }
   }
   
@@ -423,8 +413,6 @@ h1.username-description,
     }
   }
   
-  .profile-page h1.username-description,
-  h1.username-description,
   .username-description {
     left: 1rem !important;
     top: 1.5rem !important;
@@ -460,8 +448,6 @@ h1.username-description,
     }
   }
   
-  .profile-page h1.username-description,
-  h1.username-description,
   .username-description {
     left: 1rem !important;
     top: 1rem !important;

@@ -5,43 +5,12 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="shortcut icon" href="<%=htmlWebpackPlugin.options.FAVICON_URL%>" type="image/x-icon" />
-      <!-- Framework del Gobierno Mexicano - CSS (solo en el footer) -->
-      <style>
-        /* Aislar los estilos del framework gubernamental solo al footer */
-        .gobmx-footer-container {
-          isolation: isolate;
-        }
-        .gobmx-footer-container * {
-          all: revert;
-        }
-      </style>
+      <!-- Framework del Gobierno Mexicano - CSS -->
+      <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
   </head>
   <body>
     <div id="root"></div>
-    <!-- Framework del Gobierno Mexicano - Cargado al final -->
-    <script>
-      // Cargar el framework del gobierno mexicano de manera asíncrona
-      window.addEventListener('load', function() {
-        // Cargar CSS
-        const link = document.createElement('link');
-        link.href = 'https://framework-gb.cdn.gob.mx/assets/styles/main.css';
-        link.rel = 'stylesheet';
-        link.onload = function() {
-          console.log('CSS del Gobierno Mexicano cargado');
-        };
-        document.head.appendChild(link);
-
-        // Cargar JavaScript después del CSS
-        setTimeout(function() {
-          const script = document.createElement('script');
-          script.src = 'https://framework-gb.cdn.gob.mx/gobmx.js';
-          script.async = true;
-          script.onload = function() {
-            console.log('JavaScript del Gobierno Mexicano cargado');
-          };
-          document.body.appendChild(script);
-        }, 500);
-      });
-    </script>
+    <!-- Framework del Gobierno Mexicano - JavaScript -->
+    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
   </body>
 </html>
