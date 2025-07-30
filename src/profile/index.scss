@@ -23,15 +23,28 @@
   width: auto;
   position: absolute;
   left: 2rem;
-  top: 1rem;
+  top: 2rem; /* Posición superior del banner */
   color: $white;
-  line-height: 1.2rem;
-  font-size: 1.4rem;
+  line-height: 1.4rem;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 700;
-  margin-left: 0.9rem;
-  z-index: 4;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-left: 0;
+  z-index: 11; /* Más alto que el avatar para que esté encima */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  @include media-breakpoint-up(md) {
+    left: 3rem;
+    top: 2.5rem;
+    font-size: 1.8rem;
+    line-height: 1.6rem;
+    padding: 1rem 1.5rem;
+  }
 }
 
 .mb-2rem {
@@ -298,11 +311,12 @@
 
 .profile-page .profile-avatar-wrap.banner-overlay-avatar {
   position: absolute !important;
-  top: 18rem; /* Posiciona el avatar sobre el banner */
-  left: 2rem;
-  z-index: 10; /* Alto z-index para que esté sobre el banner */
-  max-width: 12rem;
-  margin: 0;
+  top: 50% !important; /* Centrado verticalmente en el banner */
+  left: 2rem !important;
+  transform: translateY(-50%) !important; /* Centrado perfecto */
+  z-index: 10 !important; /* Alto z-index para que esté sobre el banner */
+  max-width: none !important;
+  margin: 0 !important;
   
   /* Sombra más prominente para destacar sobre el banner */
   .profile-avatar {
@@ -333,17 +347,16 @@
   }
   
   @include media-breakpoint-up(md) {
-    top: 14rem;
-    left: 3rem;
+    left: 3rem !important;
   }
 }
 
 /* Ajustar el contenido para que no se superponga */
 .profile-page .container-fluid {
-  margin-top: 6rem; /* Espacio para el avatar superpuesto */
+  margin-top: 2rem; /* Menos espacio ya que el avatar está superpuesto */
   
   @include media-breakpoint-up(md) {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 }
 
@@ -388,10 +401,9 @@
   }
   
   .profile-page .profile-avatar-wrap.banner-overlay-avatar {
-    top: 16rem !important;
     left: 1rem !important; /* Avatar a la izquierda en móvil también */
-    transform: none !important;
-    text-align: left;
+    top: 50% !important; /* Mantener centrado verticalmente */
+    transform: translateY(-50%) !important;
     
     .profile-avatar {
       width: 8rem !important;
@@ -399,8 +411,15 @@
     }
   }
   
+  .username-description {
+    left: 1rem !important;
+    top: 1.5rem !important;
+    font-size: 1.4rem !important;
+    padding: 0.6rem 1rem !important;
+  }
+  
   .profile-page .container-fluid {
-    margin-top: 8rem;
+    margin-top: 2rem;
   }
 }
 
@@ -417,8 +436,9 @@
   }
   
   .profile-page .profile-avatar-wrap.banner-overlay-avatar {
-    top: 12rem !important;
     left: 1rem !important;
+    top: 50% !important; /* Mantener centrado verticalmente */
+    transform: translateY(-50%) !important;
     
     .profile-avatar {
       width: 7rem !important;
@@ -426,7 +446,14 @@
     }
   }
   
+  .username-description {
+    left: 1rem !important;
+    top: 1rem !important;
+    font-size: 1.2rem !important;
+    padding: 0.5rem 0.8rem !important;
+  }
+  
   .profile-page .container-fluid {
-    margin-top: 7rem;
+    margin-top: 2rem;
   }
 }
