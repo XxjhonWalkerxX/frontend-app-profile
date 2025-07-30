@@ -3,71 +3,65 @@ import PropTypes from 'prop-types';
 import styles from './Banner.module.scss';
 import EMILogo from './assets/EMI_logo.png';
 
-const Banner = ({
-  userAvatar,
-  username,
-  userHandle,
-  dateJoined,
-  progressPercent,
-  level,
-  location,
-}) => {
-  const memberSince = dateJoined
-    ? `Member since ${new Date(dateJoined).getFullYear()}`
-    : '';
-
-  return (
-    <div className={styles.banner}>
-      {/* IZQUIERDA */}
+const Banner = ({ 
+  userAvatar = null, 
+  username = "diego", 
+  userHandle = "@diegon", 
+  userLevel = "Member since 2025" 
+}) => (
+  <div className={styles.banner}>
+    {/* Contenedor del fondo borroso */}
+    <div className={styles.backgroundContainer}>
+      <div className={styles.backgroundImage}></div>
+      <div className={styles.overlay}></div>
+    </div>
+    
+    {/* Contenido del banner */}
+    <div className={styles.content}>
+      {/* Bloque izquierdo: Avatar y datos del usuario */}
       <div className={styles.leftBlock}>
-        {userAvatar ? (
-          <img src={userAvatar} alt="avatar" className={styles.avatarImage}/>
-        ) : (
-          <div className={styles.defaultAvatar} />
-        )}
+        <div className={styles.avatar}>
+          {userAvatar ? (
+            <img 
+              src={userAvatar} 
+              alt={`${username} avatar`}
+              className={styles.avatarImage}
+            />
+          ) : (
+            <div className={styles.defaultAvatar}>
+              <div className={styles.avatarIcon}></div>
+            </div>
+          )}
+        </div>
         <div className={styles.userInfo}>
-          <h2 className={styles.username}>{username}</h2>
-          <p className={styles.handle}>{userHandle}</p>
-          <p className={styles.levelLocation}>
-            Level {level} &ndash; {location}
-          </p>
+          <h1 className={styles.username}>{username}</h1>
+          <p className={styles.userHandle}>{userHandle}</p>
+          <p className={styles.userLevel}>{userLevel}</p>
         </div>
       </div>
 
-      {/* CENTRO */}
+      {/* Bloque central: Logo EMI */}
       <div className={styles.centerBlock}>
-        <img src={EMILogo} alt="Escuela Mexicana de Inglés" className={styles.logo}/>
+        <img 
+          src={EMILogo} 
+          alt="Escuela Mexicana de Inglés" 
+          className={styles.logo}
+        />
       </div>
 
-      {/* DERECHA */}
+      {/* Bloque derecho: Vacío por ahora, para futuras funcionalidades */}
       <div className={styles.rightBlock}>
-        <div className={styles.levelBadge}>Level {level}</div>
-        <div className={styles.progressBar}>
-          <div
-            className={styles.progressFill}
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
-        <div className={styles.percentText}>{progressPercent}%</div>
-        <div className={styles.completedText}>COMPLETED</div>
+        {/* Aquí podrías agregar elementos adicionales como progreso, badges, etc. */}
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 Banner.propTypes = {
-  userAvatar:      PropTypes.string,
-  username:        PropTypes.string.isRequired,
-  userHandle:      PropTypes.string.isRequired,
-  dateJoined:      PropTypes.string,
-  progressPercent: PropTypes.number.isRequired,
-  level:           PropTypes.string.isRequired,
-  location:        PropTypes.string.isRequired,
-};
-
-Banner.defaultProps = {
-  userAvatar: null,
-  dateJoined: null,
+  userAvatar: PropTypes.string,
+  username: PropTypes.string,
+  userHandle: PropTypes.string,
+  userLevel: PropTypes.string,
 };
 
 export default Banner;
