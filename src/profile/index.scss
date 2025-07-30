@@ -16,79 +16,8 @@
   }
 }
 
-// Especificidad más alta para sobreescribir estilos externos
-.profile-page .profile-page-bg-banner,
-div.profile-page .profile-page-bg-banner,
-.container-fluid .profile-page-bg-banner {
-  height: 26rem !important;
-  position: relative !important;
-  overflow: hidden !important;
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-.profile-page-bg-banner {
-  height: 26rem !important;
-  position: relative !important;
-  overflow: hidden !important;
-  background: transparent !important;
-  
-  &::before {
-    content: '';
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background-image: url('./assets/banner_classroom.png') !important;
-    background-repeat: repeat-x !important;
-    background-size: cover !important;
-    background-color: transparent !important;
-    filter: blur(3px) !important;
-    z-index: 1 !important;
-  }
-  
-  &::before {
-    content: '';
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background-image: url('./assets/banner_classroom.png') !important;
-    background-repeat: repeat-x !important;
-    background-size: cover !important;
-    background-color: transparent !important;
-    filter: blur(3px) !important;
-    z-index: 1 !important;
-  }
-  
-  .banner-overlay {
-    content: '';
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    background: rgba(0, 0, 0, 0.2) !important;
-    z-index: 2 !important;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute !important;
-    top: 2rem !important;
-    right: 2rem !important;
-    width: 12rem !important;
-    height: 8rem !important;
-    background-image: url('./assets/EMI_logo.png') !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-color: transparent !important;
-    z-index: 3 !important;
-  }
-}
+// NOTA: Los estilos del banner ahora están en Banner.module.scss
+// Se mantienen algunos estilos de compatibilidad por si acaso
 
 .username-description {
   width: auto;

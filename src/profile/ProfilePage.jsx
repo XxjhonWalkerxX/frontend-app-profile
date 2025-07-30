@@ -315,9 +315,17 @@ class ProfilePage extends React.Component {
   }
 
   render() {
+    const { profileImage, dateJoined, name } = this.props;
+    
     return (
       <div className="profile-page">
-        <Banner />
+        <Banner 
+          userAvatar={profileImage?.src}
+          username={this.props.params.username}
+          userHandle={`@${this.props.params.username}`}
+          name={name}
+          dateJoined={dateJoined}
+        />
         {this.renderContent()}
       </div>
     );
