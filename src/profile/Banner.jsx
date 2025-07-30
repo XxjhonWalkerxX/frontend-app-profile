@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Banner.module.scss';
-import EMILogo from './assets/EMI_logo.png';
+// Importación correcta del logo usando require para assets estáticos
+const EMILogo = require('./assets/EMI_logo.png');
 
 const Banner = ({ 
   userAvatar, 
@@ -11,6 +12,9 @@ const Banner = ({
   name,
   dateJoined
 }) => {
+  // Debug: console log para verificar props
+  console.log('Banner props:', { userAvatar, username, name, dateJoined });
+  
   // Función para formatear la fecha de ingreso
   const formatMemberSince = (date) => {
     if (!date) return 'Member since 2025';
@@ -24,7 +28,7 @@ const Banner = ({
   const displayLevel = userLevel || formatMemberSince(dateJoined);
 
   return (
-    <div className={styles.banner}>
+    <div className={styles.banner} style={{backgroundColor: '#f0f0f0', minHeight: '26rem'}}>
       {/* Contenedor del fondo borroso */}
       <div className={styles.backgroundContainer}>
         <div className={styles.backgroundImage}></div>

@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Fallback gradient */
 }
 
 /* Contenedor del fondo */
@@ -26,11 +27,15 @@
   right: 0;
   bottom: 0;
   background-image: url('./assets/banner_classroom.png');
-  background-repeat: repeat-x;
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   filter: blur(3px);
   transform: scale(1.1); /* Evita bordes blancos del blur */
+  z-index: 1;
+  
+  /* Fallback si la imagen no carga */
+  background-color: rgba(102, 126, 234, 0.8);
 }
 
 .overlay {
