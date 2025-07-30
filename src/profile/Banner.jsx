@@ -3,33 +3,33 @@ import PropTypes from 'prop-types';
 import styles from './Banner.module.scss';
 import EMILogo from './assets/EMI_logo.png';
 
-const Banner = ({ 
-  userAvatar = null, 
-  username = "diego", 
-  userHandle = "@diegon", 
-  userLevel = "Member since 2025" 
+const Banner = ({
+  userAvatar = null,
+  username,
+  userHandle,
+  userLevel,
 }) => (
   <div className={styles.banner}>
     {/* Contenedor del fondo borroso */}
     <div className={styles.backgroundContainer}>
-      <div className={styles.backgroundImage}></div>
-      <div className={styles.overlay}></div>
+      <div className={styles.backgroundImage} />
+      <div className={styles.overlay} />
     </div>
-    
+
     {/* Contenido del banner */}
     <div className={styles.content}>
       {/* Bloque izquierdo: Avatar y datos del usuario */}
       <div className={styles.leftBlock}>
         <div className={styles.avatar}>
           {userAvatar ? (
-            <img 
-              src={userAvatar} 
+            <img
+              src={userAvatar}
               alt={`${username} avatar`}
               className={styles.avatarImage}
             />
           ) : (
             <div className={styles.defaultAvatar}>
-              <div className={styles.avatarIcon}></div>
+              <div className={styles.avatarIcon} />
             </div>
           )}
         </div>
@@ -42,9 +42,9 @@ const Banner = ({
 
       {/* Bloque central: Logo EMI */}
       <div className={styles.centerBlock}>
-        <img 
-          src={EMILogo} 
-          alt="Escuela Mexicana de Inglés" 
+        <img
+          src={EMILogo}
+          alt="Escuela Mexicana de Inglés"
           className={styles.logo}
         />
       </div>
@@ -59,9 +59,9 @@ const Banner = ({
 
 Banner.propTypes = {
   userAvatar: PropTypes.string,
-  username: PropTypes.string,
-  userHandle: PropTypes.string,
-  userLevel: PropTypes.string,
+  username: PropTypes.string.isRequired,
+  userHandle: PropTypes.string.isRequired,
+  userLevel: PropTypes.string.isRequired,
 };
 
 export default Banner;
