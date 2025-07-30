@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Banner.module.scss';
 import EMILogo from './assets/EMI_logo.png';
+import BannerBackground from './assets/banner_classroom.png';
 
 const Banner = ({
   userAvatar = null,
@@ -12,7 +13,10 @@ const Banner = ({
   <div className={styles.banner}>
     {/* Contenedor del fondo borroso */}
     <div className={styles.backgroundContainer}>
-      <div className={styles.backgroundImage} />
+      <div 
+        className={styles.backgroundImage}
+        style={{ backgroundImage: `url(${BannerBackground})` }}
+      />
       <div className={styles.overlay} />
     </div>
 
