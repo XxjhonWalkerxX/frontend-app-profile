@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Banner.module.scss';
 import EMILogo from './assets/EMI_logo.png';
 import BannerBackground from './assets/banner_classroom.png';
 
@@ -10,57 +9,52 @@ const Banner = ({
   userHandle,
   userLevel,
 }) => {
-  console.log('Banner props:', { userAvatar, username, userHandle, userLevel });
-  console.log('Styles object:', styles);
-  console.log('BannerBackground:', BannerBackground);
-  console.log('EMILogo:', EMILogo);
-
   return (
-    <div className={styles.banner}>
+    <div className="emi-banner">
       {/* Contenedor del fondo borroso */}
-      <div className={styles.backgroundContainer}>
+      <div className="emi-banner-background-container">
         <div
-          className={styles.backgroundImage}
+          className="emi-banner-background-image"
           style={{ backgroundImage: `url(${BannerBackground})` }}
         />
-        <div className={styles.overlay} />
+        <div className="emi-banner-overlay" />
       </div>
 
       {/* Contenido del banner */}
-      <div className={styles.content}>
+      <div className="emi-banner-content">
         {/* Bloque izquierdo: Avatar y datos del usuario */}
-        <div className={styles.leftBlock}>
-          <div className={styles.avatar}>
+        <div className="emi-banner-left-block">
+          <div className="emi-banner-avatar">
             {userAvatar ? (
               <img
                 src={userAvatar}
                 alt={`${username} avatar`}
-                className={styles.avatarImage}
+                className="emi-banner-avatar-image"
               />
             ) : (
-              <div className={styles.defaultAvatar}>
-                <div className={styles.avatarIcon} />
+              <div className="emi-banner-default-avatar">
+                <div className="emi-banner-avatar-icon" />
               </div>
             )}
           </div>
-          <div className={styles.userInfo}>
-            <h1 className={styles.username}>{username}</h1>
-            <p className={styles.userHandle}>{userHandle}</p>
-            <p className={styles.userLevel}>{userLevel}</p>
+          <div className="emi-banner-user-info">
+            <h1 className="emi-banner-username">{username}</h1>
+            <p className="emi-banner-user-handle">{userHandle}</p>
+            <p className="emi-banner-user-level">{userLevel}</p>
           </div>
         </div>
 
         {/* Bloque central: Logo EMI */}
-        <div className={styles.centerBlock}>
+        <div className="emi-banner-center-block">
           <img
             src={EMILogo}
             alt="Escuela Mexicana de Inglés"
-            className={styles.logo}
+            className="emi-banner-logo"
           />
         </div>
 
         {/* Bloque derecho: Vacío por ahora, para futuras funcionalidades */}
-        <div className={styles.rightBlock}>
+        <div className="emi-banner-right-block">
           {/* Aquí podrías agregar elementos adicionales como progreso, badges, etc. */}
         </div>
       </div>
