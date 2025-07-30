@@ -20,30 +20,31 @@
 // El avatar del usuario se superpone sobre el banner
 
 .username-description {
-  width: auto;
-  position: absolute;
-  left: 2rem;
-  top: 2rem; /* Posición superior del banner */
-  color: $white;
-  line-height: 1.4rem;
-  font-size: 1.6rem;
-  font-style: normal;
-  font-weight: 700;
-  margin-left: 0;
-  z-index: 11; /* Más alto que el avatar para que esté encima */
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.8rem 1.2rem;
-  border-radius: 0.5rem;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: auto !important;
+  position: absolute !important;
+  left: 2rem !important;
+  top: 2rem !important; /* Posición superior del banner */
+  color: $white !important;
+  line-height: 1.4rem !important;
+  font-size: 1.6rem !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  margin-left: 0 !important;
+  margin-bottom: 0 !important;
+  z-index: 11 !important; /* Más alto que el avatar para que esté encima */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8) !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  padding: 0.8rem 1.2rem !important;
+  border-radius: 0.5rem !important;
+  backdrop-filter: blur(5px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   
   @include media-breakpoint-up(md) {
-    left: 3rem;
-    top: 2.5rem;
-    font-size: 1.8rem;
-    line-height: 1.6rem;
-    padding: 1rem 1.5rem;
+    left: 3rem !important;
+    top: 2.5rem !important;
+    font-size: 1.8rem !important;
+    line-height: 1.6rem !important;
+    padding: 1rem 1.5rem !important;
   }
 }
 
@@ -284,16 +285,17 @@
   justify-content: flex-end; /* Logo a la derecha */
 }
 
-/* Contenedor del logo a la derecha */
+/* Contenedor del logo a la derecha - sin fondo borroso */
 .emi-banner-logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  padding: 2rem;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  /* Remover el fondo borroso */
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* border-radius: 1rem; */
+  /* padding: 2rem; */
+  /* backdrop-filter: blur(10px); */
+  /* border: 2px solid rgba(255, 255, 255, 0.2); */
 }
 
 .emi-banner-logo {
@@ -369,7 +371,7 @@
   }
   
   .emi-banner-logo-container {
-    padding: 1.5rem;
+    display: flex; /* Mantener al menos una propiedad */
   }
   
   .emi-banner-logo {
@@ -392,7 +394,7 @@
   }
   
   .emi-banner-logo-container {
-    padding: 1rem;
+    display: flex; /* Mantener al menos una propiedad */
   }
   
   .emi-banner-logo {
