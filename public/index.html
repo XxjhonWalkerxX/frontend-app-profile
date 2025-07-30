@@ -18,5 +18,30 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Framework del Gobierno Mexicano - Cargado al final -->
+    <script>
+      // Cargar el framework del gobierno mexicano de manera asíncrona
+      window.addEventListener('load', function() {
+        // Cargar CSS
+        const link = document.createElement('link');
+        link.href = 'https://framework-gb.cdn.gob.mx/assets/styles/main.css';
+        link.rel = 'stylesheet';
+        link.onload = function() {
+          console.log('CSS del Gobierno Mexicano cargado');
+        };
+        document.head.appendChild(link);
+
+        // Cargar JavaScript después del CSS
+        setTimeout(function() {
+          const script = document.createElement('script');
+          script.src = 'https://framework-gb.cdn.gob.mx/gobmx.js';
+          script.async = true;
+          script.onload = function() {
+            console.log('JavaScript del Gobierno Mexicano cargado');
+          };
+          document.body.appendChild(script);
+        }, 500);
+      });
+    </script>
   </body>
 </html>

@@ -18,7 +18,6 @@ import ReactDOM from 'react-dom';
 
 import Header from '@edx/frontend-component-header';
 import FooterSlot from '@openedx/frontend-slot-footer';
-import GobMxFooter from './components/GobMxFooter';
 
 import messages from './i18n';
 import configureStore from './data/configureStore';
@@ -37,7 +36,6 @@ subscribe(APP_READY, () => {
         <AppRoutes />
       </main>
       <FooterSlot />
-      <GobMxFooter />
     </AppProvider>,
     document.getElementById('root'),
   );
