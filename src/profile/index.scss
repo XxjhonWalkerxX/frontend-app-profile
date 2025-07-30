@@ -16,48 +16,77 @@
   }
 }
 
+// Especificidad más alta para sobreescribir estilos externos
+.profile-page .profile-page-bg-banner,
+div.profile-page .profile-page-bg-banner,
+.container-fluid .profile-page-bg-banner {
+  height: 26rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
 .profile-page-bg-banner {
-  height: 26rem;
-  position: relative;
-  overflow: hidden;
+  height: 26rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: transparent !important;
   
   &::before {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('./assets/banner_classroom.png');
-    background-repeat: repeat-x;
-    background-size: cover;
-    filter: blur(3px);
-    z-index: 1;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-image: url('./assets/banner_classroom.png') !important;
+    background-repeat: repeat-x !important;
+    background-size: cover !important;
+    background-color: transparent !important;
+    filter: blur(3px) !important;
+    z-index: 1 !important;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-image: url('./assets/banner_classroom.png') !important;
+    background-repeat: repeat-x !important;
+    background-size: cover !important;
+    background-color: transparent !important;
+    filter: blur(3px) !important;
+    z-index: 1 !important;
   }
   
   .banner-overlay {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 2;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    z-index: 2 !important;
   }
   
   &::after {
     content: '';
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 6rem;
-    height: 6rem;
-    background-image: url('./assets/EMI_logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 3;
+    position: absolute !important;
+    top: 2rem !important;
+    right: 2rem !important;
+    width: 12rem !important;
+    height: 8rem !important;
+    background-image: url('./assets/EMI_logo.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-color: transparent !important;
+    z-index: 3 !important;
   }
 }
 
@@ -86,6 +115,14 @@
 }
 
 .profile-page {
+  .custom-mobile-header {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+  }
+
   .edit-section-header {
     @extend .h6;
     display: block;

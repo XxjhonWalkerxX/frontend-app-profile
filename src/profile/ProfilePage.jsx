@@ -224,7 +224,7 @@ class ProfilePage extends React.Component {
             </div>
           </div>
           <div className="col">
-            <div className="d-md-none">
+            <div className="d-md-none custom-mobile-header">
               {this.renderHeadingLockup()}
             </div>
             <div className="d-none d-md-block float-right">
