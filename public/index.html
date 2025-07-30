@@ -5,12 +5,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="shortcut icon" href="<%=htmlWebpackPlugin.options.FAVICON_URL%>" type="image/x-icon" />
-      <!-- Framework del Gobierno Mexicano - CSS -->
-      <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+      <!-- Framework del Gobierno Mexicano - CSS (solo en el footer) -->
+      <style>
+        /* Aislar los estilos del framework gubernamental solo al footer */
+        .gobmx-footer-container {
+          isolation: isolate;
+        }
+        .gobmx-footer-container * {
+          all: revert;
+        }
+      </style>
   </head>
   <body>
     <div id="root"></div>
-    <!-- Framework del Gobierno Mexicano - JavaScript -->
-    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
   </body>
 </html>
