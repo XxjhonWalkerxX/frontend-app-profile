@@ -15,7 +15,7 @@ const Banner = () => {
         <div className="emi-banner-overlay" />
       </div>
 
-      {/* Contenido del banner - Solo logo EMI centrado */}
+      {/* Contenido del banner - Logo EMI a la derecha */}
       <div className="emi-banner-content">
         <div className="emi-banner-logo-container">
           <img

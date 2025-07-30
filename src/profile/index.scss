@@ -268,22 +268,27 @@
   max-width: 1200px;
   padding: 0 2rem;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end; /* Logo a la derecha */
 }
 
-/* Contenedor del logo centrado */
+/* Contenedor del logo a la derecha */
 .emi-banner-logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .emi-banner-logo {
-  height: 8rem;
+  height: 12rem; /* Logo más grande */
   width: auto;
-  max-width: 12rem;
+  max-width: 20rem; /* Ancho máximo mayor */
   object-fit: contain;
-  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
 
 /* ESTILOS PARA SUPERPONER EL AVATAR AL BANNER */
@@ -350,9 +355,13 @@
     padding: 0 1.5rem;
   }
   
+  .emi-banner-logo-container {
+    padding: 1.5rem;
+  }
+  
   .emi-banner-logo {
-    height: 6rem;
-    max-width: 10rem;
+    height: 10rem;
+    max-width: 16rem;
   }
 }
 
@@ -366,18 +375,23 @@
   
   .emi-banner-content {
     padding: 0 1rem;
+    justify-content: center; /* En móvil centrar el logo */
+  }
+  
+  .emi-banner-logo-container {
+    padding: 1rem;
   }
   
   .emi-banner-logo {
-    height: 5rem;
-    max-width: 8rem;
+    height: 8rem;
+    max-width: 12rem;
   }
   
   .profile-page .profile-avatar-wrap.banner-overlay-avatar {
     top: 16rem !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    text-align: center;
+    left: 1rem !important; /* Avatar a la izquierda en móvil también */
+    transform: none !important;
+    text-align: left;
     
     .profile-avatar {
       width: 8rem !important;
@@ -398,12 +412,13 @@
   }
   
   .emi-banner-logo {
-    height: 4rem;
-    max-width: 6rem;
+    height: 6rem;
+    max-width: 10rem;
   }
   
   .profile-page .profile-avatar-wrap.banner-overlay-avatar {
     top: 12rem !important;
+    left: 1rem !important;
     
     .profile-avatar {
       width: 7rem !important;
