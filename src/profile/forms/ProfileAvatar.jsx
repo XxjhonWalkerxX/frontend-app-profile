@@ -126,7 +126,7 @@ class ProfileAvatar extends React.Component {
 
   render() {
     return (
-      <div className="profile-avatar-wrap position-relative">
+      <div className="profile-avatar-wrap position-relative banner-avatar">
         <div className="profile-avatar rounded-circle bg-light">
           {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
           {this.renderAvatar()}

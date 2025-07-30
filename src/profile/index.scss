@@ -67,6 +67,16 @@
   .profile-avatar-wrap {
     position: relative;
     z-index: 4;
+    
+    &.banner-avatar {
+      position: absolute !important;
+      top: 50% !important;
+      left: 2rem !important;
+      transform: translateY(-50%) !important;
+      max-width: 8rem !important;
+      margin: 0 !important;
+    }
+    
     @include media-breakpoint-up(md) {
       max-width: 12rem;
       margin-right: 0;

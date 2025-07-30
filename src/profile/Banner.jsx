@@ -1,97 +1,72 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Banner.module.scss';
-// Importación correcta del logo usando require para assets estáticos
-const EMILogo = require('./assets/EMI_logo.png');
+import EMILogo from './assets/EMI_logo.png';
 
-const Banner = ({ 
-  userAvatar, 
-  username, 
-  userHandle, 
-  userLevel,
-  name,
-  dateJoined
+const Banner = ({
+  userAvatar,
+  username,
+  userHandle,
+  dateJoined,
+  progressPercent,
+  level,
+  location,
 }) => {
-  // Debug: console log para verificar props
-  console.log('Banner props:', { userAvatar, username, name, dateJoined });
-  
-  // Función para formatear la fecha de ingreso
-  const formatMemberSince = (date) => {
-    if (!date) return 'Member since 2025';
-    const year = new Date(date).getFullYear();
-    return `Member since ${year}`;
-  };
-
-  // Usar el nombre real si está disponible, sino el username
-  const displayName = name || username || 'User';
-  const displayHandle = userHandle || (username ? `@${username}` : '@user');
-  const displayLevel = userLevel || formatMemberSince(dateJoined);
+  const memberSince = dateJoined
+    ? `Member since ${new Date(dateJoined).getFullYear()}`
+    : '';
 
   return (
-    <div className={styles.banner} style={{backgroundColor: '#f0f0f0', minHeight: '26rem'}}>
-      {/* Contenedor del fondo borroso */}
-      <div className={styles.backgroundContainer}>
-        <div className={styles.backgroundImage}></div>
-        <div className={styles.overlay}></div>
-      </div>
-      
-      {/* Contenido del banner */}
-      <div className={styles.content}>
-        {/* Bloque izquierdo: Avatar y datos del usuario */}
-        <div className={styles.leftBlock}>
-          <div className={styles.avatar}>
-            {userAvatar && !userAvatar.includes('default') ? (
-              <img 
-                src={userAvatar} 
-                alt={`${displayName} avatar`}
-                className={styles.avatarImage}
-              />
-            ) : (
-              <div className={styles.defaultAvatar}>
-                <div className={styles.avatarIcon}></div>
-              </div>
-            )}
-          </div>
-          <div className={styles.userInfo}>
-            <h1 className={styles.username}>{displayName}</h1>
-            <p className={styles.userHandle}>{displayHandle}</p>
-            <p className={styles.userLevel}>{displayLevel}</p>
-          </div>
+    <div className={styles.banner}>
+      {/* IZQUIERDA */}
+      <div className={styles.leftBlock}>
+        {userAvatar ? (
+          <img src={userAvatar} alt="avatar" className={styles.avatarImage}/>
+        ) : (
+          <div className={styles.defaultAvatar} />
+        )}
+        <div className={styles.userInfo}>
+          <h2 className={styles.username}>{username}</h2>
+          <p className={styles.handle}>{userHandle}</p>
+          <p className={styles.levelLocation}>
+            Level {level} &ndash; {location}
+          </p>
         </div>
+      </div>
 
-        {/* Bloque central: Logo EMI */}
-        <div className={styles.centerBlock}>
-          <img 
-            src={EMILogo} 
-            alt="Escuela Mexicana de Inglés" 
-            className={styles.logo}
+      {/* CENTRO */}
+      <div className={styles.centerBlock}>
+        <img src={EMILogo} alt="Escuela Mexicana de Inglés" className={styles.logo}/>
+      </div>
+
+      {/* DERECHA */}
+      <div className={styles.rightBlock}>
+        <div className={styles.levelBadge}>Level {level}</div>
+        <div className={styles.progressBar}>
+          <div
+            className={styles.progressFill}
+            style={{ width: `${progressPercent}%` }}
           />
         </div>
-
-        {/* Bloque derecho: Vacío por ahora, para futuras funcionalidades */}
-        <div className={styles.rightBlock}>
-          {/* Aquí podrías agregar elementos adicionales como progreso, badges, etc. */}
-        </div>
+        <div className={styles.percentText}>{progressPercent}%</div>
+        <div className={styles.completedText}>COMPLETED</div>
       </div>
     </div>
   );
 };
 
 Banner.propTypes = {
-  userAvatar: PropTypes.string,
-  username: PropTypes.string,
-  userHandle: PropTypes.string,
-  userLevel: PropTypes.string,
-  name: PropTypes.string,
-  dateJoined: PropTypes.string,
+  userAvatar:      PropTypes.string,
+  username:        PropTypes.string.isRequired,
+  userHandle:      PropTypes.string.isRequired,
+  dateJoined:      PropTypes.string,
+  progressPercent: PropTypes.number.isRequired,
+  level:           PropTypes.string.isRequired,
+  location:        PropTypes.string.isRequired,
 };
 
 Banner.defaultProps = {
   userAvatar: null,
-  username: '',
-  userHandle: '',
-  userLevel: '',
-  name: '',
   dateJoined: null,
 };
 

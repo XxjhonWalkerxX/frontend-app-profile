@@ -319,12 +319,14 @@ class ProfilePage extends React.Component {
     
     return (
       <div className="profile-page">
-        <Banner 
-          userAvatar={profileImage?.src}
-          username={this.props.params.username}
-          userHandle={`@${this.props.params.username}`}
-          name={name}
+        <Banner
+          userAvatar={profileImage.src}
+          username={params.username}
+          userHandle={`@${params.username}`}
           dateJoined={dateJoined}
+          level={userLevel}            // ej. 'A1'
+          location={userLocation}      // ej. 'CDMX'
+          progressPercent={72}         // ej. porcentaje calculado
         />
         {this.renderContent()}
       </div>
