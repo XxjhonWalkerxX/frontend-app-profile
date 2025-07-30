@@ -315,27 +315,9 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { profileImage, dateJoined, params } = this.props;
-    const { username } = params;
-
-    // Crear userHandle con @
-    const userHandle = `@${username}`;
-
-    // Formatear fecha para userLevel
-    let userLevel = 'Member';
-    if (dateJoined) {
-      const joinedYear = new Date(dateJoined).getFullYear();
-      userLevel = `Member since ${joinedYear}`;
-    }
-
     return (
       <div className="profile-page">
-        <Banner
-          userAvatar={profileImage && !profileImage.isDefault ? profileImage.src : null}
-          username={username}
-          userHandle={userHandle}
-          userLevel={userLevel}
-        />
+        <Banner />
         {this.renderContent()}
       </div>
     );
