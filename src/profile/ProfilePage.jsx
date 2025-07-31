@@ -161,6 +161,21 @@ class ProfilePage extends React.Component {
     return <AgeMessage accountSettingsUrl={this.state.accountSettingsUrl} />;
   }
 
+  renderProfileAvatar() {
+    const { profileImage, requiresParentalConsent } = this.props;
+
+    return (
+      <ProfileAvatar
+        src={profileImage.src}
+        isDefault={profileImage.isDefault}
+        onSave={this.handleSaveProfilePhoto}
+        onDelete={this.handleDeleteProfilePhoto}
+        savePhotoState={this.props.savePhotoState}
+        isEditable={this.isAuthenticatedUserProfile() && !requiresParentalConsent}
+      />
+    );
+  }
+
   renderContent() {
     const {
       profileImage,
@@ -307,11 +322,17 @@ class ProfilePage extends React.Component {
   render() {
     const { dateJoined } = this.props;
     
+    // Formatear la fecha para el banner
+    const formattedDate = dateJoined ? new Date(dateJoined).toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long'
+    }) : '';
+    
     return (
       <div className="profile-page">
         <Banner 
           username={this.props.params.username}
-          dateJoined={<DateJoined date={dateJoined} />}
+          dateJoined={formattedDate}
           profileAvatar={this.renderProfileAvatar()}
         />
         {this.renderContent()}

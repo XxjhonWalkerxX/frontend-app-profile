@@ -35,7 +35,9 @@ const Banner = ({ username, dateJoined, profileAvatar }) => {
           </div>
           <div className="emi-banner-user-info">
             <h1 className="emi-banner-username">{username}</h1>
-            <p className="emi-banner-member-since">{dateJoined}</p>
+            <p className="emi-banner-member-since">
+              Miembro desde {dateJoined}
+            </p>
           </div>
         </div>
 
