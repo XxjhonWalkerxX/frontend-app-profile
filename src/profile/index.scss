@@ -1,3 +1,10 @@
+// Variables de color EMI
+$emi-burgundy: #5a122c;
+$emi-cream: #f5f2e8;
+$emi-gold: #d4af37;
+$emi-gradient-start: #A3998E;
+$emi-gradient-end: #B3A297;
+
 .word-break-all {
   word-break: break-all !important;
 }
@@ -19,7 +26,7 @@
 // NOTA: Los estilos del banner EMI están al final de este archivo
 // El avatar del usuario se superpone sobre el banner
 
-.username-description {
+.username-description { 
   width: auto !important;
   position: absolute !important;
   left: 2rem !important;
@@ -196,6 +203,139 @@
     }
   }
 }
+
+/* ===== ESTILOS PERSONALIZADOS EMI PARA FORMULARIOS Y ELEMENTOS ===== */
+
+/* Estilos para formularios y cards con la paleta EMI */
+.profile-page {
+  .card {
+    border: 2px solid rgba($emi-gold, 0.3) !important;
+    border-radius: 1rem !important;
+    background: linear-gradient(145deg, white 0%, $emi-cream 100%) !important;
+    box-shadow: 0 8px 24px rgba($emi-burgundy, 0.1) !important;
+    
+    .card-header {
+      background: linear-gradient(135deg, $emi-burgundy 0%, darken($emi-burgundy, 10%) 100%) !important;
+      color: white !important;
+      border-radius: 1rem 1rem 0 0 !important;
+      border-bottom: 2px solid $emi-gold !important;
+      padding: 1.5rem !important;
+      
+      h2, h3, h4, .h2, .h3, .h4 {
+        color: white !important;
+        margin: 0 !important;
+      }
+    }
+    
+    .card-body {
+      padding: 2rem !important;
+      
+      .form-group {
+        margin-bottom: 1.5rem !important;
+        
+        label {
+          color: $emi-burgundy !important;
+          font-weight: 600 !important;
+          font-size: 1.1rem !important;
+          margin-bottom: 0.5rem !important;
+        }
+        
+        .form-control {
+          border: 2px solid rgba($emi-gold, 0.4) !important;
+          border-radius: 0.5rem !important;
+          padding: 0.75rem 1rem !important;
+          font-size: 1rem !important;
+          
+          &:focus {
+            border-color: $emi-gold !important;
+            box-shadow: 0 0 0 0.2rem rgba($emi-gold, 0.25) !important;
+            background-color: rgba($emi-cream, 0.5) !important;
+          }
+        }
+        
+        .form-text {
+          color: darken($emi-burgundy, 20%) !important;
+          font-size: 0.9rem !important;
+        }
+      }
+    }
+  }
+  
+  /* Botones con estilos EMI */
+  .btn-primary {
+    background: linear-gradient(135deg, $emi-burgundy 0%, darken($emi-burgundy, 15%) 100%) !important;
+    border: 2px solid $emi-gold !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 2rem !important;
+    border-radius: 0.75rem !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      background: linear-gradient(135deg, lighten($emi-burgundy, 5%) 0%, $emi-burgundy 100%) !important;
+      border-color: lighten($emi-gold, 10%) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 20px rgba($emi-burgundy, 0.3) !important;
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba($emi-gold, 0.5) !important;
+    }
+  }
+  
+  .btn-outline-primary {
+    background: transparent !important;
+    border: 2px solid $emi-burgundy !important;
+    color: $emi-burgundy !important;
+    font-weight: 600 !important;
+    
+    &:hover {
+      background: $emi-burgundy !important;
+      border-color: $emi-burgundy !important;
+      color: white !important;
+    }
+  }
+  
+  /* Alertas con estilos EMI */
+  .alert {
+    border-radius: 1rem !important;
+    border: 2px solid rgba($emi-gold, 0.4) !important;
+    
+    &.alert-info {
+      background: linear-gradient(145deg, rgba($emi-cream, 0.9) 0%, rgba($emi-cream, 0.7) 100%) !important;
+      color: $emi-burgundy !important;
+      border-left: 6px solid $emi-gold !important;
+    }
+    
+    &.alert-success {
+      background: linear-gradient(145deg, rgba($emi-gold, 0.1) 0%, rgba($emi-gold, 0.05) 100%) !important;
+      color: darken($emi-burgundy, 10%) !important;
+      border-left: 6px solid $emi-gold !important;
+    }
+  }
+  
+  /* Enlaces con estilos EMI */
+  a {
+    color: $emi-burgundy !important;
+    font-weight: 500 !important;
+    
+    &:hover {
+      color: darken($emi-burgundy, 15%) !important;
+      text-decoration-color: $emi-gold !important;
+    }
+  }
+  
+  .alert-link {
+    color: darken($emi-burgundy, 10%) !important;
+    font-weight: 700 !important;
+    text-decoration: underline !important;
+    text-decoration-color: $emi-gold !important;
+    
+    &:hover {
+      color: darken($emi-burgundy, 20%) !important;
+    }
+  }
+}
 .logo,
 .logo img {
   height: 50px !important;
@@ -228,18 +368,19 @@
   justify-content: center;
 }
 
-/* ===== ESTILOS DEL BANNER EMI ===== */
+/* ===== BANNER EMI TRANSFORMADO ===== */
 .emi-banner {
   position: relative;
-  height: 26rem;
+  height: 28rem;
   width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0; /* Sin margen, el contenido se superpone */
 }
 
-/* Contenedor del fondo */
+/* Fondo degradado + imagen borrosa + overlay */
 .emi-banner-background-container {
   position: absolute;
   top: 0;
@@ -247,6 +388,9 @@
   right: 0;
   bottom: 0;
   z-index: 1;
+  
+  /* Gradiente de base */
+  background: linear-gradient(135deg, $emi-gradient-start 0%, $emi-gradient-end 100%);
 }
 
 .emi-banner-background-image {
@@ -258,9 +402,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  filter: blur(3px);
-  transform: scale(1.1); /* Evita bordes blancos del blur */
-  z-index: 1;
+  filter: blur(4px);
+  transform: scale(1.1);
+  opacity: 0.6; /* Imagen más sutil sobre el degradado */
+  z-index: 2;
 }
 
 .emi-banner-overlay {
@@ -269,193 +414,236 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  background: rgba(0, 0, 0, 0.3); /* Overlay semitransparente */
+  z-index: 3;
 }
 
-/* Contenido principal */
+/* Contenido principal - Tres bloques horizontales */
 .emi-banner-content {
   position: relative;
-  z-index: 3;
-  display: flex;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Tres columnas iguales */
   width: 100%;
-  max-width: 1200px;
-  padding: 0 2rem;
+  max-width: 1400px;
+  padding: 2rem;
   align-items: center;
-  justify-content: flex-end; /* Logo a la derecha */
+  gap: 2rem;
 }
 
-/* Contenedor del logo a la derecha - sin fondo borroso */
+.emi-banner-section {
+  display: flex;
+  align-items: center;
+  min-height: 12rem;
+}
+
+/* Bloque 1: Avatar + texto (izquierda) */
+.emi-banner-left {
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 2rem;
+}
+
+.emi-banner-avatar-container {
+  margin-bottom: 1rem;
+  
+  .profile-avatar-wrap {
+    position: relative !important;
+    top: unset !important;
+    left: unset !important;
+    transform: unset !important;
+    margin: 0 !important;
+  }
+  
+  .profile-avatar {
+    width: 8rem !important;
+    height: 8rem !important;
+    border: 4px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    background: white !important;
+  }
+}
+
+.emi-banner-user-info {
+  text-align: left;
+}
+
+.emi-banner-username {
+  color: white !important;
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8) !important;
+  line-height: 1.2 !important;
+}
+
+.emi-banner-member-since {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1.1rem !important;
+  margin: 0.5rem 0 0 0 !important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Bloque 2: Logo EMI (centro) */
+.emi-banner-center {
+  justify-content: center;
+}
+
 .emi-banner-logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Remover el fondo borroso */
-  /* background: rgba(255, 255, 255, 0.1); */
-  /* border-radius: 1rem; */
-  /* padding: 2rem; */
-  /* backdrop-filter: blur(10px); */
-  /* border: 2px solid rgba(255, 255, 255, 0.2); */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .emi-banner-logo {
-  height: 12rem; /* Logo más grande */
+  height: 10rem;
   width: auto;
-  max-width: 20rem; /* Ancho máximo mayor */
+  max-width: 18rem;
   object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
 }
 
-/* ESTILOS PARA SUPERPONER EL AVATAR AL BANNER */
-.profile-page {
-  position: relative;
+/* Bloque 3: Derecha (reservado) */
+.emi-banner-right {
+  justify-content: flex-end;
+  padding-right: 2rem;
 }
 
-.profile-page .profile-avatar-wrap.banner-overlay-avatar {
-  position: absolute !important;
-  top: 50% !important; /* Centrado verticalmente en el banner */
-  left: 2rem !important;
-  transform: translateY(-50%) !important; /* Centrado perfecto */
-  z-index: 10 !important; /* Alto z-index para que esté sobre el banner */
-  max-width: none !important;
-  margin: 0 !important;
-  
-  /* Sombra más prominente para destacar sobre el banner */
-  .profile-avatar {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
-    border: 4px solid rgba(255, 255, 255, 0.9) !important;
-    background: #ffffff !important;
-    
-    /* Hacer el avatar más grande cuando está sobre el banner */
-    width: 10rem !important;
-    height: 10rem !important;
-    
-    @include media-breakpoint-up(md) {
-      width: 14rem !important;
-      height: 14rem !important;
-    }
-  }
-  
-  /* Ajustar el menú del avatar para que sea visible sobre el banner */
-  .profile-avatar-menu-container {
-    background: rgba(0, 0, 0, 0.8) !important;
-    backdrop-filter: blur(4px);
-    
-    .btn, .dropdown .btn {
-      color: $white !important;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-      font-weight: 600;
-    }
-  }
-  
-  @include media-breakpoint-up(md) {
-    left: 3rem !important;
-  }
+/* Ocultar el nombre duplicado del layout original */
+.username-description {
+  display: none !important;
 }
 
-/* Ajustar el contenido para que no se superponga */
+/* Ajustar el contenido que está debajo del banner */
 .profile-page .container-fluid {
-  margin-top: 2rem; /* Menos espacio ya que el avatar está superpuesto */
+  margin-top: -6rem; /* Superposición controlada */
+  position: relative;
+  z-index: 5;
   
-  @include media-breakpoint-up(md) {
-    margin-top: 2rem;
+  /* Contenedor con estilos EMI para el contenido debajo */
+  .row {
+    background: linear-gradient(145deg, $emi-cream 0%, rgba(245, 242, 232, 0.95) 100%);
+    border-radius: 1.5rem 1.5rem 0 0;
+    padding: 8rem 2rem 2rem 2rem;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
   }
 }
 
-/* MEDIA QUERIES PARA EL BANNER */
+/* MEDIA QUERIES PARA EL BANNER TRANSFORMADO */
 
 /* Tablets */
 @media (max-width: 1024px) {
-  .emi-banner-content {
-    padding: 0 1.5rem;
+  .emi-banner {
+    height: 24rem;
   }
   
-  .emi-banner-logo-container {
-    display: flex; /* Mantener al menos una propiedad */
+  .emi-banner-content {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .emi-banner-username {
+    font-size: 1.8rem !important;
   }
   
   .emi-banner-logo {
-    height: 10rem;
-    max-width: 16rem;
+    height: 8rem;
+    max-width: 14rem;
+  }
+  
+  .emi-banner-avatar-container .profile-avatar {
+    width: 6rem !important;
+    height: 6rem !important;
+  }
+  
+  .profile-page .container-fluid .row {
+    padding: 6rem 1.5rem 1.5rem 1.5rem;
   }
 }
 
 /* Móviles */
 @media (max-width: 768px) {
   .emi-banner {
-    height: auto;
-    min-height: 20rem;
-    padding: 2rem 0;
+    height: 20rem;
   }
   
   .emi-banner-content {
-    padding: 0 1rem;
-    justify-content: center; /* En móvil centrar el logo */
+    grid-template-columns: 1fr; /* Una sola columna en móvil */
+    text-align: center;
+    padding: 1rem;
+    gap: 1rem;
   }
   
-  .emi-banner-logo-container {
-    display: flex; /* Mantener al menos una propiedad */
+  .emi-banner-left {
+    align-items: center;
+    padding-left: 0;
+    order: 2; /* Avatar y texto después del logo */
+  }
+  
+  .emi-banner-center {
+    order: 1; /* Logo primero */
+  }
+  
+  .emi-banner-right {
+    display: none; /* Ocultar en móvil */
+  }
+  
+  .emi-banner-user-info {
+    text-align: center;
+  }
+  
+  .emi-banner-username {
+    font-size: 1.6rem !important;
+  }
+  
+  .emi-banner-member-since {
+    font-size: 1rem !important;
   }
   
   .emi-banner-logo {
-    height: 8rem;
+    height: 6rem;
     max-width: 12rem;
   }
   
-  .profile-page .profile-avatar-wrap.banner-overlay-avatar {
-    left: 1rem !important; /* Avatar a la izquierda en móvil también */
-    top: 50% !important; /* Mantener centrado verticalmente */
-    transform: translateY(-50%) !important;
-    
-    .profile-avatar {
-      width: 8rem !important;
-      height: 8rem !important;
-    }
-  }
-  
-  .username-description {
-    left: 1rem !important;
-    top: 1.5rem !important;
-    font-size: 1.4rem !important;
-    padding: 0.6rem 1rem !important;
+  .emi-banner-avatar-container .profile-avatar {
+    width: 5rem !important;
+    height: 5rem !important;
   }
   
   .profile-page .container-fluid {
-    margin-top: 2rem;
+    margin-top: -4rem;
+  }
+  
+  .profile-page .container-fluid .row {
+    padding: 5rem 1rem 1rem 1rem;
   }
 }
 
 /* Móviles pequeños */
 @media (max-width: 480px) {
   .emi-banner {
-    min-height: 16rem;
-    padding: 1.5rem 0;
+    height: 18rem;
+  }
+  
+  .emi-banner-username {
+    font-size: 1.4rem !important;
   }
   
   .emi-banner-logo {
-    height: 6rem;
+    height: 5rem;
     max-width: 10rem;
   }
   
-  .profile-page .profile-avatar-wrap.banner-overlay-avatar {
-    left: 1rem !important;
-    top: 50% !important; /* Mantener centrado verticalmente */
-    transform: translateY(-50%) !important;
-    
-    .profile-avatar {
-      width: 7rem !important;
-      height: 7rem !important;
-    }
-  }
-  
-  .username-description {
-    left: 1rem !important;
-    top: 1rem !important;
-    font-size: 1.2rem !important;
-    padding: 0.5rem 0.8rem !important;
-  }
-  
-  .profile-page .container-fluid {
-    margin-top: 2rem;
+  .emi-banner-avatar-container .profile-avatar {
+    width: 4.5rem !important;
+    height: 4.5rem !important;
   }
 }

@@ -315,11 +315,30 @@ class ProfilePage extends React.Component {
   }
 
   render() {
+    const { dateJoined } = this.props;
+    
     return (
       <div className="profile-page">
-        <Banner />
+        <Banner 
+          username={this.props.params.username}
+          dateJoined={<DateJoined date={dateJoined} />}
+          profileAvatar={this.renderProfileAvatar()}
+        />
         {this.renderContent()}
       </div>
+    );
+  }
+
+  renderProfileAvatar() {
+    return (
+      <ProfileAvatar
+        src={this.props.profileImage.src}
+        isDefault={this.props.profileImage.isDefault}
+        onSave={this.handleSaveProfilePhoto}
+        onDelete={this.handleDeleteProfilePhoto}
+        savePhotoState={this.props.savePhotoState}
+        isEditable={this.isAuthenticatedUserProfile()}
+      />
     );
   }
 }
