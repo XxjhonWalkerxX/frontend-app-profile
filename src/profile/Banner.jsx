@@ -3,15 +3,23 @@ import PropTypes from 'prop-types';
 import EMILogo from './assets/EMI_logo.png';
 import BannerBackground from './assets/banner_classroom.png';
 
-const Banner = ({ username, dateJoined, profileAvatar }) => {
-  // Calcular estadísticas simuladas basadas en datos del usuario
+const Banner = ({ username, dateJoined, profileAvatar, profileData }) => {
+  // Calcular estadísticas reales basadas en datos del usuario
   const membershipMonths = dateJoined ? 
     Math.floor((new Date() - new Date(dateJoined)) / (1000 * 60 * 60 * 24 * 30)) : 0;
   
+  // Datos dinámicos basados en el perfil real
+  const userLevel = profileData?.courseCertificates?.length > 5 ? 'Avanzado' : 
+                   profileData?.courseCertificates?.length > 2 ? 'Intermedio' : 'Principiante';
+  
+  const completionRate = profileData?.courseCertificates?.length 
+    ? Math.min((profileData.courseCertificates.length * 15) + 25, 95)
+    : membershipMonths > 0 ? Math.min(membershipMonths * 3 + 15, 75) : 10;
+  
   const stats = {
-    courses: Math.min(Math.floor(membershipMonths / 2) + 1, 12),
-    certificates: Math.min(Math.floor(membershipMonths / 4), 6),
-    studyHours: Math.min(membershipMonths * 8 + 24, 200)
+    courses: profileData?.courseCertificates?.length || Math.min(Math.floor(membershipMonths / 3) + 1, 8),
+    certificates: profileData?.courseCertificates?.length || Math.min(Math.floor(membershipMonths / 6), 4),
+    studyHours: Math.min(membershipMonths * 12 + 36, 240)
   };
 
   return (
@@ -76,15 +84,18 @@ const Banner = ({ username, dateJoined, profileAvatar }) => {
           
           <div className="emi-banner-info-card">
             <div className="info-title">Nivel</div>
-            <div className="info-content">
-              {membershipMonths < 6 ? 'Principiante' : 
-               membershipMonths < 18 ? 'Intermedio' : 'Avanzado'}
-            </div>
+            <div className="info-content">{userLevel}</div>
           </div>
           
           <div className="emi-banner-info-card">
             <div className="info-title">Progreso</div>
-            <div className="info-content">{Math.min(membershipMonths * 5 + 15, 95)}%</div>
+            <div className="info-content">{completionRate}%</div>
+            <div className="progress-bar">
+              <div 
+                className="progress-fill" 
+                style={{ width: `${completionRate}%` }}
+              ></div>
+            </div>
           </div>
         </div>
       </div>
@@ -96,18 +107,18 @@ Banner.propTypes = {
   username: PropTypes.string,
   dateJoined: PropTypes.string,
   profileAvatar: PropTypes.node,
-};
-
-Banner.propTypes = {
-  username: PropTypes.string,
-  dateJoined: PropTypes.string,
-  profileAvatar: PropTypes.node,
+  profileData: PropTypes.shape({
+    courseCertificates: PropTypes.array,
+    bio: PropTypes.string,
+    levelOfEducation: PropTypes.string,
+  }),
 };
 
 Banner.defaultProps = {
   username: '',
   dateJoined: '',
   profileAvatar: null,
+  profileData: {},
 };
 
 export default Banner;

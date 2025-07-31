@@ -307,7 +307,7 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { dateJoined } = this.props;
+    const { dateJoined, courseCertificates, bio, levelOfEducation } = this.props;
     
     // Formatear la fecha para el banner
     const formattedDate = dateJoined ? new Date(dateJoined).toLocaleDateString('es-ES', {
@@ -315,12 +315,20 @@ class ProfilePage extends React.Component {
       month: 'long'
     }) : '';
     
+    // Preparar datos del perfil para el banner
+    const profileData = {
+      courseCertificates,
+      bio,
+      levelOfEducation,
+    };
+    
     return (
       <div className="profile-page">
         <Banner 
           username={this.props.params.username}
           dateJoined={formattedDate}
           profileAvatar={this.renderProfileAvatar()}
+          profileData={profileData}
         />
         {this.renderContent()}
       </div>
