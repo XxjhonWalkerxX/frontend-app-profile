@@ -729,7 +729,7 @@ $emi-gradient-end: #B3A297;
 
 /* Ajustar el contenido que está debajo del banner */
 .profile-page .container-fluid {
-  margin-top: -4rem; /* Reducido para evitar que se encime */
+  margin-top: 0; /* Reducido para evitar que se encime */
   position: relative;
   z-index: 5;
   
