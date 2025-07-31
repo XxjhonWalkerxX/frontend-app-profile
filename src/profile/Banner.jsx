@@ -17,25 +17,25 @@ const Banner = ({ username, dateJoined, profileAvatar }) => {
 
       {/* Contenido del banner - Tres bloques horizontales */}
       <div className="emi-banner-content">
-        {/* Bloque 1: Avatar + texto (izquierda) */}
+        {/* Bloque 1: Logo EMI (izquierda) */}
         <div className="emi-banner-section emi-banner-left">
+          <div className="emi-banner-logo-container">
+            <img
+              src={EMILogo}
+              alt="Escuela Militar de Ingeniería"
+              className="emi-banner-logo"
+            />
+          </div>
+        </div>
+
+        {/* Bloque 2: Avatar + texto (centro) */}
+        <div className="emi-banner-section emi-banner-center">
           <div className="emi-banner-avatar-container">
             {profileAvatar}
           </div>
           <div className="emi-banner-user-info">
             <h1 className="emi-banner-username">{username}</h1>
             <p className="emi-banner-member-since">{dateJoined}</p>
-          </div>
-        </div>
-
-        {/* Bloque 2: Logo EMI (centro) */}
-        <div className="emi-banner-section emi-banner-center">
-          <div className="emi-banner-logo-container">
-            <img
-              src={EMILogo}
-              alt="Escuela Mexicana de Inglés"
-              className="emi-banner-logo"
-            />
           </div>
         </div>
 

@@ -211,17 +211,7 @@ class ProfilePage extends React.Component {
       <div className="container-fluid">
         <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
           <div className="col-auto col-md-4 col-lg-3">
-            <div className="d-flex align-items-center d-md-block">
-              <ProfileAvatar
-                className="mb-md-3"
-                src={profileImage.src}
-                isDefault={profileImage.isDefault}
-                onSave={this.handleSaveProfilePhoto}
-                onDelete={this.handleDeleteProfilePhoto}
-                savePhotoState={this.props.savePhotoState}
-                isEditable={this.isAuthenticatedUserProfile() && !requiresParentalConsent}
-              />
-            </div>
+            {/* Avatar removido - ya aparece en el banner */}
           </div>
           <div className="col">
             <div className="d-md-none custom-mobile-header">
@@ -326,19 +316,6 @@ class ProfilePage extends React.Component {
         />
         {this.renderContent()}
       </div>
-    );
-  }
-
-  renderProfileAvatar() {
-    return (
-      <ProfileAvatar
-        src={this.props.profileImage.src}
-        isDefault={this.props.profileImage.isDefault}
-        onSave={this.handleSaveProfilePhoto}
-        onDelete={this.handleDeleteProfilePhoto}
-        savePhotoState={this.props.savePhotoState}
-        isEditable={this.isAuthenticatedUserProfile()}
-      />
     );
   }
 }

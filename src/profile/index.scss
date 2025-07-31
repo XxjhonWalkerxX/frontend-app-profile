@@ -388,9 +388,7 @@ $emi-gradient-end: #B3A297;
   right: 0;
   bottom: 0;
   z-index: 1;
-  
-  /* Gradiente de base */
-  background: linear-gradient(135deg, $emi-gradient-start 0%, $emi-gradient-end 100%);
+
 }
 
 .emi-banner-background-image {
@@ -437,11 +435,10 @@ $emi-gradient-end: #B3A297;
   min-height: 12rem;
 }
 
-/* Bloque 1: Avatar + texto (izquierda) */
+/* Bloque 1: Logo EMI (izquierda) */
 .emi-banner-left {
   justify-content: flex-start;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding-left: 2rem;
 }
 
@@ -485,29 +482,51 @@ $emi-gradient-end: #B3A297;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Bloque 2: Logo EMI (centro) */
+/* Bloque 2: Avatar + texto (centro) */
 .emi-banner-center {
   justify-content: center;
-}
-
-.emi-banner-logo-container {
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-.emi-banner-logo {
-  height: 10rem;
-  width: auto;
-  max-width: 18rem;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
+.emi-banner-avatar-container {
+  margin-bottom: 1rem;
+  
+  .profile-avatar-wrap {
+    position: relative !important;
+    top: unset !important;
+    left: unset !important;
+    transform: unset !important;
+    margin: 0 !important;
+  }
+  
+  .profile-avatar {
+    width: 8rem !important;
+    height: 8rem !important;
+    border: 4px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    background: white !important;
+  }
+}
+
+.emi-banner-user-info {
+  text-align: left;
+}
+
+.emi-banner-username {
+  color: white !important;
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8) !important;
+  line-height: 1.2 !important;
+}
+
+.emi-banner-member-since {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1.1rem !important;
+  margin: 0.5rem 0 0 0 !important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Bloque 3: Derecha (reservado) */
@@ -585,11 +604,11 @@ $emi-gradient-end: #B3A297;
   .emi-banner-left {
     align-items: center;
     padding-left: 0;
-    order: 2; /* Avatar y texto después del logo */
+    order: 1; /* Logo primero */
   }
   
   .emi-banner-center {
-    order: 1; /* Logo primero */
+    order: 2; /* Avatar y texto después del logo */
   }
   
   .emi-banner-right {
