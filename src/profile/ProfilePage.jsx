@@ -224,26 +224,13 @@ class ProfilePage extends React.Component {
 
     return (
       <div className="container-fluid">
-        <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
-          <div className="col-auto col-md-4 col-lg-3">
-            {/* Avatar removido - ya aparece en el banner */}
-          </div>
-          <div className="col">
-            <div className="d-md-none custom-mobile-header">
-              {this.renderHeadingLockup()}
-            </div>
-            <div className="d-none d-md-block float-right">
-              {this.renderViewMyRecordsButton()}
-            </div>
-          </div>
-        </div>
         {this.renderPhotoUploadErrorMessage()}
         <div className="row">
           <div className="col-md-4 col-lg-4">
             <div className="d-none d-md-block mb-4">
               {this.renderHeadingLockup()}
             </div>
-            <div className="d-md-none mb-4">
+            <div className="mb-4">
               {this.renderViewMyRecordsButton()}
             </div>
             {isNameBlockVisible && (
