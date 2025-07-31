@@ -368,19 +368,20 @@ $emi-gradient-end: #B3A297;
   justify-content: center;
 }
 
-/* ===== BANNER EMI TRANSFORMADO ===== */
+/* ===== BANNER EMI TRANSFORMADO - VERSIÓN PREMIUM ===== */
 .emi-banner {
   position: relative;
-  height: 28rem;
+  height: 35rem;
   width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0; /* Sin margen, el contenido se superpone */
+  margin-bottom: 0;
+  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
 }
 
-/* Fondo degradado + imagen borrosa + overlay */
+/* Fondo con patrones geométricos y imagen */
 .emi-banner-background-container {
   position: absolute;
   top: 0;
@@ -388,7 +389,10 @@ $emi-gradient-end: #B3A297;
   right: 0;
   bottom: 0;
   z-index: 1;
-
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(90, 18, 44, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
 }
 
 .emi-banner-background-image {
@@ -400,9 +404,9 @@ $emi-gradient-end: #B3A297;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  filter: blur(4px);
-  transform: scale(1.1);
-  opacity: 0.6; /* Imagen más sutil sobre el degradado */
+  filter: blur(3px);
+  transform: scale(1.05);
+  opacity: 0.3;
   z-index: 2;
 }
 
@@ -412,38 +416,98 @@ $emi-gradient-end: #B3A297;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3); /* Overlay semitransparente */
+  background: linear-gradient(
+    135deg, 
+    rgba(90, 18, 44, 0.85) 0%, 
+    rgba(90, 18, 44, 0.7) 30%,
+    rgba(102, 126, 234, 0.6) 70%,
+    rgba(212, 175, 55, 0.4) 100%
+  );
   z-index: 3;
 }
 
-/* Contenido principal - Tres bloques horizontales */
+/* Contenido principal - Layout mejorado */
 .emi-banner-content {
   position: relative;
   z-index: 4;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* Tres columnas iguales */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   max-width: 1400px;
-  padding: 2rem;
-  align-items: center;
-  gap: 2rem;
+  padding: 3rem;
+  gap: 4rem;
 }
 
 .emi-banner-section {
   display: flex;
   align-items: center;
-  min-height: 12rem;
 }
 
-/* Bloque 1: Logo EMI (izquierda) */
+/* Logo EMI (izquierda) - Más prominente y elegante */
 .emi-banner-left {
   justify-content: flex-start;
-  align-items: center;
+  flex: 0 0 auto;
   padding-left: 2rem;
 }
 
+.emi-banner-logo {
+  height: 14rem;
+  width: auto;
+  max-width: 22rem;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 8px 25px rgba(90, 18, 44, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 3px solid rgba(212, 175, 55, 0.9);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 25px 80px rgba(0, 0, 0, 0.4),
+      0 12px 35px rgba(90, 18, 44, 0.3);
+  }
+}
+
+/* Usuario central - Más espacioso y atractivo */
+.emi-banner-center {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
 .emi-banner-avatar-container {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: linear-gradient(45deg, 
+      rgba(212, 175, 55, 0.6) 0%, 
+      rgba(255, 255, 255, 0.3) 50%, 
+      rgba(212, 175, 55, 0.6) 100%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s ease-in-out infinite;
+  }
   
   .profile-avatar-wrap {
     position: relative !important;
@@ -454,12 +518,27 @@ $emi-gradient-end: #B3A297;
   }
   
   .profile-avatar {
-    width: 8rem !important;
-    height: 8rem !important;
-    border: 4px solid rgba(255, 255, 255, 0.9) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    width: 12rem !important;
+    height: 12rem !important;
+    border: 6px solid rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 
+      0 15px 50px rgba(0, 0, 0, 0.4),
+      0 5px 20px rgba(90, 18, 44, 0.3) !important;
     background: white !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 8px 25px rgba(90, 18, 44, 0.4) !important;
+    }
   }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
 }
 
 .emi-banner-user-info {
@@ -517,18 +596,93 @@ $emi-gradient-end: #B3A297;
 
 .emi-banner-username {
   color: white !important;
-  font-size: 2.2rem !important;
-  font-weight: 700 !important;
-  margin: 0 !important;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8) !important;
-  line-height: 1.2 !important;
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  margin: 0 0 1rem 0 !important;
+  text-shadow: 
+    2px 2px 8px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(212, 175, 55, 0.3) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .emi-banner-member-since {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 1.1rem !important;
-  margin: 0.5rem 0 0 0 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 1.3rem !important;
+  margin: 0 0 1.5rem 0 !important;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8) !important;
+  font-weight: 500 !important;
+}
+
+/* Nuevos elementos informativos */
+.emi-banner-user-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.emi-banner-stat {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $emi-gold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+  }
+}
+
+/* Sección derecha - Información adicional */
+.emi-banner-right {
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.emi-banner-info-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  text-align: right;
+  min-width: 200px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  
+  .info-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: $emi-gold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  }
+  
+  .info-content {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  }
 }
 
 /* Bloque 3: Derecha (reservado) */
@@ -544,35 +698,152 @@ $emi-gradient-end: #B3A297;
 
 /* Ajustar el contenido que está debajo del banner */
 .profile-page .container-fluid {
-  margin-top: -6rem; /* Superposición controlada */
+  margin-top: -8rem; /* Mayor superposición para el nuevo diseño */
   position: relative;
   z-index: 5;
   
-  /* Contenedor con estilos EMI para el contenido debajo */
+  /* Contenedor con estilos EMI mejorados para el contenido debajo */
   .row {
-    background: linear-gradient(145deg, $emi-cream 0%, rgba(245, 242, 232, 0.95) 100%);
-    border-radius: 1.5rem 1.5rem 0 0;
-    padding: 8rem 2rem 2rem 2rem;
-    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: linear-gradient(145deg, $emi-cream 0%, rgba(245, 242, 232, 0.98) 100%);
+    border-radius: 2rem 2rem 0 0;
+    padding: 10rem 3rem 3rem 3rem;
+    box-shadow: 
+      0 -12px 40px rgba(0, 0, 0, 0.15),
+      0 -4px 20px rgba(90, 18, 44, 0.1);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    position: relative;
+    
+    /* Decoración superior */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 6px;
+      background: linear-gradient(90deg, $emi-burgundy 0%, $emi-gold 50%, $emi-burgundy 100%);
+      border-radius: 0 0 3px 3px;
+    }
+    
+    /* Elementos decorativos laterales */
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      right: 2rem;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(212, 175, 55, 0.3) 20%, 
+        rgba(212, 175, 55, 0.6) 50%, 
+        rgba(212, 175, 55, 0.3) 80%, 
+        transparent 100%);
+    }
   }
 }
 
-/* MEDIA QUERIES PARA EL BANNER TRANSFORMADO */
+/* MEDIA QUERIES PARA EL BANNER MEJORADO */
+
+/* Tablets grandes */
+@media (max-width: 1200px) {
+  .emi-banner {
+    height: 32rem;
+  }
+  
+  .emi-banner-content {
+    padding: 2.5rem;
+    gap: 3rem;
+  }
+  
+  .emi-banner-logo {
+    height: 12rem;
+    max-width: 18rem;
+  }
+  
+  .emi-banner-username {
+    font-size: 2.4rem !important;
+  }
+  
+  .emi-banner-avatar-container .profile-avatar {
+    width: 10rem !important;
+    height: 10rem !important;
+  }
+}
 
 /* Tablets */
 @media (max-width: 1024px) {
   .emi-banner {
-    height: 24rem;
+    height: 28rem;
   }
   
   .emi-banner-content {
-    padding: 1.5rem;
-    gap: 1.5rem;
+    padding: 2rem;
+    gap: 2rem;
   }
   
   .emi-banner-username {
-    font-size: 1.8rem !important;
+    font-size: 2.2rem !important;
+  }
+  
+  .emi-banner-logo {
+    height: 10rem;
+    max-width: 16rem;
+  }
+  
+  .emi-banner-avatar-container .profile-avatar {
+    width: 9rem !important;
+    height: 9rem !important;
+  }
+  
+  .emi-banner-info-card {
+    min-width: 160px;
+    padding: 1.2rem;
+  }
+  
+  .profile-page .container-fluid .row {
+    padding: 6rem 1.5rem 1.5rem 1.5rem;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 768px) {
+  .emi-banner {
+    height: 30rem;
+  }
+  
+  .emi-banner-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+  
+  .emi-banner-left {
+    order: 1;
+    padding-left: 0;
+  }
+  
+  .emi-banner-center {
+    order: 2;
+    padding: 1.5rem;
+  }
+  
+  .emi-banner-right {
+    order: 3;
+    padding-right: 0;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .emi-banner-username {
+    font-size: 2rem !important;
+  }
+  
+  .emi-banner-member-since {
+    font-size: 1.1rem !important;
   }
   
   .emi-banner-logo {
@@ -581,62 +852,18 @@ $emi-gradient-end: #B3A297;
   }
   
   .emi-banner-avatar-container .profile-avatar {
-    width: 6rem !important;
-    height: 6rem !important;
+    width: 8rem !important;
+    height: 8rem !important;
   }
   
-  .profile-page .container-fluid .row {
-    padding: 6rem 1.5rem 1.5rem 1.5rem;
-  }
-}
-
-/* Móviles */
-@media (max-width: 768px) {
-  .emi-banner {
-    height: 20rem;
+  .emi-banner-user-stats {
+    gap: 1.5rem;
   }
   
-  .emi-banner-content {
-    grid-template-columns: 1fr; /* Una sola columna en móvil */
-    text-align: center;
+  .emi-banner-info-card {
+    min-width: 120px;
     padding: 1rem;
-    gap: 1rem;
-  }
-  
-  .emi-banner-left {
-    align-items: center;
-    padding-left: 0;
-    order: 1; /* Logo primero */
-  }
-  
-  .emi-banner-center {
-    order: 2; /* Avatar y texto después del logo */
-  }
-  
-  .emi-banner-right {
-    display: none; /* Ocultar en móvil */
-  }
-  
-  .emi-banner-user-info {
-    text-align: center;
-  }
-  
-  .emi-banner-username {
-    font-size: 1.6rem !important;
-  }
-  
-  .emi-banner-member-since {
-    font-size: 1rem !important;
-  }
-  
-  .emi-banner-logo {
-    height: 6rem;
-    max-width: 12rem;
-  }
-  
-  .emi-banner-avatar-container .profile-avatar {
-    width: 5rem !important;
-    height: 5rem !important;
+    font-size: 0.9rem;
   }
   
   .profile-page .container-fluid {
@@ -651,20 +878,52 @@ $emi-gradient-end: #B3A297;
 /* Móviles pequeños */
 @media (max-width: 480px) {
   .emi-banner {
-    height: 18rem;
+    height: 28rem;
+  }
+  
+  .emi-banner-content {
+    padding: 1.5rem 0.5rem;
+    gap: 1.5rem;
   }
   
   .emi-banner-username {
-    font-size: 1.4rem !important;
+    font-size: 1.8rem !important;
   }
   
   .emi-banner-logo {
-    height: 5rem;
-    max-width: 10rem;
+    height: 7rem;
+    max-width: 12rem;
   }
   
   .emi-banner-avatar-container .profile-avatar {
-    width: 4.5rem !important;
-    height: 4.5rem !important;
+    width: 7rem !important;
+    height: 7rem !important;
+  }
+  
+  .emi-banner-user-stats {
+    gap: 1rem;
+  }
+  
+  .emi-banner-stat {
+    .stat-number {
+      font-size: 1.3rem;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+    }
+  }
+  
+  .emi-banner-info-card {
+    min-width: 100px;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    
+    .info-title {
+      font-size: 0.8rem;
+    }
+    
+    .info-content {
+      font-size: 1rem;
+    }
   }
 }
