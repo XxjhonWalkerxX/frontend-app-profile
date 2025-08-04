@@ -1241,3 +1241,8 @@ $emi-gradient-end: #B3A297;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
   }
 }
+// Ocultar el botón de cambio de tema en todos los dispositivos
+.theme-toggle-button,
+.mr-3:has(.theme-toggle-button) {
+  display: none !important;
+}
