@@ -17,10 +17,17 @@ const ProfileDashboard = ({
 }) => {
   const formattedDate = dateJoined ? new Date(dateJoined) : new Date();
 
-  // Usar la imagen del perfil si está disponible, sino la imagen por defecto EMI
-  const avatarSrc = profileImage && profileImage.src
+  // Debug para ver qué imagen tenemos disponible
+  console.log('ProfileDashboard Debug:', {
+    profileImage,
+    hasSrc: profileImage && profileImage.src,
+    src: profileImage ? profileImage.src : 'no profileImage'
+  });
+
+  // Usar la imagen del perfil si está disponible y no está vacía
+  const avatarSrc = (profileImage && profileImage.src && profileImage.src.trim() !== '')
     ? profileImage.src
-    : '/assets/profile_pic.png';
+    : 'https://via.placeholder.com/150/5a122c/ffffff?text=EMI'; // Placeholder temporal para debug
 
   return (
     <div className="profile-dashboard-overlay">
