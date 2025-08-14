@@ -3,6 +3,50 @@
 // ==============================================
 
 .profile-page {
+  // Ocultar la sección original del avatar ya que usamos el dashboard
+  .row .col-auto.col-md-4.col-lg-3:first-child {
+    display: none !important;
+  }
+  
+  // Ajustar el layout para compensar la columna oculta
+  .row .col {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+  
+  // Ocultar el heading lockup duplicado en mobile y desktop
+  .row .col .d-md-none h1,
+  .row .col-md-4 .d-none.d-md-block h1 {
+    display: none !important;
+  }
+  
+  // Ajustar la estructura de las columnas principales
+  .container-fluid > .row:last-child {
+    .col-md-4.col-lg-4 {
+      @include media-breakpoint-up(md) {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+      }
+      @include media-breakpoint-up(lg) {
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
+    }
+    
+    .col-md-8.col-lg-7.offset-lg-1 {
+      @include media-breakpoint-up(md) {
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+        margin-left: 0 !important;
+      }
+      @include media-breakpoint-up(lg) {
+        flex: 0 0 75%;
+        max-width: 75%;
+        margin-left: 0 !important;
+      }
+    }
+  }
+  
   .profile-avatar-wrap {
     @include media-breakpoint-up(md) {
       max-width: 12rem;

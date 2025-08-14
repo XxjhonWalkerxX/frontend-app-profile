@@ -17,10 +17,13 @@ const ProfileDashboard = ({
 }) => {
   const formattedDate = dateJoined ? new Date(dateJoined) : new Date();
 
-  // Usar la imagen del perfil o la imagen por defecto EMI
-  const avatarSrc = profileImage && profileImage.src && !profileImage.isDefault
+  // Usar la imagen del perfil si está disponible, sino la imagen por defecto EMI
+  const avatarSrc = profileImage && profileImage.src
     ? profileImage.src
     : '/assets/profile_pic.png';
+
+  console.log('ProfileDashboard - profileImage:', profileImage);
+  console.log('ProfileDashboard - avatarSrc:', avatarSrc);
 
   return (
     <div className="profile-dashboard-overlay">
