@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Button, Dropdown } from '@openedx/paragon';
 import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
-import { ReactComponent as DefaultAvatar } from '../assets/avatar.svg';
 import profilePicDefault from '../assets/profile_pic.png';
 
 import messages from './ProfileAvatar.messages';

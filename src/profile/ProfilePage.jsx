@@ -354,6 +354,7 @@ ProfilePage.propTypes = {
   // Account data
   requiresParentalConsent: PropTypes.bool,
   dateJoined: PropTypes.string,
+  username: PropTypes.string,
 
   // Bio form data
   bio: PropTypes.string,
@@ -446,6 +447,7 @@ ProfilePage.defaultProps = {
   courseCertificates: null,
   requiresParentalConsent: null,
   dateJoined: null,
+  username: null,
 };
 
 export default connect(
