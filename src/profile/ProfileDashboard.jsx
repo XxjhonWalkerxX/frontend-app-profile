@@ -39,42 +39,32 @@ const ProfileDashboard = ({
       <div className="dashboard-card">
         <div className="dashboard-content">
           
-          {/* IZQUIERDA - Progreso (25%) */}
-          <div className="progress-section">
-            <div className="progress-label">OVERALL PROGRESS</div>
-            <div className="progress-value">{progressPercentage}%</div>
-            <div className="progress-text">PROGRESO</div>
-            <div className="progress-bar-container">
-              <div className="progress-bar" style={{ width: `${progressPercentage}%` }} />
-            </div>
-          </div>
-
-          {/* CENTRO - Información del usuario (30%) */}
-          <div className="user-info-section">
-            <h1 className="username">{username}</h1>
-            <div className="user-status">
-              <FormattedMessage {...messages['profile.dashboard.active']} />
-            </div>
-            <div className="member-since">
-              <FormattedMessage
-                {...messages['profile.dashboard.memberSince']}
-                values={{
-                  date: <FormattedDate value={formattedDate} month="long" year="numeric" />,
-                }}
-              />
-            </div>
-          </div>
-
-          {/* DERECHA - Avatar + Estadísticas (45%) */}
-          <div className="right-content">
-            {/* Avatar que sobresale */}
+          {/* IZQUIERDA - Avatar + Información del usuario + Estadísticas (45%) */}
+          <div className="left-content">
+            {/* Avatar que sobresale en la esquina superior izquierda */}
             <div className="avatar-section">
               <div className="profile-avatar">
                 <img src={avatarSrc} alt={username} />
               </div>
             </div>
 
-            {/* Estadísticas al lado del avatar */}
+            {/* Información del usuario */}
+            <div className="user-info-section">
+              <h1 className="username">{username}</h1>
+              <div className="user-status">
+                <FormattedMessage {...messages['profile.dashboard.active']} />
+              </div>
+              <div className="member-since">
+                <FormattedMessage
+                  {...messages['profile.dashboard.memberSince']}
+                  values={{
+                    date: <FormattedDate value={formattedDate} month="long" year="numeric" />,
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Estadísticas debajo de la información del usuario */}
             <div className="stats-section">
               <div className="stats-grid">
                 <div className="stat-item">
@@ -92,6 +82,21 @@ const ProfileDashboard = ({
                   <div className="stat-label">HOURS COMPLETED</div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* CENTRO - Vacío (30%) */}
+          <div className="center-section">
+            {/* Centro completamente vacío */}
+          </div>
+
+          {/* DERECHA - Progreso (25%) */}
+          <div className="progress-section">
+            <div className="progress-label">OVERALL PROGRESS</div>
+            <div className="progress-value">{progressPercentage}%</div>
+            <div className="progress-text">PROGRESO</div>
+            <div className="progress-bar-container">
+              <div className="progress-bar" style={{ width: `${progressPercentage}%` }} />
             </div>
           </div>
           
