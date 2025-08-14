@@ -17,12 +17,12 @@
 
   .dashboard-card {
     background: white;
-    border: 3px solid $emi-burgundy;
+    border: 5px solid $emi-burgundy;
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     position: relative;
     overflow: visible;
-    max-width: 1200px; // Aumentar ancho máximo para el nuevo layout
+    max-width: 1100px; // Aumentar ancho máximo para el nuevo layout
     width: 100%;
     min-height: 180px; // Altura mínima reducida para contenedor más compacto
     
@@ -66,14 +66,14 @@
       grid-template-columns: 45% 30% 25%; // Izquierda 45%, Centro 30%, Progreso 25%
       grid-template-areas: "left-content center progress";
       align-items: center;
-      padding: 1.2rem 2rem; // Padding reducido para menos altura
+      padding: 1.2rem 0; // Sin padding horizontal, solo vertical
       min-height: 120px; // Altura mínima reducida
       
       @include media-breakpoint-down(md) {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-        padding: 1.5rem 1rem;
+        padding: 1.5rem 0; // Sin padding horizontal en móvil también
         min-height: auto;
         text-align: center;
       }
