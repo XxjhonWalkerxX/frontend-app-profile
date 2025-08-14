@@ -34,6 +34,7 @@ import UsernameDescription from './UsernameDescription';
 import PageLoading from './PageLoading';
 import Banner from './Banner';
 import LearningGoal from './forms/LearningGoal';
+import ProfileDashboard from './ProfileDashboard';
 
 // Selectors
 import { profilePageSelector } from './data/selectors';
@@ -315,9 +316,32 @@ class ProfilePage extends React.Component {
   }
 
   render() {
+    const {
+      isLoadingProfile,
+      username,
+      dateJoined,
+    } = this.props;
+
+    if (isLoadingProfile) {
+      return (
+        <div className="profile-page">
+          <Banner />
+          <PageLoading srMessage={this.props.intl.formatMessage(messages['profile.loading'])} />
+        </div>
+      );
+    }
+
     return (
       <div className="profile-page">
         <Banner />
+        <ProfileDashboard
+          username={username}
+          dateJoined={dateJoined}
+          coursesCount={2}
+          certificatesCount={0}
+          hoursCompleted={72}
+          progressPercentage={24}
+        />
         {this.renderContent()}
       </div>
     );
