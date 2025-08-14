@@ -1,0 +1,25 @@
+// ==============================================
+// EMI BRAND COLORS - Variables de colores corporativos
+// ==============================================
+
+// Colores principales EMI
+$emi-burgundy: #5a122c;    // Color principal (header)
+$emi-gold: #d4af37;        // Dorado corporativo
+$emi-green: #4a7c59;       // Verde institucional
+$emi-light-gold: #f4e5a1;  // Dorado claro
+$emi-dark-green: #2d5233;  // Verde oscuro
+
+// Colores de estado
+$emi-success: $emi-green;
+$emi-warning: $emi-gold;
+$emi-info: #17a2b8;
+$emi-danger: #dc3545;
+
+// Colores de texto
+$emi-text-primary: #2c3e50;
+$emi-text-secondary: #6c757d;
+$emi-text-light: #ffffff;
+
+// Backgrounds
+$emi-bg-light: #f8f9fa;
+$emi-bg-secondary: #e9ecef;

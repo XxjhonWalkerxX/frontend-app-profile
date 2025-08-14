@@ -10,10 +10,17 @@
       margin-top: -8rem;
       margin-bottom: 2rem;
     }
+    
+    // Mejorar la presentación del avatar con bordes EMI
+    border: 4px solid $emi-light-gold;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: white;
+    padding: 4px;
   }
 
   .profile-avatar-menu-container {
-    background: rgba(0,0,0,.65);
+    background: rgba(90, 18, 44, 0.75); // Usar color EMI burgundy
     position: absolute;
     width: 100%;
     height: 100%;
@@ -23,14 +30,22 @@
     border-radius: 50%;
 
     @include media-breakpoint-up(md) {
-      background: linear-gradient(to top, rgba(0,0,0,.65) 4rem, rgba(0,0,0,0) 4rem);
+      background: linear-gradient(to top, rgba(90, 18, 44, 0.75) 4rem, rgba(90, 18, 44, 0) 4rem);
       align-items: flex-end;
     }
 
     .btn {
       text-decoration: none;
+      color: $emi-light-gold !important; // Texto dorado
+      border-color: $emi-light-gold !important;
+      
       @include media-breakpoint-up(md) {
         margin-bottom: 1.2rem;
+      }
+      
+      &:hover {
+        background-color: $emi-light-gold !important;
+        color: $emi-burgundy !important;
       }
     }
 
@@ -40,10 +55,15 @@
       }
 
       .btn {
-        color: $white;
+        color: $emi-light-gold !important;
         background: transparent;
-        border-color: transparent;
+        border-color: $emi-light-gold !important;
         margin: 0;
+        
+        &:hover, &:focus, &:active {
+          background-color: $emi-light-gold !important;
+          color: $emi-burgundy !important;
+        }
       }
     }
   }
@@ -52,10 +72,28 @@
     width: 5rem;
     height: 5rem;
     position: relative;
+    border-radius: 50%;
+    overflow: hidden;
 
     @include media-breakpoint-up(md) {
       width: 12rem;
       height: 12rem;
+    }
+    
+    // Mejorar la presentación de la imagen por defecto
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    // Avatar por defecto con mejor estilo
+    svg {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, $emi-light-gold 0%, $emi-gold 100%);
+      border-radius: 50%;
     }
 
     .profile-avatar-edit-button {
@@ -69,16 +107,20 @@
       justify-content: center;
       padding-top: .1rem;
       font-weight: 600;
-      background: rgba(0,0,0,.5);
-      border-radius:0;
-      transition: opacity 200ms ease;
+      background: rgba(90, 18, 44, 0.7); // Color EMI burgundy
+      color: $emi-light-gold;
+      border-radius: 0;
+      transition: all 200ms ease;
 
       @include media-breakpoint-up(md) {
         height: 4rem;
+        border-radius: 0 0 50% 50%;
       }
 
       &:focus, &:hover, &:active, &.active {
         opacity: 1;
+        background: rgba(90, 18, 44, 0.9);
+        color: white;
       }
     }
   }

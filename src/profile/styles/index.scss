@@ -3,6 +3,9 @@
 // ==============================================
 // Estructura modular de estilos organizados por componente
 
+// Variables EMI (importar primero)
+@import './variables';
+
 // Base styles
 @import './base';
 @import './buttons';
@@ -13,6 +16,7 @@
 @import './components/username-description';
 @import './components/forms';
 @import './components/certificates';
+@import './components/dashboard';
 
 // ==============================================
 // PROFILE PAGE WRAPPER - Contenedor principal

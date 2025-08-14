@@ -16,3 +16,16 @@
     text-decoration: underline;
   }
 }
+
+// ==============================================
+// PARAGON OVERRIDES - Sobrescribir clases específicas
+// ==============================================
+
+// Override del bg-primary en el banner para usar nuestro fondo personalizado
+.profile-page .profile-page-bg-banner.bg-primary {
+  background-color: transparent !important;
+  background-image: url('../assets/banner_fondo_dorado.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
