@@ -352,7 +352,9 @@ class ProfilePage extends React.Component {
           progressPercentage={progressPercentage}
           profileImage={profileImage}
         />
-        {this.renderContent()}
+        <div className="profile-content-sections">
+          {this.renderContent()}
+        </div>
       </div>
     );
   }

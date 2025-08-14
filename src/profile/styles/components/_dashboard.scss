@@ -20,7 +20,7 @@
     padding: 2rem;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     position: relative;
-    overflow: hidden;
+    overflow: visible; // Cambiar para permitir que el avatar sobresalga
     
     // Responsive padding
     @include media-breakpoint-down(md) {
@@ -58,27 +58,30 @@
       position: relative;
       z-index: 2;
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      padding-top: 1rem; // Espacio extra para el avatar que sobresale
+      padding-left: 8rem; // Espacio para el avatar en la izquierda
       
-      @include media-breakpoint-up(md) {
-        display: grid;
-        grid-template-areas: 
-          "avatar username stats"
-          "info info progress";
-        grid-template-columns: auto 1fr auto;
-        grid-template-rows: auto auto;
-        gap: 1.5rem;
-        align-items: start;
+      @include media-breakpoint-down(md) {
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 2rem;
+        padding-left: 0;
+        text-align: center;
       }
     }
 
     .avatar-section {
-      position: relative;
-      align-self: flex-start;
+      position: absolute;
+      top: -3rem; // Mover el avatar hacia arriba para que esté parcialmente fuera
+      left: 2rem; // Posición desde la izquierda
+      z-index: 10;
       
-      @include media-breakpoint-up(md) {
-        grid-area: avatar;
+      @include media-breakpoint-down(md) {
+        top: -2.5rem;
+        left: 1.5rem;
       }
       
       .profile-avatar {
@@ -88,8 +91,9 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         border-radius: 50%;
         overflow: hidden;
+        background: white; // Fondo blanco para evitar transparencias
         
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-down(md) {
           width: 5rem !important;
           height: 5rem !important;
         }
@@ -104,19 +108,18 @@
     }
 
     .user-info-section {
-      @include media-breakpoint-up(md) {
-        grid-area: username;
-      }
+      flex: 1;
+      min-width: 0; // Para permitir que el texto se trunque si es necesario
       
       .username {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: bold;
         color: $emi-text-primary;
         margin-bottom: 0.25rem;
         line-height: 1.1;
         
         @include media-breakpoint-down(md) {
-          font-size: 1.4rem;
+          font-size: 1.5rem;
         }
       }
       
@@ -135,17 +138,20 @@
     }
 
     .stats-section {
-      @include media-breakpoint-up(md) {
-        grid-area: stats;
-        justify-self: end;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      
+      @include media-breakpoint-down(md) {
+        justify-content: center;
+        gap: 1.5rem;
       }
 
       .stats-grid {
         display: flex;
         gap: 2rem;
-        justify-content: center;
         
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-down(md) {
           gap: 1.5rem;
         }
 
@@ -153,14 +159,14 @@
           text-align: center;
           
           .stat-number {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: $emi-burgundy;
             display: block;
             line-height: 1;
             
-            @include media-breakpoint-up(md) {
-              font-size: 1.2rem;
+            @include media-breakpoint-down(md) {
+              font-size: 1.3rem;
             }
           }
           
@@ -176,9 +182,10 @@
     }
 
     .progress-section {
-      @include media-breakpoint-up(md) {
-        grid-area: progress;
-        text-align: right;
+      text-align: center;
+      
+      @include media-breakpoint-down(md) {
+        margin-top: 1rem;
       }
       
       .progress-label {
@@ -190,14 +197,14 @@
       }
       
       .progress-value {
-        font-size: 2rem;
+        font-size: 2.5rem;
         font-weight: bold;
         color: $emi-burgundy;
         line-height: 1;
         margin-bottom: 0.25rem;
         
         @include media-breakpoint-down(md) {
-          font-size: 1.8rem;
+          font-size: 2rem;
         }
       }
       
@@ -208,7 +215,6 @@
         margin-bottom: 0.5rem;
       }
       
-      // Barra de progreso visual
       .progress-bar-container {
         width: 80px;
         height: 4px;
@@ -217,16 +223,67 @@
         margin: 0 auto;
         overflow: hidden;
         
-        @include media-breakpoint-up(md) {
-          margin: 0 0 0 auto;
-        }
-        
         .progress-bar {
           height: 100%;
           background: linear-gradient(90deg, $emi-burgundy 0%, $emi-green 100%);
           border-radius: 2px;
           transition: width 0.3s ease;
         }
+      }
+    }
+  }
+}
+
+// ==============================================
+// PROFILE CONTENT SECTIONS - Secciones de contenido con estilo EMI
+// ==============================================
+
+.profile-content-sections {
+  margin-top: 2rem;
+  
+  // Ocultar la sección original del avatar completamente
+  .row .col-auto.col-md-4.col-lg-3:first-child,
+  .row .col .d-md-none h1,
+  .row .col-md-4 .d-none.d-md-block h1 {
+    display: none !important;
+  }
+  
+  // Ajustar el layout de las columnas
+  .container-fluid > .row:first-child {
+    display: none !important; // Ocultar completamente la primera fila (avatar original)
+  }
+  
+  // Estilizar los headers de las secciones con colores EMI
+  .edit-section-header {
+    background: linear-gradient(135deg, $emi-green 0%, darken($emi-green, 10%) 100%);
+    color: white !important;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  
+  // Estilizar las tarjetas de certificados
+  .certificate {
+    border: 2px solid $emi-green !important;
+    border-radius: 12px !important;
+    
+    .certificate-title {
+      color: $emi-text-primary !important;
+      font-weight: 600;
+    }
+    
+    .btn-outline-primary {
+      border-color: $emi-green !important;
+      color: $emi-green !important;
+      
+      &:hover {
+        background-color: $emi-green !important;
+        border-color: $emi-green !important;
+        color: white !important;
       }
     }
   }

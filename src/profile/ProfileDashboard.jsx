@@ -22,9 +22,6 @@ const ProfileDashboard = ({
     ? profileImage.src
     : '/assets/profile_pic.png';
 
-  console.log('ProfileDashboard - profileImage:', profileImage);
-  console.log('ProfileDashboard - avatarSrc:', avatarSrc);
-
   return (
     <div className="profile-dashboard-overlay">
       <div className="dashboard-card">
