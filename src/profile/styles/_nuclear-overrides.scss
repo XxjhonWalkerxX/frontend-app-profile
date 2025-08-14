@@ -1,0 +1,112 @@
+// ==============================================
+// NUCLEAR OVERRIDES - Eliminación forzada de elementos problemáticos
+// ==============================================
+
+// BANNER - Override nuclear con TODAS las variaciones posibles
+.profile-page-bg-banner,
+div.profile-page-bg-banner,
+.profile-page .profile-page-bg-banner,
+.profile-page-bg-banner.bg-primary,
+.profile-page-bg-banner.bg-primary.d-md-block,
+.profile-page-bg-banner.bg-primary.d-md-block.p-relative,
+div.profile-page-bg-banner.bg-primary,
+div.profile-page-bg-banner.bg-primary.d-md-block,
+div.profile-page-bg-banner.bg-primary.d-md-block.p-relative,
+body .profile-page-bg-banner,
+body div.profile-page-bg-banner,
+html body .profile-page-bg-banner,
+html body div.profile-page-bg-banner {
+  background-color: transparent !important;
+  background-image: url('../assets/banner_fondo_dorado.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  
+  // Eliminar cualquier gradiente o color de Bootstrap/Paragon
+  background-blend-mode: normal !important;
+  
+  &::before, &::after {
+    display: none !important;
+    content: none !important;
+    visibility: hidden !important;
+    background: none !important;
+  }
+}
+
+// Override específico para bg-primary de Bootstrap
+.bg-primary {
+  &.profile-page-bg-banner {
+    background-color: transparent !important;
+    background-image: url('../assets/banner_fondo_dorado.jpg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+// ELIMINAR COMPLETAMENTE CUALQUIER CÍRCULO O DECORACIÓN DEL AVATAR
+* .profile-avatar-wrap,
+*[class*="profile-avatar-wrap"] {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 0 !important;
+  
+  &::before, &::after {
+    display: none !important;
+    content: none !important;
+    visibility: hidden !important;
+  }
+  
+  // Eliminar cualquier elemento hijo que cause decoraciones
+  > * {
+    &::before, &::after {
+      display: none !important;
+      content: none !important;
+    }
+  }
+}
+
+// BANNER - Override nuclear
+* .profile-page-bg-banner,
+*[class*="profile-page-bg-banner"] {
+  background-color: transparent !important;
+  background-image: url('../assets/banner_fondo_dorado.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  
+  &::before, &::after {
+    display: none !important;
+    content: none !important;
+    visibility: hidden !important;
+  }
+}
+
+// ELIMINAR MENU CONTAINERS
+* .profile-avatar-menu-container,
+*[class*="profile-avatar-menu-container"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+// AVATAR LIMPIO
+* .profile-avatar,
+*[class*="profile-avatar"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  
+  img {
+    border: none !important;
+    background: none !important;
+  }
+  
+  svg {
+    display: none !important;
+  }
+}

@@ -11,61 +11,23 @@
       margin-bottom: 2rem;
     }
     
-    // Sin bordes ni efectos adicionales - diseño limpio
-    // border: 4px solid $emi-light-gold;  // REMOVIDO
-    // border-radius: 50%;                 // REMOVIDO
-    // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  // REMOVIDO
-    // background: white;                  // REMOVIDO
-    // padding: 4px;                       // REMOVIDO
+    // ELIMINAR TODOS LOS ESTILOS DECORATIVOS
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    
+    // Eliminar cualquier decoración que venga de Paragon
+    &::before, &::after {
+      display: none !important;
+      content: none !important;
+    }
   }
 
+  // ELIMINAR COMPLETAMENTE EL MENU CONTAINER QUE CAUSA EL CÍRCULO
   .profile-avatar-menu-container {
-    background: rgba(90, 18, 44, 0.75); // Usar color EMI burgundy
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-
-    @include media-breakpoint-up(md) {
-      background: linear-gradient(to top, rgba(90, 18, 44, 0.75) 4rem, rgba(90, 18, 44, 0) 4rem);
-      align-items: flex-end;
-    }
-
-    .btn {
-      text-decoration: none;
-      color: $emi-light-gold !important; // Texto dorado
-      border-color: $emi-light-gold !important;
-      
-      @include media-breakpoint-up(md) {
-        margin-bottom: 1.2rem;
-      }
-      
-      &:hover {
-        background-color: $emi-light-gold !important;
-        color: $emi-burgundy !important;
-      }
-    }
-
-    .dropdown {
-      @include media-breakpoint-up(md) {
-        margin-bottom: 1.2rem;
-      }
-
-      .btn {
-        color: $emi-light-gold !important;
-        background: transparent;
-        border-color: $emi-light-gold !important;
-        margin: 0;
-        
-        &:hover, &:focus, &:active {
-          background-color: $emi-light-gold !important;
-          color: $emi-burgundy !important;
-        }
-      }
-    }
+    display: none !important; // Ocultar completamente
   }
 
   .profile-avatar {
@@ -74,54 +36,34 @@
     position: relative;
     border-radius: 50%;
     overflow: hidden;
+    
+    // ELIMINAR FONDOS Y BORDES
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 
     @include media-breakpoint-up(md) {
       width: 12rem;
       height: 12rem;
     }
     
-    // Mejorar la presentación de la imagen por defecto
+    // Imagen limpia sin decoraciones
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
+      border: none !important;
     }
     
-    // Avatar por defecto con mejor estilo
+    // Ocultar SVG por completo
     svg {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, $emi-light-gold 0%, $emi-gold 100%);
-      border-radius: 50%;
+      display: none !important;
     }
 
+    // Eliminar botón de edición si causa problemas visuales
     .profile-avatar-edit-button {
-      border: none;
-      position: absolute;
-      height: 100%;
-      left: 0;
-      width: 100%;
-      bottom: 0;
-      display: flex;
-      justify-content: center;
-      padding-top: .1rem;
-      font-weight: 600;
-      background: rgba(90, 18, 44, 0.7); // Color EMI burgundy
-      color: $emi-light-gold;
-      border-radius: 0;
-      transition: all 200ms ease;
-
-      @include media-breakpoint-up(md) {
-        height: 4rem;
-        border-radius: 0 0 50% 50%;
-      }
-
-      &:focus, &:hover, &:active, &.active {
-        opacity: 1;
-        background: rgba(90, 18, 44, 0.9);
-        color: white;
-      }
+      display: none !important;
     }
   }
 }
