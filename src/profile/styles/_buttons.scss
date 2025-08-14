@@ -18,14 +18,26 @@
 }
 
 // ==============================================
-// PARAGON OVERRIDES - Sobrescribir clases específicas
+// PARAGON OVERRIDES - Sobrescribir clases específicas con alta especificidad
 // ==============================================
 
-// Override del bg-primary en el banner para usar nuestro fondo personalizado
-.profile-page .profile-page-bg-banner.bg-primary {
+// Override agresivo del bg-primary en el banner
+.profile-page .profile-page-bg-banner.bg-primary,
+.profile-page-bg-banner.bg-primary,
+div.profile-page-bg-banner.bg-primary {
   background-color: transparent !important;
   background-image: url('../assets/banner_fondo_dorado.jpg') !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
+  border: none !important;
+}
+
+// Override para el avatar por defecto
+.profile-avatar.rounded-circle.bg-light {
+  background-color: transparent !important;
+  
+  svg {
+    display: none !important; // Ocultar el SVG por defecto
+  }
 }

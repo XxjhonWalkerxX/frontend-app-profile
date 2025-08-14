@@ -3,24 +3,19 @@
 // ==============================================
 
 .profile-page-bg-banner {
-  height: 12rem;
-  background-image: url('../../assets/banner_fondo_dorado.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  height: 12rem !important;
+  background-image: url('../../assets/banner_fondo_dorado.jpg') !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-color: transparent !important; // Eliminar cualquier color de fondo
   
-  // Fallback con patrón de puntos si no carga la imagen
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('../../assets/dot-pattern-light.png');
-    background-repeat: repeat-x;
-    background-size: auto 85%;
-    opacity: 0.3;
-    z-index: 1;
+  // Override específico para Paragon bg-primary
+  &.bg-primary {
+    background-color: transparent !important;
+    background-image: url('../../assets/banner_fondo_dorado.jpg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
   }
 }

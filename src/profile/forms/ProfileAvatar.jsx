@@ -4,6 +4,7 @@ import { Button, Dropdown } from '@openedx/paragon';
 import { FormattedMessage, injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
 import { ReactComponent as DefaultAvatar } from '../assets/avatar.svg';
+import profilePicDefault from '../assets/profile_pic.png';
 
 import messages from './ProfileAvatar.messages';
 
@@ -112,7 +113,13 @@ class ProfileAvatar extends React.Component {
     const { intl } = this.props;
 
     return this.props.isDefault ? (
-      <DefaultAvatar className="text-muted" role="img" aria-hidden focusable="false" viewBox="0 0 24 24" />
+      <img
+        data-hj-suppress
+        className="w-100 h-100 d-block rounded-circle overflow-hidden"
+        style={{ objectFit: 'cover' }}
+        alt={intl.formatMessage(messages['profile.image.alt.attribute'])}
+        src={profilePicDefault}
+      />
     ) : (
       <img
         data-hj-suppress
