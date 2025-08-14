@@ -39,107 +39,62 @@ const ProfileDashboard = ({
       <div className="dashboard-card">
         <div className="dashboard-content">
           
-          {/* COLUMNA IZQUIERDA - Sección de progreso */}
+          {/* IZQUIERDA - Progreso (25%) */}
           <div className="progress-section">
-            <div className="progress-header">
-              <div className="progress-label">
-                <FormattedMessage {...messages['profile.dashboard.progress']} />
-              </div>
-              <div className="progress-value">{progressPercentage}%</div>
-              <div className="progress-text">Progreso</div>
+            <div className="progress-label">OVERALL PROGRESS</div>
+            <div className="progress-value">{progressPercentage}%</div>
+            <div className="progress-text">PROGRESO</div>
+            <div className="progress-bar-container">
+              <div className="progress-bar" style={{ width: `${progressPercentage}%` }} />
             </div>
-            
-            <div className="progress-items">
-              <div className="progress-item">
-                <div className="item-header">
-                  <span className="item-label">
-                    <FormattedMessage {...messages['profile.dashboard.courses']} />
-                  </span>
-                  <span className="item-value">{coursesCount}</span>
-                </div>
-                <div className="item-progress-bar">
-                  <div className="progress-fill" style={{ width: `${Math.min(coursesCount * 20, 100)}%` }}></div>
-                </div>
+          </div>
+
+          {/* CENTRO - Información del usuario (30%) */}
+          <div className="user-info-section">
+            <h1 className="username">{username}</h1>
+            <div className="user-status">
+              <FormattedMessage {...messages['profile.dashboard.active']} />
+            </div>
+            <div className="member-since">
+              <FormattedMessage
+                {...messages['profile.dashboard.memberSince']}
+                values={{
+                  date: <FormattedDate value={formattedDate} month="long" year="numeric" />,
+                }}
+              />
+            </div>
+          </div>
+
+          {/* DERECHA - Avatar + Estadísticas (45%) */}
+          <div className="right-content">
+            {/* Avatar que sobresale */}
+            <div className="avatar-section">
+              <div className="profile-avatar">
+                <img src={avatarSrc} alt={username} />
               </div>
-              
-              <div className="progress-item">
-                <div className="item-header">
-                  <span className="item-label">
-                    <FormattedMessage {...messages['profile.dashboard.certificates']} />
-                  </span>
-                  <span className="item-value">{certificatesCount}</span>
+            </div>
+
+            {/* Estadísticas al lado del avatar */}
+            <div className="stats-section">
+              <div className="stats-grid">
+                <div className="stat-item">
+                  <span className="stat-number">{coursesCount}</span>
+                  <div className="stat-label">COURSES</div>
                 </div>
-                <div className="item-progress-bar">
-                  <div className="progress-fill" style={{ width: `${Math.min(certificatesCount * 25, 100)}%` }}></div>
+                
+                <div className="stat-item">
+                  <span className="stat-number">{certificatesCount}</span>
+                  <div className="stat-label">CERTIFICATES</div>
                 </div>
-              </div>
-              
-              <div className="progress-item">
-                <div className="item-header">
-                  <span className="item-label">
-                    <FormattedMessage {...messages['profile.dashboard.hoursCompleted']} />
-                  </span>
-                  <span className="item-value">{hoursCompleted}h</span>
-                </div>
-                <div className="item-progress-bar">
-                  <div className="progress-fill" style={{ width: `${Math.min(hoursCompleted / 2, 100)}%` }}></div>
+                
+                <div className="stat-item">
+                  <span className="stat-number">{hoursCompleted}</span>
+                  <div className="stat-label">HOURS COMPLETED</div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* COLUMNA DERECHA - Contenido principal */}
-          <div className="main-content">
-            
-            {/* Header con información del usuario y avatar */}
-            <div className="main-header">
-              <div className="header-info">
-                <h1 className="username">{username}</h1>
-                <div className="user-status">
-                  <FormattedMessage {...messages['profile.dashboard.active']} />
-                </div>
-                <div className="member-since">
-                  <FormattedMessage
-                    {...messages['profile.dashboard.memberSince']}
-                    values={{
-                      date: <FormattedDate value={formattedDate} month="long" year="numeric" />,
-                    }}
-                  />
-                </div>
-              </div>
-              
-              <div className="header-avatar">
-                <div className="profile-avatar">
-                  <img src={avatarSrc} alt={username} />
-                </div>
-              </div>
-            </div>
-
-            {/* Grid de tarjetas de datos */}
-            <div className="data-cards">
-              <div className="data-card">
-                <span className="card-number">{coursesCount}</span>
-                <span className="card-label">
-                  <FormattedMessage {...messages['profile.dashboard.courses']} />
-                </span>
-              </div>
-              
-              <div className="data-card">
-                <span className="card-number">{certificatesCount}</span>
-                <span className="card-label">
-                  <FormattedMessage {...messages['profile.dashboard.certificates']} />
-                </span>
-              </div>
-              
-              <div className="data-card">
-                <span className="card-number">{hoursCompleted}</span>
-                <span className="card-label">
-                  <FormattedMessage {...messages['profile.dashboard.hoursCompleted']} />
-                </span>
-              </div>
-            </div>
-            
-          </div>
+          
         </div>
       </div>
     </div>

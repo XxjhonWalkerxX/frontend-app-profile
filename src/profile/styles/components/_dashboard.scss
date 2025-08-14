@@ -63,9 +63,11 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 22% 1fr; // Columna izquierda fija 22%, resto flexible
-      grid-template-areas: "progress main-content";
-      min-height: 280px;
+      grid-template-columns: 25% 30% 45%; // Progreso 25%, Centro 30%, Derecha 45%
+      grid-template-areas: "progress center right-content";
+      align-items: center;
+      padding: 2rem 2rem 2rem 2rem;
+      min-height: 160px;
       
       @include media-breakpoint-down(md) {
         display: flex;
@@ -73,209 +75,198 @@
         gap: 2rem;
         padding: 2rem 1rem;
         min-height: auto;
+        text-align: center;
       }
     }
 
-    // COLUMNA IZQUIERDA - Sección de progreso (22% del ancho)
+    // SECCIÓN IZQUIERDA - Progreso (25%)
     .progress-section {
       grid-area: progress;
-      background: #f8f9fa; // Fondo ligeramente diferente para distinguir
-      padding: 2rem 1.5rem;
-      border-right: 1px solid #e9ecef;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      align-items: center;
+      text-align: center;
       
       @include media-breakpoint-down(md) {
-        border-right: none;
-        border-bottom: 1px solid #e9ecef;
-        padding: 1.5rem;
-      }
-      
-      .progress-header {
-        text-align: center;
         margin-bottom: 1rem;
+      }
+      
+      .progress-label {
+        font-size: 0.8rem;
+        color: $emi-text-secondary;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      
+      .progress-value {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: $emi-burgundy;
+        line-height: 1;
+        margin-bottom: 0.3rem;
         
-        .progress-label {
-          font-size: 0.9rem;
-          color: $emi-text-secondary;
-          text-transform: uppercase;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          margin-bottom: 0.5rem;
-        }
-        
-        .progress-value {
-          font-size: 2.5rem;
-          font-weight: bold;
-          color: $emi-burgundy;
-          line-height: 1;
-        }
-        
-        .progress-text {
-          font-size: 0.8rem;
-          color: $emi-text-primary;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-top: 0.25rem;
+        @include media-breakpoint-down(md) {
+          font-size: 2.8rem;
         }
       }
       
-      .progress-items {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
+      .progress-text {
+        font-size: 0.9rem;
+        color: $emi-text-primary;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 0.8rem;
+        letter-spacing: 0.5px;
+      }
+      
+      .progress-bar-container {
+        width: 120px;
+        height: 6px;
+        background: #e9ecef;
+        border-radius: 3px;
+        overflow: hidden;
         
-        .progress-item {
-          .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            
-            .item-label {
-              font-size: 0.85rem;
-              color: $emi-text-primary;
-              font-weight: 600;
-            }
-            
-            .item-value {
-              font-size: 0.85rem;
-              color: $emi-burgundy;
-              font-weight: bold;
-            }
-          }
-          
-          .item-progress-bar {
-            width: 100%;
-            height: 4px;
-            background: #e9ecef;
-            border-radius: 2px;
-            overflow: hidden;
-            
-            .progress-fill {
-              height: 100%;
-              background: linear-gradient(90deg, $emi-burgundy 0%, $emi-green 100%);
-              border-radius: 2px;
-              transition: width 0.3s ease;
-            }
-          }
+        .progress-bar {
+          height: 100%;
+          background: linear-gradient(90deg, $emi-burgundy 0%, $emi-green 100%);
+          border-radius: 3px;
+          transition: width 0.3s ease;
         }
       }
     }
 
-    // COLUMNA DERECHA - Contenido principal (78% del ancho)
-    .main-content {
-      grid-area: main-content;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      position: relative;
+    // SECCIÓN CENTRO - Información del usuario (30%)
+    .user-info-section {
+      grid-area: center;
+      text-align: left;
+      padding-left: 2rem;
       
       @include media-breakpoint-down(md) {
-        padding: 1.5rem;
+        text-align: center;
+        padding-left: 0;
       }
       
-      // Header con título y avatar
-      .main-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 2rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid #e9ecef;
-        
-        .header-info {
-          flex: 1;
-          
-          .username {
-            font-size: 2.8rem;
-            font-weight: bold;
-            color: $emi-text-primary;
-            margin-bottom: 0.5rem;
-            line-height: 1.1;
-            
-            @include media-breakpoint-down(md) {
-              font-size: 2.2rem;
-            }
-          }
-          
-          .user-status {
-            color: $emi-green;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-          }
-          
-          .member-since {
-            color: $emi-text-secondary;
-            font-size: 1rem;
-            margin-bottom: 0;
-          }
-        }
-        
-        .header-avatar {
-          flex-shrink: 0;
-          margin-left: 2rem;
-          
-          .profile-avatar {
-            width: 120px; // 7-9% del ancho del contenedor
-            height: 120px;
-            border: 3px solid white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            border-radius: 50%;
-            overflow: hidden;
-            background: white;
-            
-            @include media-breakpoint-down(md) {
-              width: 100px;
-              height: 100px;
-            }
-            
-            img {
-              width: 100%;
-              height: 100%;
-              border-radius: 50%;
-              object-fit: cover;
-            }
-          }
-        }
-      }
-      
-      // Grid de tarjetas de datos
-      .data-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); // 3 columnas para las tarjetas
-        gap: 1.5rem;
+      .username {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: $emi-text-primary;
+        margin-bottom: 0.3rem;
+        line-height: 1.1;
         
         @include media-breakpoint-down(md) {
-          grid-template-columns: 1fr;
-          gap: 1rem;
+          font-size: 1.8rem;
+        }
+      }
+      
+      .user-status {
+        color: $emi-green;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+      }
+      
+      .member-since {
+        color: $emi-text-secondary;
+        font-size: 0.85rem;
+        margin-bottom: 0;
+      }
+    }
+
+    // SECCIÓN DERECHA - Avatar + Estadísticas (45%)
+    .right-content {
+      grid-area: right-content;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      
+      @include media-breakpoint-down(md) {
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    // Avatar que sobresale del contenedor
+    .avatar-section {
+      position: absolute;
+      top: -30px; // Sobresale hacia arriba
+      right: 20px; // Posicionado a la derecha
+      z-index: 10;
+      
+      @include media-breakpoint-down(md) {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border: 4px solid $emi-burgundy;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        overflow: hidden;
+        background: white;
+        
+        @include media-breakpoint-down(md) {
+          width: 80px;
+          height: 80px;
         }
         
-        .data-card {
-          background: #f8f9fa;
-          border: 1px solid #e9ecef;
-          border-radius: 12px;
-          padding: 1.5rem;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    // Estadísticas posicionadas al lado del avatar
+    .stats-section {
+      padding-right: 140px; // Espacio para el avatar que sobresale
+      
+      @include media-breakpoint-down(md) {
+        padding-right: 0;
+      }
+
+      .stats-grid {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+        justify-content: flex-end;
+        
+        @include media-breakpoint-down(md) {
+          justify-content: center;
+          gap: 2rem;
+        }
+
+        .stat-item {
           text-align: center;
           
-          .card-number {
-            font-size: 2.2rem;
+          .stat-number {
+            font-size: 2rem;
             font-weight: bold;
             color: $emi-burgundy;
             display: block;
             line-height: 1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
+            
+            @include media-breakpoint-down(md) {
+              font-size: 1.6rem;
+            }
           }
           
-          .card-label {
-            font-size: 0.85rem;
+          .stat-label {
+            font-size: 0.75rem;
             color: $emi-text-secondary;
             text-transform: uppercase;
             font-weight: 600;
             letter-spacing: 0.5px;
+            line-height: 1.2;
           }
         }
       }
