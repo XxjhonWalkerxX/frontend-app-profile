@@ -97,8 +97,15 @@ class ProfileAvatar extends React.Component {
   }
 
   renderMenu() {
-    // Deshabilitar el menú de edición completamente
-    return null;
+    if (!this.props.isEditable) {
+      return null;
+    }
+
+    return (
+      <div className="profile-avatar-menu-container">
+        {this.renderMenuContent()}
+      </div>
+    );
   }
 
   renderAvatar() {
@@ -121,10 +128,25 @@ class ProfileAvatar extends React.Component {
     return (
       <div className="profile-avatar-wrap position-relative">
         <div className="profile-avatar rounded-circle bg-light">
-          {this.props.savePhotoState === 'pending' ? this.renderPending() : null }
+          {this.props.savePhotoState === 'pending' ? this.renderPending() : this.renderMenu() }
           {this.renderAvatar()}
         </div>
-        {/* Form de subida deshabilitado */}
+        <form
+          ref={this.form}
+          onSubmit={this.onSubmit}
+          encType="multipart/form-data"
+        >
+          {/* The name of this input must be 'file' */}
+          <input
+            className="d-none form-control-file"
+            ref={this.fileInput}
+            type="file"
+            name="file"
+            id="photo-file"
+            onChange={this.onChangeInput}
+            accept=".jpg, .jpeg, .png"
+          />
+        </form>
       </div>
     );
   }

@@ -125,7 +125,7 @@ class ProfilePage extends React.Component {
 
     return (
       <span data-hj-suppress>
-        <h1 className="h2 mb-0 font-weight-bold text-truncate username-description">{this.props.params.username}</h1>
+        <h1 className="h2 mb-0 font-weight-bold text-truncate">{this.props.params.username}</h1>
         <DateJoined date={dateJoined} />
         {this.isYOBDisabled() && <UsernameDescription />}
         <hr className="d-none d-md-block" />
@@ -159,21 +159,6 @@ class ProfilePage extends React.Component {
       return null;
     }
     return <AgeMessage accountSettingsUrl={this.state.accountSettingsUrl} />;
-  }
-
-  renderProfileAvatar() {
-    const { profileImage, requiresParentalConsent } = this.props;
-
-    return (
-      <ProfileAvatar
-        src={profileImage.src}
-        isDefault={profileImage.isDefault}
-        onSave={this.handleSaveProfilePhoto}
-        onDelete={this.handleDeleteProfilePhoto}
-        savePhotoState={this.props.savePhotoState}
-        isEditable={this.isAuthenticatedUserProfile() && !requiresParentalConsent}
-      />
-    );
   }
 
   renderContent() {
@@ -224,13 +209,36 @@ class ProfilePage extends React.Component {
 
     return (
       <div className="container-fluid">
+        <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
+          <div className="col-auto col-md-4 col-lg-3">
+            <div className="d-flex align-items-center d-md-block">
+              <ProfileAvatar
+                className="mb-md-3"
+                src={profileImage.src}
+                isDefault={profileImage.isDefault}
+                onSave={this.handleSaveProfilePhoto}
+                onDelete={this.handleDeleteProfilePhoto}
+                savePhotoState={this.props.savePhotoState}
+                isEditable={this.isAuthenticatedUserProfile() && !requiresParentalConsent}
+              />
+            </div>
+          </div>
+          <div className="col">
+            <div className="d-md-none">
+              {this.renderHeadingLockup()}
+            </div>
+            <div className="d-none d-md-block float-right">
+              {this.renderViewMyRecordsButton()}
+            </div>
+          </div>
+        </div>
         {this.renderPhotoUploadErrorMessage()}
         <div className="row">
           <div className="col-md-4 col-lg-4">
             <div className="d-none d-md-block mb-4">
               {this.renderHeadingLockup()}
             </div>
-            <div className="mb-4">
+            <div className="d-md-none mb-4">
               {this.renderViewMyRecordsButton()}
             </div>
             {isNameBlockVisible && (
@@ -307,29 +315,9 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { dateJoined, courseCertificates, bio, levelOfEducation } = this.props;
-    
-    // Formatear la fecha para el banner
-    const formattedDate = dateJoined ? new Date(dateJoined).toLocaleDateString('es-ES', {
-      year: 'numeric',
-      month: 'long'
-    }) : '';
-    
-    // Preparar datos del perfil para el banner
-    const profileData = {
-      courseCertificates,
-      bio,
-      levelOfEducation,
-    };
-    
     return (
       <div className="profile-page">
-        <Banner 
-          username={this.props.params.username}
-          dateJoined={formattedDate}
-          profileAvatar={this.renderProfileAvatar()}
-          profileData={profileData}
-        />
+        <Banner />
         {this.renderContent()}
       </div>
     );
