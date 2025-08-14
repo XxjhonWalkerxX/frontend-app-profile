@@ -320,6 +320,8 @@ class ProfilePage extends React.Component {
       isLoadingProfile,
       username,
       dateJoined,
+      courseCertificates,
+      profileImage,
     } = this.props;
 
     if (isLoadingProfile) {
@@ -331,16 +333,24 @@ class ProfilePage extends React.Component {
       );
     }
 
+    // Calcular estadísticas dinámicamente
+    const certificatesCount = courseCertificates ? courseCertificates.length : 0;
+    const coursesCount = certificatesCount; // Por ahora usamos certificados como proxy para cursos
+    const hoursCompleted = coursesCount * 36; // Estimación de 36 horas por curso
+    // Progreso basado en 8 cursos máximo
+    const progressPercentage = Math.min(Math.round((coursesCount / 8) * 100), 100);
+
     return (
       <div className="profile-page">
         <Banner />
         <ProfileDashboard
           username={username}
           dateJoined={dateJoined}
-          coursesCount={2}
-          certificatesCount={0}
-          hoursCompleted={72}
-          progressPercentage={24}
+          coursesCount={coursesCount}
+          certificatesCount={certificatesCount}
+          hoursCompleted={hoursCompleted}
+          progressPercentage={progressPercentage}
+          profileImage={profileImage}
         />
         {this.renderContent()}
       </div>
@@ -355,6 +365,10 @@ ProfilePage.propTypes = {
   requiresParentalConsent: PropTypes.bool,
   dateJoined: PropTypes.string,
   username: PropTypes.string,
+  profileImage: PropTypes.shape({
+    src: PropTypes.string,
+    isDefault: PropTypes.bool,
+  }),
 
   // Bio form data
   bio: PropTypes.string,
@@ -401,10 +415,6 @@ ProfilePage.propTypes = {
   visibilityLearningGoal: PropTypes.string.isRequired,
 
   // Other data we need
-  profileImage: PropTypes.shape({
-    src: PropTypes.string,
-    isDefault: PropTypes.bool,
-  }),
   saveState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   savePhotoState: PropTypes.oneOf([null, 'pending', 'complete', 'error']),
   isLoadingProfile: PropTypes.bool.isRequired,
@@ -434,7 +444,6 @@ ProfilePage.defaultProps = {
   saveState: null,
   savePhotoState: null,
   photoUploadError: {},
-  profileImage: {},
   name: null,
   yearOfBirth: null,
   levelOfEducation: null,
@@ -448,6 +457,7 @@ ProfilePage.defaultProps = {
   requiresParentalConsent: null,
   dateJoined: null,
   username: null,
+  profileImage: null,
 };
 
 export default connect(

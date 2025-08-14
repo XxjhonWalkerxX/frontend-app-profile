@@ -13,8 +13,14 @@ const ProfileDashboard = ({
   certificatesCount,
   hoursCompleted,
   progressPercentage,
+  profileImage,
 }) => {
   const formattedDate = dateJoined ? new Date(dateJoined) : new Date();
+
+  // Usar la imagen del perfil o la imagen por defecto EMI
+  const avatarSrc = profileImage && profileImage.src && !profileImage.isDefault
+    ? profileImage.src
+    : '/assets/profile_pic.png';
 
   return (
     <div className="profile-dashboard-overlay">
@@ -22,7 +28,7 @@ const ProfileDashboard = ({
         <div className="dashboard-content">
           <div className="avatar-section">
             <div className="profile-avatar">
-              <img src="/assets/profile_pic.png" alt={username} />
+              <img src={avatarSrc} alt={username} />
             </div>
           </div>
 
@@ -40,7 +46,9 @@ const ProfileDashboard = ({
                 }}
               />
             </div>
+          </div>
 
+          <div className="stats-section">
             <div className="stats-grid">
               <div className="stat-item">
                 <span className="stat-number">{coursesCount}</span>
@@ -86,6 +94,10 @@ ProfileDashboard.propTypes = {
   certificatesCount: PropTypes.number,
   hoursCompleted: PropTypes.number,
   progressPercentage: PropTypes.number,
+  profileImage: PropTypes.shape({
+    src: PropTypes.string,
+    isDefault: PropTypes.bool,
+  }),
 };
 
 ProfileDashboard.defaultProps = {
@@ -94,6 +106,7 @@ ProfileDashboard.defaultProps = {
   certificatesCount: 0,
   hoursCompleted: 0,
   progressPercentage: 0,
+  profileImage: null,
 };
 
 export default injectIntl(ProfileDashboard);
