@@ -11,12 +11,12 @@
       margin-bottom: 2rem;
     }
     
-    // Mejorar la presentación del avatar con bordes EMI
-    border: 4px solid $emi-light-gold;
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    background: white;
-    padding: 4px;
+    // Sin bordes ni efectos adicionales - diseño limpio
+    // border: 4px solid $emi-light-gold;  // REMOVIDO
+    // border-radius: 50%;                 // REMOVIDO
+    // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  // REMOVIDO
+    // background: white;                  // REMOVIDO
+    // padding: 4px;                       // REMOVIDO
   }
 
   .profile-avatar-menu-container {

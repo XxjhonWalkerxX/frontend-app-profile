@@ -21,7 +21,10 @@
 // PARAGON OVERRIDES - Sobrescribir clases específicas con alta especificidad
 // ==============================================
 
-// Override agresivo del bg-primary en el banner
+// Override agresivo del bg-primary en el banner - ELIMINAR AZUL COMPLETAMENTE
+html body main .profile-page .profile-page-bg-banner.bg-primary.d-md-block.p-relative,
+html body .profile-page .profile-page-bg-banner.bg-primary.d-md-block,
+body main .profile-page .profile-page-bg-banner.bg-primary,
 .profile-page .profile-page-bg-banner.bg-primary,
 .profile-page-bg-banner.bg-primary,
 div.profile-page-bg-banner.bg-primary {
@@ -31,11 +34,19 @@ div.profile-page-bg-banner.bg-primary {
   background-position: center center !important;
   background-repeat: no-repeat !important;
   border: none !important;
+  
+  // Eliminar pseudoelementos de Bootstrap que puedan causar colores
+  &::before, &::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+  }
 }
 
 // Override para el avatar por defecto
 .profile-avatar.rounded-circle.bg-light {
   background-color: transparent !important;
+  background: none !important;
   
   svg {
     display: none !important; // Ocultar el SVG por defecto

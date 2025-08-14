@@ -10,12 +10,32 @@
   background-position: center center !important;
   background-color: transparent !important; // Eliminar cualquier color de fondo
   
-  // Override específico para Paragon bg-primary
+  // Override específico para Paragon bg-primary con máxima especificidad
   &.bg-primary {
     background-color: transparent !important;
     background-image: url('../../assets/banner_fondo_dorado.jpg') !important;
     background-size: cover !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
+    
+    // Eliminar efectos adicionales
+    border: none !important;
+    box-shadow: none !important;
+    
+    &::before, &::after {
+      display: none !important;
+      content: none !important;
+    }
+  }
+  
+  // Override para diferentes clases que Paragon pueda agregar
+  &.d-md-block {
+    background-color: transparent !important;
+    background-image: url('../../assets/banner_fondo_dorado.jpg') !important;
+  }
+  
+  &.p-relative {
+    background-color: transparent !important;
+    background-image: url('../../assets/banner_fondo_dorado.jpg') !important;
   }
 }
