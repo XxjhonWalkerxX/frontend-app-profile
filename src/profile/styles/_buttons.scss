@@ -1,0 +1,18 @@
+// ==============================================
+// BUTTON OVERRIDES - Sobrescribir estilos de Paragon/Bootstrap
+// ==============================================
+
+// TODO: Update edx-bootstrap theme to incorporate these edits.
+.btn, a.btn {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn-link {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
+}

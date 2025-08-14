@@ -1,0 +1,37 @@
+// ==============================================
+// PROFILE STYLES - Estilos principales del perfil
+// ==============================================
+// Estructura modular de estilos organizados por componente
+
+// Base styles
+@import './base';
+@import './buttons';
+
+// Components
+@import './components/banner';
+@import './components/avatar';
+@import './components/username-description';
+@import './components/forms';
+@import './components/certificates';
+
+// ==============================================
+// PROFILE PAGE WRAPPER - Contenedor principal
+// ==============================================
+
+.profile-page {
+  // Contenedor principal del perfil
+  // Los estilos específicos de cada componente están
+  // organizados en sus archivos correspondientes
+  
+  .edit-section-header {
+    @extend .h6;
+    display: block;
+    font-weight: normal;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  label.edit-section-header {
+    margin-bottom: $spacer * .5;
+  }
+}
