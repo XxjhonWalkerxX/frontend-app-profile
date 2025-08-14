@@ -86,7 +86,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-left: 150px; // Más espacio para avatar más grande
+      padding-left: 140px; // Ajustado para avatar más cerca del borde
       
       @include media-breakpoint-down(md) {
         flex-direction: column;
@@ -99,7 +99,7 @@
     .avatar-section {
       position: absolute;
       top: -40px; // Sobresale más hacia arriba
-      left: 20px; // Posicionado a la izquierda
+      left: 5px; // Más pegado al borde izquierdo
       z-index: 10;
       
       @include media-breakpoint-down(md) {
@@ -110,8 +110,8 @@
       }
       
       .profile-avatar {
-        width: 110px; // Avatar más grande
-        height: 110px;
+        width: 126px; // Avatar más grande
+        height: 126px;
         border: 4px solid $emi-burgundy; // Borde más grueso
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         border-radius: 50%;
