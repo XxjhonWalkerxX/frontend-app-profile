@@ -35,3 +35,79 @@
     margin-bottom: $spacer * .5;
   }
 }
+// ==============================================
+// header
+// ==============================================
+
+
+.dropdown-menu-collapse {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+}
+
+.learner-variant-header {
+  a {
+    // needed to make the link not resize the header
+    border-bottom: 2px solid transparent;
+  }
+  .course-link {
+    border-bottom: 2px solid !important;
+  }
+
+  .course-link:hover {
+    border-bottom: inherit !important;
+  }
+}
+
+.nav-small-menu {
+  > * {
+    justify-content: flex-start !important;
+
+    border-radius: 0 !important;
+    border-top: 1px solid #ffff !important;
+
+    &::after {
+      content: '\00BB';
+      padding-left: 10px;
+    }
+  }
+}
+
+.logo,
+.logo img {
+  height: 50px !important;
+  width: auto !important;
+}
+.site-header-desktop {
+  background-color: #5a122c !important;
+  height: 90px !important;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link,
+.nav-link:visited,
+.nav-link:active,
+.nav-link.active {
+  color: #fff !important;
+}
+
+.site-header-mobile {
+  background-color: #5a122c !important;
+  color: #fff !important;
+  min-height: 40px !important;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Ocultar el botón de cambio de tema en todos los dispositivos
+.theme-toggle-button,
+.mr-3:has(.theme-toggle-button) {
+  display: none !important;
+}
