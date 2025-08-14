@@ -5,6 +5,7 @@ import {
 } from '@edx/frontend-platform/i18n';
 
 import messages from './ProfileDashboard.messages';
+import profilePicImage from './assets/profile_pic.png';
 
 const ProfileDashboard = ({
   username,
@@ -21,13 +22,17 @@ const ProfileDashboard = ({
   console.log('ProfileDashboard Debug:', {
     profileImage,
     hasSrc: profileImage && profileImage.src,
-    src: profileImage ? profileImage.src : 'no profileImage'
+    src: profileImage ? profileImage.src : 'no profileImage',
+    isDefault: profileImage ? profileImage.isDefault : 'no isDefault flag',
+    customImage: profilePicImage
   });
 
-  // Usar la imagen del perfil si está disponible y no está vacía
-  const avatarSrc = (profileImage && profileImage.src && profileImage.src.trim() !== '')
-    ? profileImage.src
-    : 'https://via.placeholder.com/150/5a122c/ffffff?text=EMI'; // Placeholder temporal para debug
+  // Usar la imagen personalizada EMI en lugar de la imagen por defecto del sistema
+  // Si el usuario tiene una imagen real (no la por defecto), usarla, sino usar nuestra imagen EMI
+  const avatarSrc = (profileImage && profileImage.src && !profileImage.isDefault && 
+                    !profileImage.src.includes('default_500')) 
+    ? profileImage.src 
+    : profilePicImage;
 
   return (
     <div className="profile-dashboard-overlay">
