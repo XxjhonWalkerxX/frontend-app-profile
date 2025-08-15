@@ -210,7 +210,8 @@ class ProfilePage extends React.Component {
 
     return (
       <div className="container-fluid">
-        <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0">
+        {/* CONTENIDO ORIGINAL DEL AVATAR OCULTO */}
+        <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0" style={{display: 'none'}}>
           <div className="col-auto col-md-4 col-lg-3">
             <div className="d-flex align-items-center d-md-block">
               <ProfileAvatar
@@ -234,91 +235,84 @@ class ProfilePage extends React.Component {
           </div>
         </div>
         {this.renderPhotoUploadErrorMessage()}
-        <div className="row">
-          <div className="col-md-4 col-lg-4">
-            <div className="d-none d-md-block mb-4">
-              {this.renderHeadingLockup()}
-            </div>
-            <div className="d-md-none mb-4">
-              {this.renderViewMyRecordsButton()}
-            </div>
-            {/* SECCIÓN DE NOMBRE COMPLETO DESHABILITADA - Ya está en el dashboard EMI */}
-            {false && isNameBlockVisible && (
-              <Name
-                name={name}
-                visibilityName={visibilityName}
-                formId="name"
-                {...commonFormProps}
-              />
-            )}
-            {/* SECCIÓN DE UBICACIÓN DESHABILITADA */}
-            {false && isLocationBlockVisible && (
-              <Country
-                country={country}
-                visibilityCountry={visibilityCountry}
-                formId="country"
-                {...commonFormProps}
-              />
-            )}
-            {/* SECCIÓN DE IDIOMA DESHABILITADA */}
-            {false && isLanguageBlockVisible && (
-              <PreferredLanguage
-                languageProficiencies={languageProficiencies}
-                visibilityLanguageProficiencies={visibilityLanguageProficiencies}
-                formId="languageProficiencies"
-                {...commonFormProps}
-              />
-            )}
-            {/* SECCIÓN DE EDUCACIÓN DESHABILITADA */}
-            {false && isEducationBlockVisible && (
-              <Education
-                levelOfEducation={levelOfEducation}
-                visibilityLevelOfEducation={visibilityLevelOfEducation}
-                formId="levelOfEducation"
-                {...commonFormProps}
-              />
-            )}
-            {/* SECCIÓN DE REDES SOCIALES DESHABILITADA */}
-            {false && isSocialLinksBLockVisible && (
-              <SocialLinks
-                socialLinks={socialLinks}
-                draftSocialLinksByPlatform={draftSocialLinksByPlatform}
-                visibilitySocialLinks={visibilitySocialLinks}
-                formId="socialLinks"
-                {...commonFormProps}
-              />
-            )}
-          </div>
-          {/* CONTENIDO CENTRADO - Certificados, Bio, Learning Goal */}
-          <div className="pt-md-3 col-md-8 col-lg-6 offset-lg-3 mx-auto">
-            {!this.isYOBDisabled() && this.renderAgeMessage()}
-            {/* CERTIFICADOS AL PRINCIPIO */}
-            {isCertificatesBlockVisible && (
-              <Certificates
-                visibilityCourseCertificates={visibilityCourseCertificates}
-                formId="certificates"
-                {...commonFormProps}
-              />
-            )}
-            {/* BIO AL FINAL */}
-            {isBioBlockVisible && (
-              <Bio
-                bio={bio}
-                visibilityBio={visibilityBio}
-                formId="bio"
-                {...commonFormProps}
-              />
-            )}
-            {/* LEARNING GOAL AL FINAL */}
-            {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
-              <LearningGoal
-                learningGoal={learningGoal}
-                visibilityLearningGoal={visibilityLearningGoal}
-                formId="learningGoal"
-                {...commonFormProps}
-              />
-            )}
-          </div>
+        
+        {/* CONTENIDO PRINCIPAL - ANCHO COMPLETO */}
+        <div className="profile-main-content" style={{maxWidth: '800px', margin: '0 auto', padding: '0 2rem'}}>
+          {!this.isYOBDisabled() && this.renderAgeMessage()}
+          
+          {/* CERTIFICADOS AL PRINCIPIO */}
+          {isCertificatesBlockVisible && (
+            <Certificates
+              visibilityCourseCertificates={visibilityCourseCertificates}
+              formId="certificates"
+              {...commonFormProps}
+            />
+          )}
+          
+          {/* BIO AL FINAL */}
+          {isBioBlockVisible && (
+            <Bio
+              bio={bio}
+              visibilityBio={visibilityBio}
+              formId="bio"
+              {...commonFormProps}
+            />
+          )}
+          
+          {/* LEARNING GOAL AL FINAL */}
+          {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
+            <LearningGoal
+              learningGoal={learningGoal}
+              visibilityLearningGoal={visibilityLearningGoal}
+              formId="learningGoal"
+              {...commonFormProps}
+            />
+          )}
+        </div>
+        
+        {/* SECCIONES DESHABILITADAS - OCULTAS */}
+        <div style={{display: 'none'}}>
+          {false && isNameBlockVisible && (
+            <Name
+              name={name}
+              visibilityName={visibilityName}
+              formId="name"
+              {...commonFormProps}
+            />
+          )}
+          {false && isLocationBlockVisible && (
+            <Country
+              country={country}
+              visibilityCountry={visibilityCountry}
+              formId="country"
+              {...commonFormProps}
+            />
+          )}
+          {false && isLanguageBlockVisible && (
+            <PreferredLanguage
+              languageProficiencies={languageProficiencies}
+              visibilityLanguageProficiencies={visibilityLanguageProficiencies}
+              formId="languageProficiencies"
+              {...commonFormProps}
+            />
+          )}
+          {false && isEducationBlockVisible && (
+            <Education
+              levelOfEducation={levelOfEducation}
+              visibilityLevelOfEducation={visibilityLevelOfEducation}
+              formId="levelOfEducation"
+              {...commonFormProps}
+            />
+          )}
+          {false && isSocialLinksBLockVisible && (
+            <SocialLinks
+              socialLinks={socialLinks}
+              draftSocialLinksByPlatform={draftSocialLinksByPlatform}
+              visibilitySocialLinks={visibilitySocialLinks}
+              formId="socialLinks"
+              {...commonFormProps}
+            />
+          )}
         </div>
       </div>
     );
