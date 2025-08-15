@@ -18,7 +18,7 @@
     
     .certificates-layout {
       display: grid;
-      grid-template-columns: 65% 35%; // 65% Cursos, 35% Certificados
+      grid-template-columns: 55% 45%; // 55% Cursos, 45% Certificados
       min-height: 400px;
       border: 3px solid $emi-green; // Borde verde en todo el layout
       border-radius: 15px; // Bordes redondeados suaves
