@@ -32,32 +32,6 @@
       max-width: 100%;
       min-height: auto;
     }
-    
-    // Formas geométricas decorativas sutiles
-    &::before {
-      content: '';
-      position: absolute;
-      top: -30px;
-      right: -30px;
-      width: 80px;
-      height: 80px;
-      background: rgba($emi-light-gold, 0.1);
-      border-radius: 50%;
-      z-index: 1;
-    }
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: -20px;
-      width: 60px;
-      height: 60px;
-      background: rgba($emi-light-gold, 0.08);
-      border-radius: 10px;
-      transform: rotate(45deg);
-      z-index: 1;
-    }
 
     .dashboard-content {
       position: relative;
@@ -316,14 +290,18 @@
   
   // Container para las secciones principales
   .profile-main-content {
+    max-width: 1100px; // Mismo ancho que dashboard-card
+    margin: 0 auto; // Centrar horizontalmente
+    width: 100%;
+    
     .pgn-transition-replace-group {
       margin-bottom: 2rem !important;
       
-      // El contenedor con borde verde
+      // El contenedor sin borde, solo con el ancho del dashboard-card
       > div {
-        border: 3px solid $emi-green !important;
-        border-radius: 15px !important;
-        overflow: hidden !important;
+        border: none !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
         background: white !important;
         
         // El header verde debe ocupar todo el ancho
@@ -347,7 +325,7 @@
   
   // Estilizar las tarjetas de certificados
   .certificate {
-    border: 2px solid $emi-green !important;
+    border: none !important;
     border-radius: 12px !important;
     
     .certificate-title {

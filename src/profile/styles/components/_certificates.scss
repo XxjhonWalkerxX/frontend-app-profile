@@ -7,9 +7,9 @@
   // CONTENEDOR PRINCIPAL DE CERTIFICADOS - LAYOUT HORIZONTAL
   .certificates-container {
     background: white;
-    border: 5px solid $emi-burgundy;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
     margin-bottom: 2rem;
     overflow: hidden;
     
@@ -95,44 +95,18 @@
     }
   }
   
-  // ESTILOS PARA OTROS CONTENEDORES - MISMO ANCHO 1100PX
+  // ESTILOS PARA OTROS CONTENEDORES - SIN BORDES
   .age-message-container,
   .bio-container,
   .learning-goal-container {
     background: white;
-    border: 5px solid $emi-burgundy;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
     margin-bottom: 2rem;
     padding: 2rem;
     position: relative;
     overflow: visible;
-    
-    // Formas geométricas decorativas como el dashboard
-    &::before {
-      content: '';
-      position: absolute;
-      top: -15px;
-      right: -15px;
-      width: 40px;
-      height: 40px;
-      background: rgba($emi-light-gold, 0.1);
-      border-radius: 50%;
-      z-index: 1;
-    }
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: -10px;
-      width: 30px;
-      height: 30px;
-      background: rgba($emi-light-gold, 0.08);
-      border-radius: 5px;
-      transform: rotate(45deg);
-      z-index: 1;
-    }
     
     // Asegurar que el contenido esté por encima de las decoraciones
     > * {
@@ -141,14 +115,9 @@
     }
     
     @include media-breakpoint-down(md) {
-      border-radius: 15px;
+      border-radius: 0;
       padding: 1.5rem;
       margin-bottom: 1.5rem;
-      
-      &::before,
-      &::after {
-        display: none;
-      }
     }
   }
 
