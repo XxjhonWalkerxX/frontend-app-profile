@@ -251,7 +251,8 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
-            {isLocationBlockVisible && (
+            {/* SECCIÓN DE UBICACIÓN DESHABILITADA */}
+            {false && isLocationBlockVisible && (
               <Country
                 country={country}
                 visibilityCountry={visibilityCountry}
@@ -259,7 +260,8 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
-            {isLanguageBlockVisible && (
+            {/* SECCIÓN DE IDIOMA DESHABILITADA */}
+            {false && isLanguageBlockVisible && (
               <PreferredLanguage
                 languageProficiencies={languageProficiencies}
                 visibilityLanguageProficiencies={visibilityLanguageProficiencies}
@@ -267,7 +269,8 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
-            {isEducationBlockVisible && (
+            {/* SECCIÓN DE EDUCACIÓN DESHABILITADA */}
+            {false && isEducationBlockVisible && (
               <Education
                 levelOfEducation={levelOfEducation}
                 visibilityLevelOfEducation={visibilityLevelOfEducation}
@@ -275,7 +278,8 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
-            {isSocialLinksBLockVisible && (
+            {/* SECCIÓN DE REDES SOCIALES DESHABILITADA */}
+            {false && isSocialLinksBLockVisible && (
               <SocialLinks
                 socialLinks={socialLinks}
                 draftSocialLinksByPlatform={draftSocialLinksByPlatform}
@@ -285,8 +289,18 @@ class ProfilePage extends React.Component {
               />
             )}
           </div>
-          <div className="pt-md-3 col-md-8 col-lg-7 offset-lg-1">
+          {/* CONTENIDO CENTRADO - Certificados, Bio, Learning Goal */}
+          <div className="pt-md-3 col-md-8 col-lg-6 offset-lg-3 mx-auto">
             {!this.isYOBDisabled() && this.renderAgeMessage()}
+            {/* CERTIFICADOS AL PRINCIPIO */}
+            {isCertificatesBlockVisible && (
+              <Certificates
+                visibilityCourseCertificates={visibilityCourseCertificates}
+                formId="certificates"
+                {...commonFormProps}
+              />
+            )}
+            {/* BIO AL FINAL */}
             {isBioBlockVisible && (
               <Bio
                 bio={bio}
@@ -295,18 +309,12 @@ class ProfilePage extends React.Component {
                 {...commonFormProps}
               />
             )}
+            {/* LEARNING GOAL AL FINAL */}
             {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
               <LearningGoal
                 learningGoal={learningGoal}
                 visibilityLearningGoal={visibilityLearningGoal}
                 formId="learningGoal"
-                {...commonFormProps}
-              />
-            )}
-            {isCertificatesBlockVisible && (
-              <Certificates
-                visibilityCourseCertificates={visibilityCourseCertificates}
-                formId="certificates"
                 {...commonFormProps}
               />
             )}
