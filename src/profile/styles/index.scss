@@ -35,6 +35,21 @@
   // Los estilos específicos de cada componente están
   // organizados en sus archivos correspondientes
   
+  // OVERRIDE PARA EL CONTENEDOR PRINCIPAL - SIN ESTILOS
+  .profile-main-content {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    
+    &::before,
+    &::after {
+      display: none !important;
+    }
+  }
+  
   // Estilizar todas las secciones principales con contenedores verdes
   .pgn-transition-replace-group {
     border: 3px solid $emi-green !important;
