@@ -242,7 +242,8 @@ class ProfilePage extends React.Component {
             <div className="d-md-none mb-4">
               {this.renderViewMyRecordsButton()}
             </div>
-            {isNameBlockVisible && (
+            {/* SECCIÓN DE NOMBRE COMPLETO DESHABILITADA - Ya está en el dashboard EMI */}
+            {false && isNameBlockVisible && (
               <Name
                 name={name}
                 visibilityName={visibilityName}
