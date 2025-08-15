@@ -51,7 +51,8 @@
   }
   
   // Estilizar todas las secciones principales con contenedores verdes
-  .pgn-transition-replace-group {
+  // EXCEPTO la sección de certificados que tiene su propio estilo
+  .pgn-transition-replace-group:not(.certificates-container) {
     border: 3px solid $emi-green !important;
     border-radius: 15px !important;
     overflow: hidden !important;

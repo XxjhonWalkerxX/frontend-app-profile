@@ -33,8 +33,8 @@
       // Badge "Mis Certificados" flotante en el contenedor padre
       .editable-item-header {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 20px;
+        right: 20px;
         margin: 0 !important;
         z-index: 10;
         
@@ -44,18 +44,19 @@
           color: $emi-light-gold !important;
           font-family: $font-family-serif !important;
           font-weight: 700 !important;
-          font-size: 1rem !important;
+          font-size: 0.95rem !important;
           margin: 0 !important;
-          padding: 0.75rem 1.5rem !important;
+          padding: 0.6rem 1.8rem !important;
           text-align: center !important;
           border: none !important;
-          border-radius: 0 15px 0 15px !important; // Redondeado asimétricamente
+          border-radius: 25px !important; // Más redondeado como en la imagen
           text-transform: none !important;
           letter-spacing: 0.3px !important;
           line-height: 1.2 !important;
           display: inline-block !important;
           white-space: nowrap !important;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+          min-width: 160px !important;
         }
       }
     }
@@ -64,12 +65,31 @@
     .courses-section {
       background: white;
       padding: 2rem;
-      border-right: 2px solid $emi-gold; // Separador dorado vertical
+      position: relative;
+      
+      // Separador dorado vertical más grueso que no llega hasta arriba ni abajo
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 5px;
+        bottom: 5px;
+        width: 4px;
+        background: $emi-gold;
+      }
       
       @include media-breakpoint-down(md) {
-        border-right: none;
-        border-bottom: 2px solid $emi-gold; // Separador dorado horizontal en móvil
         padding: 1.5rem;
+        
+        // Separador dorado horizontal en móvil
+        &::after {
+          top: auto;
+          bottom: 0;
+          right: 5px;
+          left: 5px;
+          width: auto;
+          height: 4px;
+        }
       }
       
       .section-title {
