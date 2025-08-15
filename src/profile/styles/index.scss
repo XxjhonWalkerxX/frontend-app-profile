@@ -51,8 +51,8 @@
   }
   
   // Estilizar todas las secciones principales con contenedores verdes
-  // EXCEPTO la sección de certificados que tiene su propio estilo
-  .pgn-transition-replace-group:not(.certificates-section) {
+  // EXCEPTO los que están dentro de certificates-section
+  .pgn-transition-replace-group {
     border: 3px solid $emi-green !important;
     border-radius: 15px !important;
     overflow: hidden !important;
@@ -89,6 +89,14 @@
     > div:not(.editable-item-header) {
       padding: 2rem !important;
     }
+  }
+  
+  // Excluir específicamente los pgn-transition-replace-group dentro de certificates-section
+  .certificates-section .pgn-transition-replace-group {
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    margin-bottom: 0 !important;
   }
   
   // Estilo específico para mensajes de alerta/edad
