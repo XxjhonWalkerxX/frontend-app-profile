@@ -236,17 +236,17 @@ class ProfilePage extends React.Component {
         </div>
         {this.renderPhotoUploadErrorMessage()}
         
-        {/* CONTENIDO PRINCIPAL - MISMO ANCHO QUE DASHBOARD */}
-        <div className="profile-main-content" style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+        {/* CONTENIDO PRINCIPAL - ANCHO 1100PX SIN PADDING */}
+        <div className="profile-main-content" style={{maxWidth: '1100px', margin: '0 auto'}}>
           
-          {/* CERTIFICADOS AL PRINCIPIO - ESTRUCTURA DE DOS COLUMNAS */}
+          {/* CERTIFICADOS AL PRINCIPIO - ESTRUCTURA HORIZONTAL */}
           {isCertificatesBlockVisible && (
             <div className="certificates-container">
               <div className="certificates-layout">
                 <div className="courses-section">
                   <h2 className="section-title">Cursos</h2>
                   <div className="courses-content">
-                    {/* Aquí irá el contenido de cursos - por ahora vacío */}
+                    {/* Contenido de cursos vacío por ahora */}
                   </div>
                 </div>
                 <div className="certificates-section">
@@ -260,14 +260,14 @@ class ProfilePage extends React.Component {
             </div>
           )}
           
-          {/* MENSAJE DE EDAD DESPUÉS DE CERTIFICADOS - MISMO ANCHO QUE DASHBOARD */}
+          {/* MENSAJE DE EDAD - CONTENEDOR CON ANCHO 1100PX */}
           {!this.isYOBDisabled() && (
             <div className="age-message-container">
               {this.renderAgeMessage()}
             </div>
           )}
           
-          {/* BIO AL FINAL - MISMO ANCHO QUE DASHBOARD */}
+          {/* BIO - CONTENEDOR CON ANCHO 1100PX */}
           {isBioBlockVisible && (
             <div className="bio-container">
               <Bio
@@ -279,7 +279,7 @@ class ProfilePage extends React.Component {
             </div>
           )}
           
-          {/* LEARNING GOAL AL FINAL - MISMO ANCHO QUE DASHBOARD */}
+          {/* LEARNING GOAL - CONTENEDOR CON ANCHO 1100PX */}
           {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
             <div className="learning-goal-container">
               <LearningGoal

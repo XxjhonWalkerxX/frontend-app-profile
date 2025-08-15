@@ -4,7 +4,7 @@
 
 .profile-page {
   
-  // CONTENEDOR PRINCIPAL DE CERTIFICADOS CON LAYOUT DE DOS COLUMNAS
+  // CONTENEDOR PRINCIPAL DE CERTIFICADOS - LAYOUT HORIZONTAL
   .certificates-container {
     background: white;
     border: 5px solid $emi-burgundy;
@@ -58,7 +58,7 @@
       padding: 0;
       position: relative;
       
-      // Aplicar el header con fondo verde y título dorado
+      // Header con fondo verde y título dorado
       .edit-section-header,
       .editable-item-header h2 {
         background: $emi-green !important;
@@ -77,92 +77,25 @@
         margin-bottom: 0 !important;
       }
       
-      // Área de contenido de certificados
+      // Área de contenido de certificados - VERTICAL NO COLUMNAS
       .row.align-items-stretch {
         background: white;
         margin: 0;
         padding: 2rem;
         min-height: 200px;
-      }
-    }
-  }
-
-  .certificate {
-    position: relative;
-    background: white !important;
-    border: 1px solid #dee2e6 !important;
-    border-radius: 10px !important;
-    margin-bottom: 1rem !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-
-    .certificate-title {
-      font-family: $font-family-serif;
-      font-weight: 600 !important;
-      color: $emi-text-primary !important;
-      margin-bottom: 0.5rem !important;
-    }
-
-    .certificate-type-illustration {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      bottom: 0;
-      width: 12rem;
-      opacity: .06;
-      background-size: 90%;
-      background-repeat: no-repeat;
-      background-position: right top;
-    }
-
-    .card-body {
-      position: relative;
-      padding: 1.5rem !important;
-    }
-    
-    .btn-outline-primary {
-      border-color: $emi-green !important;
-      color: $emi-green !important;
-      font-weight: 600 !important;
-      
-      &:hover {
-        background-color: $emi-green !important;
-        border-color: $emi-green !important;
-        color: white !important;
-      }
-    }
-  }
-  
-  // Contenedor específico para certificados
-  .profile-main-content {
-    .pgn-transition-replace-group:first-child {
-      // Este es el contenedor de certificados
-      border: 3px solid $emi-green !important;
-      border-radius: 15px !important;
-      background: white !important;
-      margin-bottom: 2rem !important;
-      
-      .editable-item-header {
-        .edit-section-header {
-          background: $emi-green !important;
-          color: white !important;
-          text-align: center !important;
-          font-size: 1.1rem !important;
-          font-weight: 700 !important;
-          padding: 1rem 2rem !important;
-          margin: 0 !important;
-          border-radius: 0 !important;
+        display: flex;
+        flex-direction: column !important; // Forzar vertical
+        
+        .col-12.col-sm-6 {
+          flex: none !important;
+          width: 100% !important;
+          margin-bottom: 1rem;
         }
       }
-      
-      // Contenido de certificados con padding
-      > div:not(.editable-item-header) {
-        padding: 2rem !important;
-        background: #f8f9fa !important;
-      }
     }
   }
   
-  // ESTILOS PARA CONTENEDORES PRINCIPALES - MISMO ANCHO Y ESTILO QUE DASHBOARD
+  // ESTILOS PARA OTROS CONTENEDORES - MISMO ANCHO 1100PX
   .age-message-container,
   .bio-container,
   .learning-goal-container {
@@ -215,6 +148,51 @@
       &::before,
       &::after {
         display: none;
+      }
+    }
+  }
+
+  .certificate {
+    position: relative;
+    background: white !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 10px !important;
+    margin-bottom: 1rem !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+
+    .certificate-title {
+      font-family: $font-family-serif;
+      font-weight: 600 !important;
+      color: $emi-text-primary !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    .certificate-type-illustration {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      bottom: 0;
+      width: 12rem;
+      opacity: .06;
+      background-size: 90%;
+      background-repeat: no-repeat;
+      background-position: right top;
+    }
+
+    .card-body {
+      position: relative;
+      padding: 1.5rem !important;
+    }
+    
+    .btn-outline-primary {
+      border-color: $emi-green !important;
+      color: $emi-green !important;
+      font-weight: 600 !important;
+      
+      &:hover {
+        background-color: $emi-green !important;
+        border-color: $emi-green !important;
+        color: white !important;
       }
     }
   }
