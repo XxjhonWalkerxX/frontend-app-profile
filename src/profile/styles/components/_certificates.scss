@@ -4,18 +4,21 @@
 
 .profile-page {
   
-  // CONTENEDOR PRINCIPAL DE CERTIFICADOS - LAYOUT HORIZONTAL
+  // CONTENEDOR PRINCIPAL DE CERTIFICADOS - LAYOUT HORIZONTAL 65%/35%
   .certificates-container {
     background: white;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
+    border: none; // Sin borde
+    border-radius: 0; // Sin bordes redondeados
+    box-shadow: none; // Sin sombra
     margin-bottom: 2rem;
+    max-width: 1100px; // Mismo ancho que dashboard-card para alineación
+    margin: 2rem auto; // Centrado
+    width: 100%;
     overflow: hidden;
     
     .certificates-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 65% 35%; // 65% Cursos, 35% Certificados
       min-height: 400px;
       
       @include media-breakpoint-down(md) {
@@ -24,15 +27,15 @@
       }
     }
     
-    // SECCIÓN DE CURSOS (IZQUIERDA)
+    // SECCIÓN DE CURSOS (IZQUIERDA - 65%)
     .courses-section {
-      background: #f8f9fa;
+      background: white; // Fondo blanco en lugar de gris
       padding: 2rem;
-      border-right: 1px solid #d4af37;
+      border-right: 2px solid $emi-gold; // Separador dorado
       
       @include media-breakpoint-down(md) {
         border-right: none;
-        border-bottom: 1px solid #d4af37;
+        border-bottom: 2px solid $emi-gold;
       }
       
       .section-title {
@@ -52,7 +55,7 @@
       }
     }
     
-    // SECCIÓN DE CERTIFICADOS (DERECHA)
+    // SECCIÓN DE CERTIFICADOS (DERECHA - 35%)
     .certificates-section {
       background: $emi-green;
       padding: 0;

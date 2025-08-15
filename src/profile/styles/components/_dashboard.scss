@@ -323,28 +323,6 @@
     }
   }
   
-  // Estilizar las tarjetas de certificados
-  .certificate {
-    border: none !important;
-    border-radius: 12px !important;
-    
-    .certificate-title {
-      color: $emi-text-primary !important;
-      font-weight: 600;
-    }
-    
-    .btn-outline-primary {
-      border-color: $emi-green !important;
-      color: $emi-green !important;
-      
-      &:hover {
-        background-color: $emi-green !important;
-        border-color: $emi-green !important;
-        color: white !important;
-      }
-    }
-  }
-  
   // Estilizar el mensaje de edad
   .alert {
     background: $emi-green !important;
