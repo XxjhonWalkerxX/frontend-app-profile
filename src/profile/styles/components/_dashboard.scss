@@ -300,15 +300,49 @@
   
   // Estilizar los headers de las secciones con colores EMI
   .edit-section-header {
-    background: linear-gradient(135deg, $emi-green 0%, darken($emi-green, 10%) 100%);
+    background: $emi-green !important;
     color: white !important;
     padding: 0.75rem 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem !important;
+    border-radius: 0 !important; // Sin bordes redondeados
+    margin: 0 !important; // Sin márgenes
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 0.5px;
+    text-align: center;
+    width: 100%;
+    border: none !important;
+  }
+  
+  // Container para las secciones principales
+  .profile-main-content {
+    .pgn-transition-replace-group {
+      margin-bottom: 2rem !important;
+      
+      // El contenedor con borde verde
+      > div {
+        border: 3px solid $emi-green !important;
+        border-radius: 15px !important;
+        overflow: hidden !important;
+        background: white !important;
+        
+        // El header verde debe ocupar todo el ancho
+        .editable-item-header {
+          margin: 0 !important;
+          
+          .edit-section-header {
+            margin: 0 !important;
+            border-radius: 0 !important;
+            width: 100% !important;
+          }
+        }
+        
+        // Contenido interno con padding
+        > div:not(.editable-item-header) {
+          padding: 1.5rem !important;
+        }
+      }
+    }
   }
   
   // Estilizar las tarjetas de certificados
@@ -328,6 +362,33 @@
       &:hover {
         background-color: $emi-green !important;
         border-color: $emi-green !important;
+        color: white !important;
+      }
+    }
+  }
+  
+  // Estilizar el mensaje de edad
+  .alert {
+    background: $emi-green !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 15px !important;
+    padding: 1.5rem !important;
+    margin: 2rem 0 !important;
+    
+    .alert-heading {
+      color: white !important;
+    }
+    
+    p {
+      color: white !important;
+    }
+    
+    .alert-link {
+      color: $emi-light-gold !important;
+      text-decoration: underline !important;
+      
+      &:hover {
         color: white !important;
       }
     }
