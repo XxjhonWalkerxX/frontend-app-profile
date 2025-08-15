@@ -28,15 +28,24 @@
       @include media-breakpoint-down(md) {
         grid-template-columns: 1fr;
         min-height: auto;
+        
+        // En móvil, centrar el badge en todo el ancho
+        .editable-item-header {
+          left: 20px;
+          right: 20px;
+        }
       }
       
-      // Badge "Mis Certificados" flotante en el contenedor padre
+      // Badge "Mis Certificados" centrado en la sección de certificados
       .editable-item-header {
         position: absolute;
         top: 20px;
+        left: 65%; // Inicia donde empieza la sección de certificados (35% width)
         right: 20px;
         margin: 0 !important;
         z-index: 10;
+        display: flex;
+        justify-content: center; // Centrado horizontal en la sección derecha
         
         .edit-section-header,
         h2 {
@@ -49,7 +58,7 @@
           padding: 0.6rem 1.8rem !important;
           text-align: center !important;
           border: none !important;
-          border-radius: 25px !important; // Más redondeado como en la imagen
+          border-radius: 25px !important; // Completamente redondeado
           text-transform: none !important;
           letter-spacing: 0.3px !important;
           line-height: 1.2 !important;
