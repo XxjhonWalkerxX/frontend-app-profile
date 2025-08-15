@@ -101,7 +101,8 @@
   
   // Estilo específico para mensajes de alerta/edad
   .alert {
-    width: 1627px !important;
+    width: 1100px !important; // Mismo ancho que otros contenedores
+    max-width: 1100px !important;
     height: 46px !important;
     background: #67A799 !important;
     border: none !important;
@@ -116,7 +117,6 @@
     min-height: auto !important;
     box-shadow: 0px 10px 6px #00000029 !important;
     opacity: 1 !important;
-    max-width: 100vw !important; // Para evitar overflow horizontal
     overflow: hidden !important;
     
     .alert-heading {
@@ -219,6 +219,25 @@ body .certificates-layout .editable-item-header h2.edit-section-header,
 html body .certificates-layout .editable-item-header .edit-section-header,
 body .certificates-layout .editable-item-header .edit-section-header,
 .certificates-layout .editable-item-header .edit-section-header {
+  width: 560px !important;
+  height: 79px !important;
+  background: #235B4F !important;
+  color: #EDD899 !important;
+  overflow: hidden !important;
+  box-shadow: 0px 10px 6px #00000029 !important;
+  border: none !important;
+  
+  // Usar clip-path para crear la forma redondeada perfecta
+  clip-path: polygon(
+    0% 0%, 
+    100% 0%, 
+    100% calc(100% - 29px), 
+    calc(100% - 29px) 100%, 
+    29px 100%, 
+    0% calc(100% - 29px)
+  ) !important;
+  
+  // Fallback con border-radius
   border-radius: 0px 0px 29px 29px !important;
   -webkit-border-radius: 0px 0px 29px 29px !important;
   -moz-border-radius: 0px 0px 29px 29px !important;
@@ -226,12 +245,6 @@ body .certificates-layout .editable-item-header .edit-section-header,
   border-top-right-radius: 0px !important;
   border-bottom-left-radius: 29px !important;
   border-bottom-right-radius: 29px !important;
-  width: 560px !important;
-  height: 79px !important;
-  background: #235B4F !important;
-  color: #EDD899 !important;
-  overflow: hidden !important;
-  box-shadow: 0px 10px 6px #00000029 !important;
 }
 
 // Banner override con máxima especificidad - eliminar azul completamente

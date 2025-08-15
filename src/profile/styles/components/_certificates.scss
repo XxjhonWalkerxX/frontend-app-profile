@@ -67,9 +67,6 @@
           padding: 0 !important;
           text-align: center !important;
           border: none !important;
-          border-radius: 0px 0px 29px 29px !important; // Solo redondeado abajo
-          -webkit-border-radius: 0px 0px 29px 29px !important;
-          -moz-border-radius: 0px 0px 29px 29px !important;
           text-transform: none !important;
           letter-spacing: 0.3px !important;
           line-height: 79px !important; // Para centrado vertical
@@ -80,20 +77,21 @@
           box-shadow: 0px 10px 6px #00000029 !important;
           opacity: 1 !important;
           overflow: hidden !important;
-          min-width: auto !important; // Remover min-width anterior
           
-          // Forzar bordes redondeados con pseudoelementos
-          &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 0px 0px 29px 29px !important;
-            background: inherit;
-            z-index: -1;
-          }
+          // Clip-path para la forma redondeada exacta
+          clip-path: polygon(
+            0% 0%, 
+            100% 0%, 
+            100% calc(100% - 29px), 
+            calc(100% - 29px) 100%, 
+            29px 100%, 
+            0% calc(100% - 29px)
+          ) !important;
+          
+          // Bordes redondeados como fallback
+          border-radius: 0px 0px 29px 29px !important;
+          -webkit-border-radius: 0px 0px 29px 29px !important;
+          -moz-border-radius: 0px 0px 29px 29px !important;
         }
       }
     }
@@ -206,6 +204,20 @@
   // OVERRIDE ESPECÍFICO PARA EL BADGE DE CERTIFICADOS - MÁXIMA ESPECIFICIDAD
   .certificates-layout .editable-item-header .edit-section-header,
   .certificates-layout .editable-item-header h2 {
+    width: 560px !important;
+    height: 79px !important;
+    
+    // Clip-path para crear la forma redondeada perfecta
+    clip-path: polygon(
+      0% 0%, 
+      100% 0%, 
+      100% calc(100% - 29px), 
+      calc(100% - 29px) 100%, 
+      29px 100%, 
+      0% calc(100% - 29px)
+    ) !important;
+    
+    // Fallback con border-radius
     border-radius: 0px 0px 29px 29px !important;
     -webkit-border-radius: 0px 0px 29px 29px !important;
     -moz-border-radius: 0px 0px 29px 29px !important;
@@ -213,18 +225,6 @@
     border-top-right-radius: 0px !important;
     border-bottom-left-radius: 29px !important;
     border-bottom-right-radius: 29px !important;
-    width: 560px !important;
-    height: 79px !important;
-    
-    // Máscara CSS como último recurso
-    -webkit-mask: radial-gradient(29px at 0 100%, transparent 29px, black 30px),
-                  radial-gradient(29px at 100% 100%, transparent 29px, black 30px),
-                  linear-gradient(black, black);
-    -webkit-mask-composite: intersect;
-    mask: radial-gradient(29px at 0 100%, transparent 29px, black 30px),
-          radial-gradient(29px at 100% 100%, transparent 29px, black 30px),
-          linear-gradient(black, black);
-    mask-composite: intersect;
   }
 
   .certificate {
