@@ -54,7 +54,7 @@
   // EXCEPTO los que están dentro de certificates-section
   .pgn-transition-replace-group {
     border: 3px solid $emi-green !important;
-    border-radius: 15px !important;
+    border-radius: 29px !important;
     overflow: hidden !important;
     background: white !important;
     margin-bottom: 2rem !important;
@@ -226,6 +226,16 @@ body .certificates-layout .editable-item-header .edit-section-header,
   overflow: hidden !important;
   box-shadow: 0px 10px 6px #00000029 !important;
   border: none !important;
+  
+  // Tipografía exacta según especificaciones
+  font-family: $emi-font-primary !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  font-weight: 900 !important;
+  font-size: 30px !important;
+  line-height: 41px !important;
+  letter-spacing: 0px !important;
+  opacity: 1 !important;
   
   // Usar clip-path para crear la forma redondeada perfecta
   clip-path: polygon(
