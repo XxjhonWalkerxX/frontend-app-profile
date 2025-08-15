@@ -23,10 +23,40 @@
       border: 3px solid $emi-green; // Borde verde en todo el layout
       border-radius: 15px; // Bordes redondeados suaves
       overflow: hidden;
+      position: relative; // Para posicionar el badge
       
       @include media-breakpoint-down(md) {
         grid-template-columns: 1fr;
         min-height: auto;
+      }
+      
+      // Badge "Mis Certificados" flotante en el contenedor padre
+      .editable-item-header {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0 !important;
+        z-index: 10;
+        
+        .edit-section-header,
+        h2 {
+          background: $emi-green !important;
+          color: $emi-light-gold !important;
+          font-family: $font-family-serif !important;
+          font-weight: 700 !important;
+          font-size: 1rem !important;
+          margin: 0 !important;
+          padding: 0.75rem 1.5rem !important;
+          text-align: center !important;
+          border: none !important;
+          border-radius: 0 15px 0 15px !important; // Redondeado asimétricamente
+          text-transform: none !important;
+          letter-spacing: 0.3px !important;
+          line-height: 1.2 !important;
+          display: inline-block !important;
+          white-space: nowrap !important;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+        }
       }
     }
     
@@ -34,8 +64,11 @@
     .courses-section {
       background: white;
       padding: 2rem;
+      border-right: 2px solid $emi-gold; // Separador dorado vertical
       
       @include media-breakpoint-down(md) {
+        border-right: none;
+        border-bottom: 2px solid $emi-gold; // Separador dorado horizontal en móvil
         padding: 1.5rem;
       }
       
@@ -59,30 +92,9 @@
     // SECCIÓN DE CERTIFICADOS (DERECHA - 35%)
     .certificates-section {
       background: $emi-green;
+      border: none; // Sin borde - ya está en certificates-layout
       padding: 0;
       position: relative;
-      
-      // Header "Mis Certificados" estilizado como el objetivo
-      .editable-item-header {
-        margin-bottom: 0 !important;
-        
-        .edit-section-header,
-        h2 {
-          background: $emi-green !important;
-          color: $emi-light-gold !important;
-          font-family: $font-family-serif !important;
-          font-weight: 700 !important;
-          font-size: 1.3rem !important;
-          margin: 0 !important;
-          padding: 1.5rem 2rem !important;
-          text-align: center !important;
-          border: none !important;
-          border-radius: 0 !important;
-          text-transform: none !important;
-          letter-spacing: 0.5px !important;
-          line-height: 1.2 !important;
-        }
-      }
       
       // Contenido de certificados con fondo blanco
       .mb-4 {
@@ -93,7 +105,7 @@
       .row.align-items-stretch {
         background: white;
         margin: 0;
-        padding: 2rem;
+        padding: 3rem 2rem 2rem 2rem; // Padding superior extra para el badge
         min-height: 200px;
         display: flex;
         flex-direction: column !important; // Forzar vertical
