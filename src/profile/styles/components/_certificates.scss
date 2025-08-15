@@ -215,6 +215,16 @@
     border-bottom-right-radius: 29px !important;
     width: 560px !important;
     height: 79px !important;
+    
+    // Máscara CSS como último recurso
+    -webkit-mask: radial-gradient(29px at 0 100%, transparent 29px, black 30px),
+                  radial-gradient(29px at 100% 100%, transparent 29px, black 30px),
+                  linear-gradient(black, black);
+    -webkit-mask-composite: intersect;
+    mask: radial-gradient(29px at 0 100%, transparent 29px, black 30px),
+          radial-gradient(29px at 100% 100%, transparent 29px, black 30px),
+          linear-gradient(black, black);
+    mask-composite: intersect;
   }
 
   .certificate {

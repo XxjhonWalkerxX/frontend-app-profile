@@ -171,11 +171,68 @@
       }
     }
   }
+  
+  // Contenedor wrapper de alertas - mismo ancho que otros contenedores
+  .pgn__alert-message-wrapper {
+    max-width: 1100px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  
+  // OVERRIDE NUCLEAR PARA EL BADGE DE CERTIFICADOS - FORZAR REDONDEADO
+  .certificates-layout .editable-item-header.mb-2 h2.edit-section-header,
+  .certificates-layout .editable-item-header h2.edit-section-header,
+  .certificates-layout .editable-item-header .edit-section-header {
+    border-radius: 0px 0px 29px 29px !important;
+    -webkit-border-radius: 0px 0px 29px 29px !important;
+    -moz-border-radius: 0px 0px 29px 29px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-left-radius: 29px !important;
+    border-bottom-right-radius: 29px !important;
+    clip-path: none !important;
+    
+    // Forzar con pseudoelemento de máscara
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      border-radius: 0px 0px 29px 29px !important;
+      z-index: -1;
+    }
+  }
 }
 
 // ==============================================
 // OVERRIDES FINALES - Máxima especificidad para Paragon
 // ==============================================
+
+// OVERRIDE ABSOLUTO PARA BADGE DE CERTIFICADOS - FUERA DE .profile-page
+html body .certificates-layout .editable-item-header h2.edit-section-header,
+body .certificates-layout .editable-item-header h2.edit-section-header,
+.certificates-layout .editable-item-header h2.edit-section-header,
+html body .certificates-layout .editable-item-header .edit-section-header,
+body .certificates-layout .editable-item-header .edit-section-header,
+.certificates-layout .editable-item-header .edit-section-header {
+  border-radius: 0px 0px 29px 29px !important;
+  -webkit-border-radius: 0px 0px 29px 29px !important;
+  -moz-border-radius: 0px 0px 29px 29px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 29px !important;
+  border-bottom-right-radius: 29px !important;
+  width: 560px !important;
+  height: 79px !important;
+  background: #235B4F !important;
+  color: #EDD899 !important;
+  overflow: hidden !important;
+  box-shadow: 0px 10px 6px #00000029 !important;
+}
 
 // Banner override con máxima especificidad - eliminar azul completamente
 html body .profile-page .profile-page-bg-banner.bg-primary.d-md-block.p-relative,
