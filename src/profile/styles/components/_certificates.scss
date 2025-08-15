@@ -20,6 +20,9 @@
       display: grid;
       grid-template-columns: 65% 35%; // 65% Cursos, 35% Certificados
       min-height: 400px;
+      border: 3px solid $emi-green; // Borde verde en todo el layout
+      border-radius: 15px; // Bordes redondeados suaves
+      overflow: hidden;
       
       @include media-breakpoint-down(md) {
         grid-template-columns: 1fr;
@@ -29,13 +32,11 @@
     
     // SECCIÓN DE CURSOS (IZQUIERDA - 65%)
     .courses-section {
-      background: white; // Fondo blanco en lugar de gris
+      background: white;
       padding: 2rem;
-      border-right: 2px solid $emi-gold; // Separador dorado
       
       @include media-breakpoint-down(md) {
-        border-right: none;
-        border-bottom: 2px solid $emi-gold;
+        padding: 1.5rem;
       }
       
       .section-title {
@@ -61,18 +62,26 @@
       padding: 0;
       position: relative;
       
-      // Header con fondo verde y título dorado
-      .edit-section-header,
-      .editable-item-header h2 {
-        background: $emi-green !important;
-        color: $emi-gold !important;
-        font-family: $font-family-serif !important;
-        font-weight: 600 !important;
-        font-size: 1.5rem !important;
-        margin: 0 !important;
-        padding: 2rem !important;
-        text-align: center !important;
-        border-radius: 0 !important;
+      // Header "Mis Certificados" estilizado como el objetivo
+      .editable-item-header {
+        margin-bottom: 0 !important;
+        
+        .edit-section-header,
+        h2 {
+          background: $emi-green !important;
+          color: $emi-light-gold !important;
+          font-family: $font-family-serif !important;
+          font-weight: 700 !important;
+          font-size: 1.3rem !important;
+          margin: 0 !important;
+          padding: 1.5rem 2rem !important;
+          text-align: center !important;
+          border: none !important;
+          border-radius: 0 !important;
+          text-transform: none !important;
+          letter-spacing: 0.5px !important;
+          line-height: 1.2 !important;
+        }
       }
       
       // Contenido de certificados con fondo blanco
