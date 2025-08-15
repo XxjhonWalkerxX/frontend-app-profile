@@ -40,12 +40,13 @@
       .editable-item-header {
         position: absolute;
         top: 0px;
+        left: 5%;
         right: 15px;
         margin: 0 !important;
         z-index: 10;
         display: flex;
         justify-content: center; // Centrado horizontal en la sección derecha
-        
+        border-radius: 25px !important;
         .edit-section-header,
         h2 {
           background: $emi-green !important;
