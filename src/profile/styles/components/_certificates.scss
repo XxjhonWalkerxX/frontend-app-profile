@@ -29,10 +29,17 @@
         grid-template-columns: 1fr;
         min-height: auto;
         
-        // En móvil, centrar el badge en todo el ancho
+        // En móvil, mantener el badge centrado con sus dimensiones
         .editable-item-header {
-          left: 20px;
-          right: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          
+          .edit-section-header,
+          h2 {
+            width: 280px !important; // Versión más pequeña para móvil
+            height: 60px !important;
+            line-height: 60px !important;
+          }
         }
       }
       
@@ -40,32 +47,53 @@
       .editable-item-header {
         position: absolute;
         top: 0px;
-        left: 5%;
-        right: 15px;
+        left: 50%;
+        transform: translateX(-50%); // Centrado perfecto
         margin: 0 !important;
         z-index: 10;
         display: flex;
-        justify-content: center; // Centrado horizontal en la sección derecha
-        border-radius: 25px !important;
+        justify-content: center;
+        
         .edit-section-header,
         h2 {
-          background: $emi-green !important;
-          color: $emi-light-gold !important;
+          width: 560px !important;
+          height: 79px !important;
+          background: #235B4F !important;
+          color: #EDD899 !important;
           font-family: $font-family-serif !important;
           font-weight: 700 !important;
           font-size: 0.95rem !important;
           margin: 0 !important;
-          padding: 0.6rem 1.8rem !important;
+          padding: 0 !important;
           text-align: center !important;
           border: none !important;
-          border-radius: 25px !important; // Completamente redondeado
+          border-radius: 0px 0px 29px 29px !important; // Solo redondeado abajo
+          -webkit-border-radius: 0px 0px 29px 29px !important;
+          -moz-border-radius: 0px 0px 29px 29px !important;
           text-transform: none !important;
           letter-spacing: 0.3px !important;
-          line-height: 1.2 !important;
-          display: inline-block !important;
+          line-height: 79px !important; // Para centrado vertical
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
           white-space: nowrap !important;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-          min-width: 160px !important;
+          box-shadow: 0px 10px 6px #00000029 !important;
+          opacity: 1 !important;
+          overflow: hidden !important;
+          min-width: auto !important; // Remover min-width anterior
+          
+          // Forzar bordes redondeados con pseudoelementos
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0px 0px 29px 29px !important;
+            background: inherit;
+            z-index: -1;
+          }
         }
       }
     }
@@ -84,7 +112,7 @@
         top: 100px;
         bottom: 100px;
         width: 5px;
-        background: $emi-gold;
+        background: #EDD899;
       }
       
       @include media-breakpoint-down(md) {
@@ -98,6 +126,7 @@
           left: 5px;
           width: auto;
           height: 4px;
+          background: #EDD899;
         }
       }
       
@@ -172,6 +201,20 @@
       padding: 1.5rem;
       margin-bottom: 1.5rem;
     }
+  }
+  
+  // OVERRIDE ESPECÍFICO PARA EL BADGE DE CERTIFICADOS - MÁXIMA ESPECIFICIDAD
+  .certificates-layout .editable-item-header .edit-section-header,
+  .certificates-layout .editable-item-header h2 {
+    border-radius: 0px 0px 29px 29px !important;
+    -webkit-border-radius: 0px 0px 29px 29px !important;
+    -moz-border-radius: 0px 0px 29px 29px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-left-radius: 29px !important;
+    border-bottom-right-radius: 29px !important;
+    width: 560px !important;
+    height: 79px !important;
   }
 
   .certificate {
