@@ -236,39 +236,59 @@ class ProfilePage extends React.Component {
         </div>
         {this.renderPhotoUploadErrorMessage()}
         
-        {/* CONTENIDO PRINCIPAL - ANCHO COMPLETO */}
-        <div className="profile-main-content" style={{maxWidth: '800px', margin: '0 auto', padding: '0 2rem'}}>
+        {/* CONTENIDO PRINCIPAL - MISMO ANCHO QUE DASHBOARD */}
+        <div className="profile-main-content" style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
           
-          {/* CERTIFICADOS AL PRINCIPIO */}
+          {/* CERTIFICADOS AL PRINCIPIO - ESTRUCTURA DE DOS COLUMNAS */}
           {isCertificatesBlockVisible && (
-            <Certificates
-              visibilityCourseCertificates={visibilityCourseCertificates}
-              formId="certificates"
-              {...commonFormProps}
-            />
+            <div className="certificates-container">
+              <div className="certificates-layout">
+                <div className="courses-section">
+                  <h2 className="section-title">Cursos</h2>
+                  <div className="courses-content">
+                    {/* Aquí irá el contenido de cursos - por ahora vacío */}
+                  </div>
+                </div>
+                <div className="certificates-section">
+                  <Certificates
+                    visibilityCourseCertificates={visibilityCourseCertificates}
+                    formId="certificates"
+                    {...commonFormProps}
+                  />
+                </div>
+              </div>
+            </div>
           )}
           
-          {/* MENSAJE DE EDAD DESPUÉS DE CERTIFICADOS */}
-          {!this.isYOBDisabled() && this.renderAgeMessage()}
+          {/* MENSAJE DE EDAD DESPUÉS DE CERTIFICADOS - MISMO ANCHO QUE DASHBOARD */}
+          {!this.isYOBDisabled() && (
+            <div className="age-message-container">
+              {this.renderAgeMessage()}
+            </div>
+          )}
           
-          {/* BIO AL FINAL */}
+          {/* BIO AL FINAL - MISMO ANCHO QUE DASHBOARD */}
           {isBioBlockVisible && (
-            <Bio
-              bio={bio}
-              visibilityBio={visibilityBio}
-              formId="bio"
-              {...commonFormProps}
-            />
+            <div className="bio-container">
+              <Bio
+                bio={bio}
+                visibilityBio={visibilityBio}
+                formId="bio"
+                {...commonFormProps}
+              />
+            </div>
           )}
           
-          {/* LEARNING GOAL AL FINAL */}
+          {/* LEARNING GOAL AL FINAL - MISMO ANCHO QUE DASHBOARD */}
           {getConfig().ENABLE_SKILLS_BUILDER_PROFILE && (
-            <LearningGoal
-              learningGoal={learningGoal}
-              visibilityLearningGoal={visibilityLearningGoal}
-              formId="learningGoal"
-              {...commonFormProps}
-            />
+            <div className="learning-goal-container">
+              <LearningGoal
+                learningGoal={learningGoal}
+                visibilityLearningGoal={visibilityLearningGoal}
+                formId="learningGoal"
+                {...commonFormProps}
+              />
+            </div>
           )}
         </div>
         

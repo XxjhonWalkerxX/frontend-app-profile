@@ -3,6 +3,90 @@
 // ==============================================
 
 .profile-page {
+  
+  // CONTENEDOR PRINCIPAL DE CERTIFICADOS CON LAYOUT DE DOS COLUMNAS
+  .certificates-container {
+    background: white;
+    border: 5px solid $emi-burgundy;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    
+    .certificates-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 400px;
+      
+      @include media-breakpoint-down(md) {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+    }
+    
+    // SECCIÓN DE CURSOS (IZQUIERDA)
+    .courses-section {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-right: 1px solid #d4af37;
+      
+      @include media-breakpoint-down(md) {
+        border-right: none;
+        border-bottom: 1px solid #d4af37;
+      }
+      
+      .section-title {
+        font-family: $font-family-serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $emi-text-primary;
+        margin-bottom: 1.5rem;
+        text-align: left;
+      }
+      
+      .courses-content {
+        color: #6c757d;
+        font-style: italic;
+        text-align: center;
+        margin-top: 3rem;
+      }
+    }
+    
+    // SECCIÓN DE CERTIFICADOS (DERECHA)
+    .certificates-section {
+      background: $emi-green;
+      padding: 0;
+      position: relative;
+      
+      // Aplicar el header con fondo verde y título dorado
+      .edit-section-header,
+      .editable-item-header h2 {
+        background: $emi-green !important;
+        color: $emi-gold !important;
+        font-family: $font-family-serif !important;
+        font-weight: 600 !important;
+        font-size: 1.5rem !important;
+        margin: 0 !important;
+        padding: 2rem !important;
+        text-align: center !important;
+        border-radius: 0 !important;
+      }
+      
+      // Contenido de certificados con fondo blanco
+      .mb-4 {
+        margin-bottom: 0 !important;
+      }
+      
+      // Área de contenido de certificados
+      .row.align-items-stretch {
+        background: white;
+        margin: 0;
+        padding: 2rem;
+        min-height: 200px;
+      }
+    }
+  }
+
   .certificate {
     position: relative;
     background: white !important;
@@ -74,6 +158,63 @@
       > div:not(.editable-item-header) {
         padding: 2rem !important;
         background: #f8f9fa !important;
+      }
+    }
+  }
+  
+  // ESTILOS PARA CONTENEDORES PRINCIPALES - MISMO ANCHO Y ESTILO QUE DASHBOARD
+  .age-message-container,
+  .bio-container,
+  .learning-goal-container {
+    background: white;
+    border: 5px solid $emi-burgundy;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+    padding: 2rem;
+    position: relative;
+    overflow: visible;
+    
+    // Formas geométricas decorativas como el dashboard
+    &::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 40px;
+      height: 40px;
+      background: rgba($emi-light-gold, 0.1);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: -10px;
+      width: 30px;
+      height: 30px;
+      background: rgba($emi-light-gold, 0.08);
+      border-radius: 5px;
+      transform: rotate(45deg);
+      z-index: 1;
+    }
+    
+    // Asegurar que el contenido esté por encima de las decoraciones
+    > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    @include media-breakpoint-down(md) {
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      
+      &::before,
+      &::after {
+        display: none;
       }
     }
   }
