@@ -238,7 +238,6 @@ class ProfilePage extends React.Component {
         
         {/* CONTENIDO PRINCIPAL - ANCHO COMPLETO */}
         <div className="profile-main-content" style={{maxWidth: '800px', margin: '0 auto', padding: '0 2rem'}}>
-          {!this.isYOBDisabled() && this.renderAgeMessage()}
           
           {/* CERTIFICADOS AL PRINCIPIO */}
           {isCertificatesBlockVisible && (
@@ -248,6 +247,9 @@ class ProfilePage extends React.Component {
               {...commonFormProps}
             />
           )}
+          
+          {/* MENSAJE DE EDAD DESPUÉS DE CERTIFICADOS */}
+          {!this.isYOBDisabled() && this.renderAgeMessage()}
           
           {/* BIO AL FINAL */}
           {isBioBlockVisible && (
