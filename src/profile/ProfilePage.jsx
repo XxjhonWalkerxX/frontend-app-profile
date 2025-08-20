@@ -376,6 +376,7 @@ class ProfilePage extends React.Component {
           hoursCompleted={hoursCompleted}
           progressPercentage={progressPercentage}
           profileImage={profileImage}
+          courseCertificates={courseCertificates}
         />
         <div className="profile-content-sections">
           {this.renderContent()}

@@ -187,10 +187,122 @@
       }
     }
 
-    // SECCIÓN CENTRO - Vacía (30%)
+    // SECCIÓN CENTRO - Mis Certificados (30%)
     .center-section {
       grid-area: center;
-      // Centro completamente vacío - sin contenido
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 1rem;
+      
+      @include media-breakpoint-down(md) {
+        margin-top: 1rem;
+        padding: 0;
+      }
+      
+      .certificates-preview {
+        
+        .certificates-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 0.8rem;
+          
+          .certificates-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: $emi-text-primary;
+            margin: 0;
+            
+            @include media-breakpoint-down(md) {
+              font-size: 0.9rem;
+            }
+          }
+          
+          .certificates-count {
+            background: $emi-burgundy;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+          }
+        }
+        
+        .certificates-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.6rem;
+          max-height: 120px; // Limitar altura para mantener el diseño compacto
+          overflow-y: auto;  // Scroll si hay muchos certificados
+          
+          .certificate-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid $emi-green;
+            
+            .certificate-info {
+              flex: 1;
+              text-align: left;
+              
+              .certificate-name {
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: $emi-text-primary;
+                margin: 0 0 0.2rem 0;
+                line-height: 1.2;
+              }
+              
+              .certificate-org {
+                font-size: 0.7rem;
+                color: $emi-text-secondary;
+                margin: 0;
+              }
+            }
+            
+            .certificate-link {
+              background: $emi-green;
+              color: white;
+              padding: 0.3rem 0.8rem;
+              border-radius: 12px;
+              text-decoration: none;
+              font-size: 0.7rem;
+              font-weight: 600;
+              
+              &:hover {
+                background: darken($emi-green, 10%);
+                color: white;
+                text-decoration: none;
+              }
+            }
+          }
+          
+          .no-certificates {
+            text-align: center;
+            color: $emi-text-secondary;
+            font-size: 0.8rem;
+            margin: 1rem 0;
+            padding: 0.8rem;
+            background: rgba($emi-green, 0.1);
+            border-radius: 8px;
+          }
+          
+          .view-all {
+            text-align: center;
+            margin-top: 0.5rem;
+            
+            span {
+              color: $emi-burgundy;
+              font-size: 0.75rem;
+              font-weight: 600;
+            }
+          }
+        }
+      }
     }
 
     // SECCIÓN DERECHA - Progreso (25%)

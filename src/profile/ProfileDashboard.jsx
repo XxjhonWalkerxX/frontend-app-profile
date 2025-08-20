@@ -15,6 +15,7 @@ const ProfileDashboard = ({
   hoursCompleted,
   progressPercentage,
   profileImage,
+  courseCertificates, // Agregar certificados
 }) => {
   const formattedDate = dateJoined ? new Date(dateJoined) : new Date();
 
@@ -85,9 +86,41 @@ const ProfileDashboard = ({
             </div>
           </div>
 
-          {/* CENTRO - Vacío (30%) */}
+          {/* CENTRO - Mis Certificados (30%) */}
           <div className="center-section">
-            {/* Centro completamente vacío */}
+            <div className="certificates-preview">
+              <div className="certificates-header">
+                <h3 className="certificates-title">Mis Certificados</h3>
+                <span className="certificates-count">{certificatesCount}</span>
+              </div>
+              <div className="certificates-list">
+                {courseCertificates && courseCertificates.length > 0 ? (
+                  courseCertificates.slice(0, 3).map((certificate, index) => (
+                    <div key={certificate.courseId || index} className="certificate-item">
+                      <div className="certificate-info">
+                        <h4 className="certificate-name">{certificate.courseDisplayName}</h4>
+                        <p className="certificate-org">{certificate.courseOrganization}</p>
+                      </div>
+                      <a 
+                        href={certificate.downloadUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="certificate-link"
+                      >
+                        Ver
+                      </a>
+                    </div>
+                  ))
+                ) : (
+                  <p className="no-certificates">No hay certificados disponibles</p>
+                )}
+                {courseCertificates && courseCertificates.length > 3 && (
+                  <div className="view-all">
+                    <span>+{courseCertificates.length - 3} más</span>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* DERECHA - Progreso (25%) */}
@@ -117,6 +150,14 @@ ProfileDashboard.propTypes = {
     src: PropTypes.string,
     isDefault: PropTypes.bool,
   }),
+  courseCertificates: PropTypes.arrayOf(PropTypes.shape({
+    courseId: PropTypes.string,
+    courseDisplayName: PropTypes.string,
+    courseOrganization: PropTypes.string,
+    downloadUrl: PropTypes.string,
+    certificateType: PropTypes.string,
+    modifiedDate: PropTypes.string,
+  })),
 };
 
 ProfileDashboard.defaultProps = {
@@ -126,6 +167,7 @@ ProfileDashboard.defaultProps = {
   hoursCompleted: 0,
   progressPercentage: 0,
   profileImage: null,
+  courseCertificates: [],
 };
 
 export default injectIntl(ProfileDashboard);
