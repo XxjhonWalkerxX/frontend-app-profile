@@ -8,17 +8,17 @@ const messages = defineMessages({
   },
   'profile.dashboard.courses': {
     id: 'profile.dashboard.courses',
-    defaultMessage: 'Courses',
+    defaultMessage: 'Cursos',
     description: 'Courses label',
   },
   'profile.dashboard.certificates': {
     id: 'profile.dashboard.certificates',
-    defaultMessage: 'Certificates',
+    defaultMessage: 'Certificados',
     description: 'Certificates label',
   },
   'profile.dashboard.hoursCompleted': {
     id: 'profile.dashboard.hoursCompleted',
-    defaultMessage: 'Hours Completed',
+    defaultMessage: 'Horas',
     description: 'Hours completed label',
   },
   'profile.dashboard.progress': {

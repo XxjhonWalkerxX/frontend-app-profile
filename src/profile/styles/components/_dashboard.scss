@@ -73,7 +73,7 @@
     .avatar-section {
       position: absolute;
       top: -40px; // Sobresale más hacia arriba
-      left: 5px; // Más pegado al borde izquierdo
+      left: -14px; // Más pegado al borde izquierdo
       z-index: 10;
       
       @include media-breakpoint-down(md) {
@@ -236,12 +236,17 @@
       }
       
       .progress-bar-container {
-        width: 320px !important;
+        width: 100% !important;
+        max-width: 200px !important;
         height: 10px !important;
         background: #EDD899 !important;
         opacity: 1 !important;
         border-radius: 0 !important;
         overflow: hidden;
+        
+        @include media-breakpoint-down(md) {
+          max-width: 250px !important;
+        }
         
         .progress-bar {
           height: 100%;
