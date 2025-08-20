@@ -69,17 +69,17 @@ const ProfileDashboard = ({
               <div className="stats-grid">
                 <div className="stat-item">
                   <span className="stat-number">{coursesCount}</span>
-                  <div className="stat-label">COURSES</div>
+                  <div className="stat-label">CURSOS</div>
                 </div>
                 
                 <div className="stat-item">
                   <span className="stat-number">{certificatesCount}</span>
-                  <div className="stat-label">CERTIFICATES</div>
+                  <div className="stat-label">CERTIFICADOS</div>
                 </div>
                 
                 <div className="stat-item">
                   <span className="stat-number">{hoursCompleted}</span>
-                  <div className="stat-label">HOURS COMPLETED</div>
+                  <div className="stat-label">HORAS</div>
                 </div>
               </div>
             </div>
