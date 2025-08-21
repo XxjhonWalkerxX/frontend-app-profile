@@ -150,7 +150,6 @@
     
     // SECCIÓN DE CERTIFICADOS (DERECHA - 35%)
     .certificates-section {
-      background: $emi-green;
       border: none; // Sin borde - ya está en certificates-layout
       padding: 0;
       position: relative;
@@ -198,7 +197,7 @@
         margin-bottom: 0.5rem;
 
         .certificates-title {
-          color: white;
+          color: black;
           font-weight: 700;
           margin: 0;
           font-size: 1rem;
@@ -206,7 +205,7 @@
 
         .certificates-count {
           background: $emi-burgundy;
-          color: white;
+          color: black;
           padding: 0.25rem 0.6rem;
           border-radius: 999px;
           font-weight: 700;
