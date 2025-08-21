@@ -449,19 +449,40 @@
     border-radius: 29px !important;
     padding: 1.5rem !important;
     margin: 2rem 0 !important;
-    
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    white-space: normal !important;
+
+    // Ensure child elements don't force overflow
+    > * {
+      box-sizing: border-box !important;
+      max-width: 100% !important;
+      word-break: break-word !important;
+      overflow-wrap: anywhere !important;
+      white-space: normal !important;
+    }
+
     .alert-heading {
       color: white !important;
+      word-break: break-word !important;
     }
-    
+
     p {
       color: white !important;
+      margin: 0 !important;
+      word-break: break-word !important;
     }
-    
+
     .alert-link {
       color: $emi-light-gold !important;
       text-decoration: underline !important;
-      
+      white-space: normal !important;
+      display: inline-block !important;
+      max-width: 100% !important;
+
       &:hover {
         color: white !important;
       }
