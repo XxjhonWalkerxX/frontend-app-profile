@@ -1,152 +1,346 @@
 // ==============================================
-// CERTIFICATES - Estilos para certificados del usuario con PESTAÑA SUPERIOR
+// CERTIFICATES - Estilos para certificados del usuario
 // ==============================================
 
 .profile-page {
   
-  // CONTENEDOR PRINCIPAL DE CERTIFICADOS CON PESTAÑA
+  // CONTENEDOR PRINCIPAL DE CERTIFICADOS - LAYOUT HORIZONTAL 65%/35%
   .certificates-container {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
+    background: white;
+    border: none; // Sin borde
+    border-radius: 0; // Sin bordes redondeados
+    box-shadow: none; // Sin sombra
     margin-bottom: 2rem;
     max-width: 1100px; // Mismo ancho que dashboard-card para alineación
     margin: 2rem auto; // Centrado
     width: 100%;
-    overflow: visible;
+    overflow: hidden;
     
-    .certificates-tab-container {
-      position: relative;
+    .certificates-layout {
+      display: grid;
+      grid-template-columns: 55% 45%; // 55% Cursos, 45% Certificados
+      min-height: 400px;
+      border: 3px solid $emi-green; // Borde verde en todo el layout
+      border-radius: 29px; // Bordes redondeados EMI estándar
+      overflow: hidden;
+      position: relative; // Para posicionar el badge
       
-      // PESTAÑA SUPERIOR - "MIS CERTIFICADOS"
-      .certificates-tab {
-        position: relative;
-        z-index: 10;
-        margin-bottom: -3px; // Solapamos con el contenido para crear efecto pestaña
+      @include media-breakpoint-down(md) {
+        grid-template-columns: 1fr;
+        min-height: auto;
         
+        // En móvil, mantener el badge centrado con sus dimensiones
         .editable-item-header {
-          display: flex;
-          justify-content: center;
-          margin: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 400px;
           
           .edit-section-header,
           h2 {
-            // Dimensiones y estilo de la pestaña
-            width: 400px !important;
-            height: 70px !important;
-            background: #235B4F !important; // Verde EMI
-            color: #EDD899 !important; // Dorado EMI
-            font-family: $emi-font-primary !important;
-            font-style: normal !important;
-            font-variant: normal !important;
-            font-weight: 900 !important;
-            font-size: 24px !important;
-            line-height: 70px !important;
-            letter-spacing: 0px !important;
-            opacity: 1 !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            text-align: center !important;
-            border: none !important;
-            text-transform: none !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            white-space: nowrap !important;
-            box-shadow: 0px 10px 6px #00000029 !important;
-            overflow: hidden !important;
-            position: relative !important;
-            
-            // Forma de pestaña redondeada en la parte inferior
-            border-radius: 0px 0px 29px 29px !important;
-            -webkit-border-radius: 0px 0px 29px 29px !important;
-            -moz-border-radius: 0px 0px 29px 29px !important;
-            
-            // Clip-path para crear la forma exacta de pestaña
-            clip-path: polygon(
-              0% 0%, 
-              100% 0%, 
-              100% calc(100% - 29px), 
-              calc(100% - 29px) 100%, 
-              29px 100%, 
-              0% calc(100% - 29px)
-            ) !important;
-          }
-          
-          // Botón de editar posicionado en la esquina de la pestaña
-          .btn-link {
-            position: absolute !important;
-            right: 15px !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            color: #EDD899 !important;
-            font-size: 14px !important;
-            padding: 5px 10px !important;
-            z-index: 11 !important;
-            
-            &:hover {
-              color: white !important;
-            }
-          }
-        }
-        
-        @include media-breakpoint-down(md) {
-          .editable-item-header {
-            .edit-section-header,
-            h2 {
-              width: 300px !important; // Versión más pequeña para móvil
-              height: 60px !important;
-              font-size: 18px !important;
-              line-height: 60px !important;
-            }
+            width: 280px !important; // Versión más pequeña para móvil
+            height: 60px !important;
+            line-height: 60px !important;
           }
         }
       }
       
-      // CONTENIDO DE CERTIFICADOS CON BORDE VERDE
-      .certificates-content {
-        background: white;
-        border: 3px solid $emi-green;
-        border-radius: 29px;
-        padding: 2rem;
-        position: relative;
-        z-index: 5;
+      // Badge "Mis Certificados" centrado en la sección de certificados
+      .editable-item-header {
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%); // Centrado perfecto
+        margin: 0 !important;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
         
-        @include media-breakpoint-down(md) {
-          padding: 1.5rem;
-          border-radius: 20px;
-        }
-        
-        // Grid de certificados
-        .row.align-items-stretch {
-          margin: 0;
+        .edit-section-header,
+        h2 {
+          width: 560px !important;
+          height: 79px !important;
+          background: #235B4F !important;
+          color: #EDD899 !important;
+          font-family: $emi-font-primary !important;
+          font-style: normal !important;
+          font-variant: normal !important;
+          font-weight: 900 !important;
+          font-size: 30px !important;
+          line-height: 41px !important;
+          letter-spacing: 0px !important;
+          opacity: 1 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          text-align: center !important;
+          border: none !important;
+          text-transform: none !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          white-space: nowrap !important;
+          box-shadow: 0px 10px 6px #00000029 !important;
+          overflow: hidden !important;
           
-          .col-12.col-sm-6 {
-            padding: 0.5rem;
-            
-            @include media-breakpoint-down(md) {
-              padding: 0.25rem;
+          // Clip-path para la forma redondeada exacta
+          clip-path: polygon(
+            0% 0%, 
+            100% 0%, 
+            100% calc(100% - 29px), 
+            calc(100% - 29px) 100%, 
+            29px 100%, 
+            0% calc(100% - 29px)
+          ) !important;
+          
+          // Bordes redondeados como fallback
+          border-radius: 0px 0px 29px 29px !important;
+          -webkit-border-radius: 0px 0px 29px 29px !important;
+          -moz-border-radius: 0px 0px 29px 29px !important;
+        }
+      }
+    }
+    
+    // SECCIÓN DE CURSOS (IZQUIERDA - 65%)
+    .courses-section {
+      background: white;
+      padding: 2rem;
+      position: relative;
+      
+      // Separador dorado vertical más grueso que no llega hasta arriba ni abajo
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 100px;
+        bottom: 100px;
+        width: 5px;
+        background: #EDD899;
+      }
+      
+      @include media-breakpoint-down(md) {
+        padding: 1.5rem;
+        
+        // Separador dorado horizontal en móvil
+        &::after {
+          top: auto;
+          bottom: 0;
+          right: 5px;
+          left: 5px;
+          width: auto;
+          height: 4px;
+          background: #EDD899;
+        }
+      }
+      
+      .section-title {
+        font-family: $font-family-serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $emi-text-primary;
+        margin-bottom: 1.5rem;
+        text-align: left;
+      }
+      
+      .courses-content {
+        color: #6c757d;
+        font-style: italic;
+        text-align: center;
+        margin-top: 3rem;
+      }
+    }
+    
+    // SECCIÓN DE CERTIFICADOS (DERECHA - 35%)
+    .certificates-section {
+      background: $emi-green;
+      border: none; // Sin borde - ya está en certificates-layout
+      padding: 0;
+      position: relative;
+      
+      // Contenido de certificados con fondo blanco
+      .mb-4 {
+        margin-bottom: 0 !important;
+      }
+      
+      // Área de contenido de certificados - VERTICAL NO COLUMNAS
+      .row.align-items-stretch {
+        background: white;
+        margin: 0;
+        padding: 3rem 2rem 2rem 2rem; // Padding superior extra para el badge
+        min-height: 200px;
+        display: flex;
+        flex-direction: column !important; // Forzar vertical
+        
+        .col-12.col-sm-6 {
+          flex: none !important;
+          width: 100% !important;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+    
+    // NUEVO: SECCIÓN DE CERTIFICADOS PREVIOS (DERECHA - 35%)
+    .courses-right {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      color: white;
+      min-height: 200px;
+      justify-content: center;
+    }
+
+    .certificates-preview {
+      width: 100%;
+
+      .certificates-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+
+        .certificates-title {
+          color: white;
+          font-weight: 700;
+          margin: 0;
+          font-size: 1rem;
+        }
+
+        .certificates-count {
+          background: $emi-burgundy;
+          color: white;
+          padding: 0.25rem 0.6rem;
+          border-radius: 999px;
+          font-weight: 700;
+          font-size: 0.85rem;
+        }
+      }
+
+      .certificates-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        max-height: 220px;
+        overflow-y: auto;
+
+        .certificate-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: rgba(255,255,255,0.06);
+          padding: 0.6rem;
+          border-radius: 8px;
+
+          .certificate-info {
+            flex: 1;
+            text-align: left;
+            color: white;
+
+            .certificate-name {
+              font-size: 0.9rem;
+              font-weight: 600;
+              margin: 0 0 0.2rem 0;
+            }
+
+            .certificate-org {
+              font-size: 0.75rem;
+              color: rgba(255,255,255,0.85);
+              margin: 0;
             }
           }
+
+          .certificate-link {
+            background: rgba(255,255,255,0.12);
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.75rem;
+          }
         }
-        
-        // Mensaje cuando no hay certificados
+
         .no-certificates {
+          padding: 0.6rem;
+          border-radius: 8px;
+          background: rgba(255,255,255,0.06);
+          color: white;
           text-align: center;
-          color: $emi-text-secondary;
-          font-size: 1.1rem;
-          margin: 2rem 0;
-          padding: 2rem;
-          background: rgba($emi-green, 0.05);
-          border-radius: 15px;
-          border: 2px dashed rgba($emi-green, 0.3);
+        }
+
+        .view-all {
+          text-align: center;
+          margin-top: 0.5rem;
+
+          span {
+            color: $emi-burgundy;
+            font-size: 0.85rem;
+            font-weight: 700;
+          }
         }
       }
     }
   }
+  
+  // ESTILOS PARA OTROS CONTENEDORES - SIN BORDES
+  .age-message-container,
+  .bio-container,
+  .learning-goal-container {
+    background: white;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    position: relative;
+    overflow: visible;
+    
+    // Asegurar que el contenido esté por encima de las decoraciones
+    > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    @include media-breakpoint-down(md) {
+      border-radius: 0;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  // OVERRIDE ESPECÍFICO PARA EL BADGE DE CERTIFICADOS - MÁXIMA ESPECIFICIDAD
+  .certificates-layout .editable-item-header .edit-section-header,
+  .certificates-layout .editable-item-header h2 {
+    width: 560px !important;
+    height: 79px !important;
+    font-family: $emi-font-primary !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    font-weight: 900 !important;
+    font-size: 30px !important;
+    line-height: 41px !important;
+    letter-spacing: 0px !important;
+    color: #EDD899 !important;
+    opacity: 1 !important;
+    
+    // Clip-path para crear la forma redondeada perfecta
+    clip-path: polygon(
+      0% 0%, 
+      100% 0%, 
+      100% calc(100% - 29px), 
+      calc(100% - 29px) 100%, 
+      29px 100%, 
+      0% calc(100% - 29px)
+    ) !important;
+    
+    // Fallback con border-radius
+    border-radius: 0px 0px 29px 29px !important;
+    -webkit-border-radius: 0px 0px 29px 29px !important;
+    -moz-border-radius: 0px 0px 29px 29px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-left-radius: 29px !important;
+    border-bottom-right-radius: 29px !important;
+  }
 
-  // ESTILOS PARA CERTIFICADOS INDIVIDUALES
   .certificate {
     position: relative;
     background: white !important;
@@ -189,32 +383,6 @@
         border-color: $emi-green !important;
         color: white !important;
       }
-    }
-  }
-
-  // ESTILOS PARA OTROS CONTENEDORES - SIN BORDES
-  .age-message-container,
-  .bio-container,
-  .learning-goal-container {
-    background: white;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    position: relative;
-    overflow: visible;
-    
-    // Asegurar que el contenido esté por encima de las decoraciones
-    > * {
-      position: relative;
-      z-index: 2;
-    }
-    
-    @include media-breakpoint-down(md) {
-      border-radius: 0;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
     }
   }
 }

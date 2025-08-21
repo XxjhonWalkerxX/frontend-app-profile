@@ -135,57 +135,60 @@ class Certificates extends React.Component {
     } = this.props;
 
     return (
-      <div className="certificates-tab-container">
-        {/* PESTAÑA SUPERIOR CON "MIS CERTIFICADOS" */}
-        <div className="certificates-tab">
-          <EditableItemHeader
-            content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
-            showEditButton={this.props.certificates && this.props.certificates.length > 0}
-            onClickEdit={this.handleOpen}
-            showVisibility={visibilityCourseCertificates !== null}
-            visibility={visibilityCourseCertificates}
-          />
-        </div>
-        
-        {/* CONTENIDO DE CERTIFICADOS */}
-        <div className="certificates-content">
-          <SwitchContent
-            className="mb-0"
-            expression={editMode}
-            cases={{
-              editing: (
-                <div role="dialog" aria-labelledby="course-certificates-label">
-                  <form onSubmit={this.handleSubmit}>
-                    <FormControls
-                      visibilityId="visibilityCourseCertificates"
-                      saveState={saveState}
-                      visibility={visibilityCourseCertificates}
-                      cancelHandler={this.handleClose}
-                      changeHandler={this.handleChange}
-                    />
-                    {this.renderCertificates()}
-                  </form>
-                </div>
-              ),
-              editable: (
-                <>
-                  {this.renderCertificates()}
-                </>
-              ),
-              empty: (
-                <>
-                  {this.renderCertificates()}
-                </>
-              ),
-              static: (
-                <>
-                  {this.renderCertificates()}
-                </>
-              ),
-            }}
-          />
-        </div>
-      </div>
+      <SwitchContent
+        className="mb-4"
+        expression={editMode}
+        cases={{
+          editing: (
+            <div role="dialog" aria-labelledby="course-certificates-label">
+              <form onSubmit={this.handleSubmit}>
+                <EditableItemHeader
+                  headingId="course-certificates-label"
+                  content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
+                />
+                <FormControls
+                  visibilityId="visibilityCourseCertificates"
+                  saveState={saveState}
+                  visibility={visibilityCourseCertificates}
+                  cancelHandler={this.handleClose}
+                  changeHandler={this.handleChange}
+                />
+                {this.renderCertificates()}
+              </form>
+            </div>
+          ),
+          editable: (
+            <>
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
+                showEditButton
+                onClickEdit={this.handleOpen}
+                showVisibility={visibilityCourseCertificates !== null}
+                visibility={visibilityCourseCertificates}
+              />
+              {this.renderCertificates()}
+            </>
+          ),
+          empty: (
+            <>
+              <EditableItemHeader
+                content={intl.formatMessage(messages['profile.certificates.my.certificates'])}
+                showEditButton
+                onClickEdit={this.handleOpen}
+                showVisibility={visibilityCourseCertificates !== null}
+                visibility={visibilityCourseCertificates}
+              />
+              {this.renderCertificates()}
+            </>
+          ),
+          static: (
+            <>
+              <EditableItemHeader content={intl.formatMessage(messages['profile.certificates.my.certificates'])} />
+              {this.renderCertificates()}
+            </>
+          ),
+        }}
+      />
     );
   }
 }

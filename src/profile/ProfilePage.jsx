@@ -239,15 +239,54 @@ class ProfilePage extends React.Component {
         {/* CONTENIDO PRINCIPAL - ANCHO 1100PX SIN PADDING */}
         <div className="profile-main-content" style={{maxWidth: '1100px', margin: '0 auto'}}>
           
-          {/* CERTIFICADOS AL PRINCIPIO - ESTRUCTURA CON PESTAÑA */}
+          {/* CERTIFICADOS AL PRINCIPIO - ESTRUCTURA HORIZONTAL */}
           {isCertificatesBlockVisible && (
             <div className="certificates-container">
-              <Certificates
-                certificates={courseCertificates}
-                visibilityCourseCertificates={visibilityCourseCertificates}
-                formId="courseCertificates"
-                {...commonFormProps}
-              />
+              <div className="certificates-layout">
+                <div className="courses-section">
+                  <h2 className="section-title">Cursos</h2>
+                  <div className="courses-content">
+                    {/* Contenido de cursos vacío por ahora */}
+                  </div>
+                </div>
+                <div className="certificates-section">
+                  <div className="courses-right">
+                    <div className="certificates-preview">
+                      <div className="certificates-header">
+                        <h3 className="certificates-title">Mis Certificados</h3>
+                        <span className="certificates-count">{courseCertificates ? courseCertificates.length : 0}</span>
+                      </div>
+                      <div className="certificates-list">
+                        {courseCertificates && courseCertificates.length > 0 ? (
+                          courseCertificates.slice(0, 5).map((certificate, idx) => (
+                            <div key={certificate.courseId || idx} className="certificate-item">
+                              <div className="certificate-info">
+                                <h4 className="certificate-name">{certificate.courseDisplayName}</h4>
+                                <p className="certificate-org">{certificate.courseOrganization}</p>
+                              </div>
+                              <a
+                                href={certificate.downloadUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="certificate-link"
+                              >
+                                Ver
+                              </a>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="no-certificates">No hay certificados disponibles</div>
+                        )}
+                        {courseCertificates && courseCertificates.length > 5 && (
+                          <div className="view-all">
+                            <span>+{courseCertificates.length - 5} más</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
           
