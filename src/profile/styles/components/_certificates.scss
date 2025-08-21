@@ -320,7 +320,8 @@
     letter-spacing: 0px !important;
     color: #EDD899 !important;
     opacity: 1 !important;
-    
+    margin: 0 !important;
+
     // Clip-path para crear la forma redondeada perfecta
     clip-path: polygon(
       0% 0%, 
@@ -330,7 +331,7 @@
       29px 100%, 
       0% calc(100% - 29px)
     ) !important;
-    
+
     // Fallback con border-radius
     border-radius: 0px 0px 29px 29px !important;
     -webkit-border-radius: 0px 0px 29px 29px !important;
@@ -339,6 +340,34 @@
     border-top-right-radius: 0px !important;
     border-bottom-left-radius: 29px !important;
     border-bottom-right-radius: 29px !important;
+
+    // Posicionar el badge en la mitad de la columna de certificados (derecha)
+    position: absolute !important;
+    top: -40px !important;
+    /*
+      Cálculo: columna izquierda = 55%, columna derecha = 45%
+      Queremos centrar el badge en la mitad de la columna derecha:
+      left = 55% + (45% / 2) - (badge_width / 2)
+      badge_width = 560px -> badge_width/2 = 280px
+    */
+    left: calc(55% + 22.5% - 280px) !important;
+    z-index: 5 !important;
+  }
+
+  // Ajustes responsive: en pantallas pequeñas el badge debe quedar centrado respecto al contenedor
+  @include media-breakpoint-down(md) {
+    .certificates-layout .editable-item-header .edit-section-header,
+    .certificates-layout .editable-item-header h2 {
+      position: relative !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      top: 0 !important;
+      width: auto !important;
+      max-width: 90% !important;
+      height: auto !important;
+      clip-path: none !important;
+      border-radius: 8px !important;
+    }
   }
 
   .certificate {
