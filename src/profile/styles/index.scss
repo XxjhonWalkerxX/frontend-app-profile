@@ -101,74 +101,80 @@
   
   // Estilo específico para mensajes de alerta/edad
   .alert {
-    width: 1100px !important; // Mismo ancho que otros contenedores
-    max-width: 1100px !important;
-    height: 46px !important;
-    background: #67A799 !important;
+    width: 1100px !important; // keep same max width as containers
+    max-width: 100% !important; // allow responsive shrink
+    box-sizing: border-box !important;
+    background: $emi-green !important;
     border: none !important;
     color: white !important;
     border-radius: 29px !important;
-    padding: 0 2rem !important;
+    padding: 0.75rem 1.5rem !important; // more vertical padding for multi-line
     margin: 2rem auto !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    min-height: auto !important;
+    justify-content: flex-start !important; // left-align text like the mock
+    gap: 1rem !important;
+    flex-wrap: wrap !important; // allow text to wrap to new lines
+    text-align: left !important;
+    min-height: 56px !important; // slightly taller to match visual
     box-shadow: 0px 10px 6px #00000029 !important;
     opacity: 1 !important;
-    overflow: hidden !important;
-    
+    overflow: visible !important; // allow wrapped lines to show
+
     .alert-heading {
       color: white !important;
-      font-weight: 600 !important;
+      font-weight: 700 !important;
       margin: 0 !important;
-      display: inline !important;
-      line-height: 46px !important; // Centrado vertical
+      display: inline-block !important;
+      line-height: 1.2 !important; // allow multi-line heading if needed
       font-size: 1rem !important;
+      flex: none !important; // keep heading size
+      padding-right: 0.25rem !important;
     }
-    
+
     p {
       color: white !important;
       margin: 0 !important;
-      display: inline !important;
-      line-height: 46px !important; // Centrado vertical
-      font-size: 1rem !important;
-      
-      // Separador entre elementos
-      &:not(:last-child)::after {
-        content: ' - ';
-        margin: 0 0.5rem;
-      }
+      display: inline-block !important;
+      line-height: 1.3 !important; // comfortable line height for wrapped text
+      font-size: 0.95rem !important;
+      flex: 1 1 auto !important; // let paragraph take remaining space and wrap
+      min-width: 200px !important;
     }
-    
+
     .alert-link {
       color: $emi-light-gold !important;
       text-decoration: underline !important;
-      font-weight: 600 !important;
-      line-height: 46px !important;
-      
+      font-weight: 700 !important;
+      line-height: 1.2 !important;
+      white-space: nowrap !important; // keep the link on one line
+      margin-left: 0.25rem !important;
+
       &:hover {
         color: white !important;
       }
     }
-    
-    // Versión responsiva para dispositivos pequeños
+
+    // Responsive adjustments
     @include media-breakpoint-down(lg) {
       width: 90vw !important;
-      max-width: 800px !important;
+      max-width: 900px !important;
+      padding: 0.6rem 1rem !important;
+      min-height: 48px !important;
     }
-    
+
     @include media-breakpoint-down(md) {
       width: 95vw !important;
-      height: 40px !important;
-      
+      min-height: 44px !important;
+
       .alert-heading,
       p,
       .alert-link {
-        line-height: 40px !important;
+        line-height: 1.2 !important;
         font-size: 0.9rem !important;
       }
+
+      .alert-link { white-space: normal !important; }
     }
   }
   

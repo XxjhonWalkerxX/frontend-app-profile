@@ -449,170 +449,22 @@
     border-radius: 29px !important;
     padding: 1.5rem !important;
     margin: 2rem 0 !important;
-    box-sizing: border-box !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-    word-break: break-word !important;
-    overflow-wrap: anywhere !important;
-    white-space: normal !important;
-
-    // Ensure child elements don't force overflow
-    > * {
-      box-sizing: border-box !important;
-      max-width: 100% !important;
-      word-break: break-word !important;
-      overflow-wrap: anywhere !important;
-      white-space: normal !important;
-    }
-
+    
     .alert-heading {
       color: white !important;
-      word-break: break-word !important;
     }
-
+    
     p {
       color: white !important;
-      margin: 0 !important;
-      word-break: break-word !important;
     }
-
+    
     .alert-link {
       color: $emi-light-gold !important;
       text-decoration: underline !important;
-      white-space: normal !important;
-      display: inline-block !important;
-      max-width: 100% !important;
-
+      
       &:hover {
         color: white !important;
       }
     }
-  }
-  
-  // High specificity override for the EMI age alert pill
-  .profile-page .emi-age-alert,
-  .profile-dashboard-overlay .emi-age-alert,
-  .pgn__alert-message-wrapper .emi-age-alert {
-    max-width: 1100px !important;
-    width: calc(100% - 2rem) !important; // leave small gutters on very narrow screens
-    padding: 1rem 1.25rem !important;
-    margin: 2rem auto !important;
-    display: flex !important;
-    flex-direction: column !important; /* stack heading, body and link for predictable layout */
-    align-items: center !important;
-    justify-content: center !important;
-    background: $emi-green !important;
-    color: white !important;
-    border-radius: 29px !important;
-    box-shadow: 0px 10px 6px rgba(0,0,0,0.16) !important;
-    overflow: visible !important; /* allow children to wrap */
-    text-align: center !important;
-    box-sizing: border-box !important;
-
-    // Child elements should wrap and not force overflow
-    p, .alert-heading, .alert-link {
-      overflow: visible !important;
-      text-overflow: inherit !important;
-      white-space: normal !important;
-      max-width: 100% !important;
-      word-break: break-word !important;
-      overflow-wrap: anywhere !important;
-      margin: 0.25rem 0 !important;
-    }
-
-    .alert-heading {
-      width: 100% !important;
-      font-weight: 700 !important;
-    }
-
-    .alert-link {
-      display: inline-block !important;
-      margin-top: 0.25rem !important;
-      color: $emi-light-gold !important;
-      text-decoration: underline !important;
-    }
-
-    @include media-breakpoint-up(md) {
-      /* On wider screens keep items on a single row when space allows, but still wrap if necessary */
-      flex-direction: row !important;
-      gap: 1rem !important;
-      align-items: center !important;
-
-      p, .alert-heading, .alert-link {
-        margin: 0 !important;
-      }
-
-      .alert-heading {
-        flex: 0 0 auto;
-      }
-
-      p {
-        flex: 1 1 auto;
-        text-align: center !important;
-      }
-
-      .alert-link {
-        flex: 0 0 auto;
-      }
-    }
-  }
-  
-  // Align age alert with dashboard-card container
-  .profile-dashboard-overlay + .pgn__alert-message-wrapper .emi-age-alert,
-  .profile-dashboard-overlay .emi-age-alert {
-    max-width: 1100px !important;
-    margin: 2rem auto !important;
-    width: calc(100% - 2rem) !important;
-    left: 0;
-    right: 0;
-
-    /* Ensure predictable layout and spacing regardless of browser support for flex gap */
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0.75rem !important;
-    padding: 1rem 1.25rem !important;
-    box-sizing: border-box !important;
-
-    .alert-heading {
-      margin: 0 !important;
-      margin-right: 0.75rem !important; /* fallback spacing when flex-gap isn't supported */
-      width: auto !important;
-      text-align: center !important;
-    }
-
-    p {
-      margin: 0 !important;
-      text-align: center !important;
-      margin-left: 0 !important;
-    }
-
-    .alert-link {
-      margin-top: 0.25rem !important;
-      display: inline-block !important;
-    }
-
-    @include media-breakpoint-up(md) {
-      /* allow row layout on larger screens but keep spacing via margins for compatibility */
-      flex-direction: row !important;
-      align-items: center !important;
-
-      .alert-heading {
-        margin-right: 1rem !important;
-      }
-
-      p {
-        margin: 0 !important;
-      }
-    }
-  }
-
-  /* Ensure the Paragon alert wrapper centers its contents to match dashboard */
-  .pgn__alert-message-wrapper {
-    display: flex !important;
-    justify-content: center !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
   }
 }

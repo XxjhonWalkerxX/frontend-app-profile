@@ -9,7 +9,6 @@ const AgeMessage = ({ accountSettingsUrl }) => (
     variant="info"
     dismissible={false}
     show
-    className="emi-age-alert"
   >
     <Alert.Heading id="profile.age.headline">
       <FormattedMessage
