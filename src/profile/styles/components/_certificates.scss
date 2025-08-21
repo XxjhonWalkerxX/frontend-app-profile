@@ -287,7 +287,10 @@
     border: none;
     border-radius: 0;
     box-shadow: none;
-    margin-bottom: 2rem;
+    margin: 2rem auto; // Centrar y mismo espaciado que .certificates-container
+    max-width: 1100px; // Igual que el contenedor superior
+    width: 100%;
+    box-sizing: border-box; // Incluir padding en el ancho
     padding: 2rem;
     position: relative;
     overflow: visible;
@@ -301,8 +304,17 @@
     @include media-breakpoint-down(md) {
       border-radius: 0;
       padding: 1.5rem;
-      margin-bottom: 1.5rem;
+      margin: 1.5rem auto;
     }
+  }
+
+  // Asegurar que el wrapper de alertas ocupe el mismo ancho y esté centrado
+  .pgn__alert-message-wrapper {
+    max-width: 1100px !important;
+    width: 100% !important;
+    margin: 2rem auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
   }
   
   // OVERRIDE ESPECÍFICO PARA EL BADGE DE CERTIFICADOS - MÁXIMA ESPECIFICIDAD
