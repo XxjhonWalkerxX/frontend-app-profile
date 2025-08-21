@@ -494,33 +494,76 @@
   .profile-dashboard-overlay .emi-age-alert,
   .pgn__alert-message-wrapper .emi-age-alert {
     max-width: 1100px !important;
-    width: 100% !important;
-    padding: 0 1.25rem !important;
+    width: calc(100% - 2rem) !important; // leave small gutters on very narrow screens
+    padding: 1rem 1.25rem !important;
     margin: 2rem auto !important;
     display: flex !important;
+    flex-direction: column !important; /* stack heading, body and link for predictable layout */
     align-items: center !important;
     justify-content: center !important;
     background: $emi-green !important;
     color: white !important;
     border-radius: 29px !important;
     box-shadow: 0px 10px 6px rgba(0,0,0,0.16) !important;
-    overflow: hidden !important;
+    overflow: visible !important; /* allow children to wrap */
     text-align: center !important;
+    box-sizing: border-box !important;
 
-    // Ensure the body text wraps and displays nicely
+    // Child elements should wrap and not force overflow
     p, .alert-heading, .alert-link {
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-      white-space: nowrap !important; // single line pill appearance
+      overflow: visible !important;
+      text-overflow: inherit !important;
+      white-space: normal !important;
       max-width: 100% !important;
+      word-break: break-word !important;
+      overflow-wrap: anywhere !important;
+      margin: 0.25rem 0 !important;
     }
 
-    // For very long message allow multi-line with wrap on smaller screens
-    @include media-breakpoint-down(md) {
+    .alert-heading {
+      width: 100% !important;
+      font-weight: 700 !important;
+    }
+
+    .alert-link {
+      display: inline-block !important;
+      margin-top: 0.25rem !important;
+      color: $emi-light-gold !important;
+      text-decoration: underline !important;
+    }
+
+    @include media-breakpoint-up(md) {
+      /* On wider screens keep items on a single row when space allows, but still wrap if necessary */
+      flex-direction: row !important;
+      gap: 1rem !important;
+      align-items: center !important;
+
       p, .alert-heading, .alert-link {
-        white-space: normal !important;
-        text-overflow: initial !important;
+        margin: 0 !important;
+      }
+
+      .alert-heading {
+        flex: 0 0 auto;
+      }
+
+      p {
+        flex: 1 1 auto;
+        text-align: center !important;
+      }
+
+      .alert-link {
+        flex: 0 0 auto;
       }
     }
+  }
+  
+  // Align age alert with dashboard-card container
+  .profile-dashboard-overlay + .pgn__alert-message-wrapper .emi-age-alert,
+  .profile-dashboard-overlay .emi-age-alert {
+    max-width: 1100px !important;
+    margin: 2rem auto !important;
+    width: calc(100% - 2rem) !important;
+    left: 0;
+    right: 0;
   }
 }
