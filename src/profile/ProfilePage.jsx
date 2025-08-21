@@ -250,11 +250,41 @@ class ProfilePage extends React.Component {
                   </div>
                 </div>
                 <div className="certificates-section">
-                  <Certificates
-                    visibilityCourseCertificates={visibilityCourseCertificates}
-                    formId="certificates"
-                    {...commonFormProps}
-                  />
+                  <div className="courses-right">
+                    <div className="certificates-preview">
+                      <div className="certificates-header">
+                        <h3 className="certificates-title">Mis Certificados</h3>
+                        <span className="certificates-count">{courseCertificates ? courseCertificates.length : 0}</span>
+                      </div>
+                      <div className="certificates-list">
+                        {courseCertificates && courseCertificates.length > 0 ? (
+                          courseCertificates.slice(0, 5).map((certificate, idx) => (
+                            <div key={certificate.courseId || idx} className="certificate-item">
+                              <div className="certificate-info">
+                                <h4 className="certificate-name">{certificate.courseDisplayName}</h4>
+                                <p className="certificate-org">{certificate.courseOrganization}</p>
+                              </div>
+                              <a
+                                href={certificate.downloadUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="certificate-link"
+                              >
+                                Ver
+                              </a>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="no-certificates">No hay certificados disponibles</div>
+                        )}
+                        {courseCertificates && courseCertificates.length > 5 && (
+                          <div className="view-all">
+                            <span>+{courseCertificates.length - 5} más</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

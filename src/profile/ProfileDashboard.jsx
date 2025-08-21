@@ -88,39 +88,7 @@ const ProfileDashboard = ({
 
           {/* CENTRO - Mis Certificados (30%) */}
           <div className="center-section">
-            <div className="certificates-preview">
-              <div className="certificates-header">
-                <h3 className="certificates-title">Mis Certificados</h3>
-                <span className="certificates-count">{certificatesCount}</span>
-              </div>
-              <div className="certificates-list">
-                {courseCertificates && courseCertificates.length > 0 ? (
-                  courseCertificates.slice(0, 3).map((certificate, index) => (
-                    <div key={certificate.courseId || index} className="certificate-item">
-                      <div className="certificate-info">
-                        <h4 className="certificate-name">{certificate.courseDisplayName}</h4>
-                        <p className="certificate-org">{certificate.courseOrganization}</p>
-                      </div>
-                      <a 
-                        href={certificate.downloadUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="certificate-link"
-                      >
-                        Ver
-                      </a>
-                    </div>
-                  ))
-                ) : (
-                  <p className="no-certificates">No hay certificados disponibles</p>
-                )}
-                {courseCertificates && courseCertificates.length > 3 && (
-                  <div className="view-all">
-                    <span>+{courseCertificates.length - 3} más</span>
-                  </div>
-                )}
-              </div>
-            </div>
+            {/* Certificates preview moved to Courses card in ProfilePage.jsx */}
           </div>
 
           {/* DERECHA - Progreso (25%) */}

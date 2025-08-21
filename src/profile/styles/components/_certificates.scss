@@ -176,6 +176,108 @@
         }
       }
     }
+    
+    // NUEVO: SECCIÓN DE CERTIFICADOS PREVIOS (DERECHA - 35%)
+    .courses-right {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      color: white;
+      min-height: 200px;
+      justify-content: center;
+    }
+
+    .certificates-preview {
+      width: 100%;
+
+      .certificates-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+
+        .certificates-title {
+          color: white;
+          font-weight: 700;
+          margin: 0;
+          font-size: 1rem;
+        }
+
+        .certificates-count {
+          background: $emi-burgundy;
+          color: white;
+          padding: 0.25rem 0.6rem;
+          border-radius: 999px;
+          font-weight: 700;
+          font-size: 0.85rem;
+        }
+      }
+
+      .certificates-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        max-height: 220px;
+        overflow-y: auto;
+
+        .certificate-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: rgba(255,255,255,0.06);
+          padding: 0.6rem;
+          border-radius: 8px;
+
+          .certificate-info {
+            flex: 1;
+            text-align: left;
+            color: white;
+
+            .certificate-name {
+              font-size: 0.9rem;
+              font-weight: 600;
+              margin: 0 0 0.2rem 0;
+            }
+
+            .certificate-org {
+              font-size: 0.75rem;
+              color: rgba(255,255,255,0.85);
+              margin: 0;
+            }
+          }
+
+          .certificate-link {
+            background: rgba(255,255,255,0.12);
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.75rem;
+          }
+        }
+
+        .no-certificates {
+          padding: 0.6rem;
+          border-radius: 8px;
+          background: rgba(255,255,255,0.06);
+          color: white;
+          text-align: center;
+        }
+
+        .view-all {
+          text-align: center;
+          margin-top: 0.5rem;
+
+          span {
+            color: $emi-burgundy;
+            font-size: 0.85rem;
+            font-weight: 700;
+          }
+        }
+      }
+    }
   }
   
   // ESTILOS PARA OTROS CONTENEDORES - SIN BORDES
