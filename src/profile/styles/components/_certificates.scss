@@ -22,7 +22,7 @@
       min-height: 400px;
       border: 3px solid $emi-green; // Borde verde en todo el layout
       border-radius: 29px; // Bordes redondeados EMI estándar
-      overflow: hidden;
+      overflow: visible; // permitir que la pestaña sobresalga del contenedor sin recortarse
       position: relative; // Para posicionar el badge
       
       @include media-breakpoint-down(md) {
@@ -451,10 +451,10 @@
   // Centrar el badge "Mis Certificados" en la parte superior de la columna derecha
   .certificates-section .editable-item-header {
     position: absolute;
-    top: 0;
+    top: -28px; // solapa por encima del borde superior
     left: 50%;
     transform: translateX(-50%);
-    z-index: 12;
+    z-index: 30; // mayor que el borde y otros elementos
     display: flex;
     justify-content: center;
     width: 100%;
@@ -466,13 +466,14 @@
     pointer-events: auto;
     max-width: 360px !important; // pestaña más pequeña y responsiva
     width: 100% !important;
-    height: 79px !important;
+    height: 64px !important; // ajustar altura tipo pestaña
     background: #235B4F !important;
     color: #EDD899 !important;
     font-family: $emi-font-primary !important;
     font-weight: 900 !important;
-    font-size: 30px !important;
-    line-height: 41px !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    opacity: 1 !important;
     margin: 0 !important;
     padding: 0 1rem !important;
     text-align: center !important;
@@ -480,17 +481,11 @@
     align-items: center !important;
     justify-content: center !important;
     white-space: nowrap !important;
-    box-shadow: 0px 10px 6px #00000029 !important;
+    box-shadow: 0px 8px 6px rgba(0,0,0,0.18) !important;
     overflow: hidden !important;
-    clip-path: polygon(
-      0% 0%, 
-      100% 0%, 
-      100% calc(100% - 29px), 
-      calc(100% - 29px) 100%, 
-      29px 100%, 
-      0% calc(100% - 29px)
-    ) !important;
-    border-radius: 0px 0px 29px 29px !important;
+
+    // Forma redondeada inferior para parecer pestaña
+    border-radius: 0 0 18px 18px !important;
   }
 
   // Ajustes de color y fondo para la lista dentro de la columna derecha (ahora fondo blanco)
