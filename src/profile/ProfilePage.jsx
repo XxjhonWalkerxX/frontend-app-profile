@@ -245,7 +245,10 @@ class ProfilePage extends React.Component {
               <div className="certificates-layout">
                 {/* Encabezado tipo badge para los estilos EMI (forme redondeada) */}
                 <div className="editable-item-header">
-                  <h2 className="edit-section-header">Mis certificados</h2>
+                  <h2 className="edit-section-header">
+                    Mis certificados
+                    <span className="certificates-count" style={{ marginLeft: '12px' }}>{courseCertificates ? courseCertificates.length : 0}</span>
+                  </h2>
                 </div>
                 <div className="courses-section">
                   <h2 className="section-title">Cursos</h2>
@@ -256,10 +259,7 @@ class ProfilePage extends React.Component {
                 <div className="certificates-section">
                   <div className="courses-right">
                     <div className="certificates-preview">
-                      <div className="certificates-header">
-                        <h3 className="certificates-title">Mis Certificados</h3>
-                        <span className="certificates-count">{courseCertificates ? courseCertificates.length : 0}</span>
-                      </div>
+                      <div className="certificates-header" aria-hidden="true" style={{ height: 0, overflow: 'hidden', margin: 0, padding: 0 }} />
                       <div className="certificates-list">
                         {courseCertificates && courseCertificates.length > 0 ? (
                           courseCertificates.slice(0, 5).map((certificate, idx) => (
