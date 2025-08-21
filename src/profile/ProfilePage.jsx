@@ -209,7 +209,7 @@ class ProfilePage extends React.Component {
     const isLocationBlockVisible = isBlockVisible(country);
 
     return (
-      <div className="container-fluid">
+      <div className="container-fluid profile-page">
         {/* CONTENIDO ORIGINAL DEL AVATAR OCULTO */}
         <div className="row align-items-center pt-4 mb-4 pt-md-0 mb-md-0" style={{display: 'none'}}>
           <div className="col-auto col-md-4 col-lg-3">
@@ -243,6 +243,10 @@ class ProfilePage extends React.Component {
           {isCertificatesBlockVisible && (
             <div className="certificates-container">
               <div className="certificates-layout">
+                {/* Encabezado tipo badge para los estilos EMI (forme redondeada) */}
+                <div className="editable-item-header">
+                  <h2 className="edit-section-header">Mis certificados</h2>
+                </div>
                 <div className="courses-section">
                   <h2 className="section-title">Cursos</h2>
                   <div className="courses-content">
