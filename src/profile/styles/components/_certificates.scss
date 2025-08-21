@@ -44,20 +44,22 @@
         }
       }
       
-      // Badge "Mis Certificados" centrado en la sección de certificados
+      // Badge "Mis Certificados" alineado a la columna derecha (antes estaba centrado)
       .editable-item-header {
         position: absolute;
         top: 0px;
-        left: 50%;
-        transform: translateX(-50%); // Centrado perfecto
+        left: 55%; // empezar justo en el límite de la columna derecha (55%/45%)
+        transform: translateX(0); // ya no centrar con translateX(-50%)
         margin: 0 !important;
         z-index: 10;
         display: flex;
-        justify-content: center;
-        
+        justify-content: flex-start;
+        padding-left: 0.5rem;
+
         .edit-section-header,
         h2 {
-          width: 560px !important;
+          width: calc(45% - 2rem) !important; // ocupar el ancho de la columna derecha con margen
+          max-width: 560px !important;
           height: 79px !important;
           background: #235B4F !important;
           color: #EDD899 !important;
@@ -71,17 +73,18 @@
           opacity: 1 !important;
           margin: 0 !important;
           padding: 0 !important;
-          text-align: center !important;
+          text-align: left !important;
           border: none !important;
           text-transform: none !important;
           display: flex !important;
           align-items: center !important;
-          justify-content: center !important;
+          justify-content: flex-start !important; // texto a la izquierda dentro del badge
+          padding-left: 1.25rem !important;
           white-space: nowrap !important;
           box-shadow: 0px 10px 6px #00000029 !important;
           overflow: hidden !important;
-          
-          // Clip-path para la forma redondeada exacta
+
+          // Clip-path para la forma redondeada exacta (mantener)
           clip-path: polygon(
             0% 0%, 
             100% 0%, 
@@ -90,7 +93,7 @@
             29px 100%, 
             0% calc(100% - 29px)
           ) !important;
-          
+
           // Bordes redondeados como fallback
           border-radius: 0px 0px 29px 29px !important;
           -webkit-border-radius: 0px 0px 29px 29px !important;
