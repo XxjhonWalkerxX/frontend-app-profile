@@ -31,8 +31,10 @@ import Certificates from './forms/Certificates';
 import AgeMessage from './AgeMessage';
 import DateJoined from './DateJoined';
 import UsernameDescription from './UsernameDescription';
-import EditableItemHeader from './forms/elements/EditableItemHeader';
-import certMessages from './forms/Certificates.messages';
+import PageLoading from './PageLoading';
+import Banner from './Banner';
+import LearningGoal from './forms/LearningGoal';
+import ProfileDashboard from './ProfileDashboard';
 
 // Selectors
 import { profilePageSelector } from './data/selectors';
@@ -241,11 +243,6 @@ class ProfilePage extends React.Component {
           {isCertificatesBlockVisible && (
             <div className="certificates-container">
               <div className="certificates-layout">
-                {/* Badge centrado sobre el layout */}
-                <EditableItemHeader
-                  content={this.props.intl ? this.props.intl.formatMessage(certMessages['profile.certificates.my.certificates']) : 'Mis Certificados'}
-                />
-
                 <div className="courses-section">
                   <h2 className="section-title">Cursos</h2>
                   <div className="courses-content">
@@ -256,7 +253,7 @@ class ProfilePage extends React.Component {
                   <div className="courses-right">
                     <div className="certificates-preview">
                       <div className="certificates-header">
-                        {/* El título principal se renderiza ahora con EditableItemHeader arriba, evitar duplicado aquí */}
+                        <h3 className="certificates-title">Mis Certificados</h3>
                         <span className="certificates-count">{courseCertificates ? courseCertificates.length : 0}</span>
                       </div>
                       <div className="certificates-list">
