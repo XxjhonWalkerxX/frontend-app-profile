@@ -260,7 +260,7 @@ class ProfilePage extends React.Component {
                   <div className="courses-right">
                     <div className="certificates-preview">
                       <div className="certificates-header">
-                        <h3 className="certificates-title">Mis Certificados</h3>
+                        <h3 className="certificates-title">Mis certificados</h3>
                         <span className="certificates-count">{courseCertificates ? courseCertificates.length : 0}</span>
                       </div>
                       <div className="certificates-list">
